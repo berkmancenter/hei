@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="span12">
+    <div class="page-header">
+      <h1>Welcome to HEI <small>A registry of all things wondrous in the Harvard developer community.</small></h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span10">
+    <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
+    <ul class="thumbnails">
+      <%= render :partial => 'shared/line_items/project', :collection => @projects %>
+    </ul>
+    <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
+  </div>
+  <div class="span2">
+    subnav
+  </div>
+</div>
