@@ -14,10 +14,13 @@
 ActiveRecord::Schema.define(:version => 20120625220946) do
 
   create_table "projects", :force => true do |t|
-    t.string   "title",                       :null => false
-    t.string   "description", :limit => 5120
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.string   "title",                             :null => false
+    t.string   "description",       :limit => 5120
+    t.string   "repository_url",    :limit => 1024
+    t.string   "news_url",          :limit => 1024
+    t.string   "documentation_url", :limit => 1024
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "taggings", :force => true do |t|

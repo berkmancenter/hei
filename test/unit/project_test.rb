@@ -11,6 +11,27 @@ class ProjectTest < ActiveSupport::TestCase
 
   end
 
+  test 'URLs' do
+    p = projects(:one)
+    assert_respond_to(p, :repository_url)
+    assert_respond_to(p, :news_url)
+    assert_respond_to(p, :documentation_url)
+
+    p.repository_url = 'asdf'
+    assert ! p.valid?
+
+    p.repository_url = ''
+    assert p.valid?, p.errors.full_messages.join(',')
+
+    p.repository_url = 'http://asdfasdf'
+    assert ! p.valid?, p.errors.full_messages.join(',')
+
+    ['https://asdfasdf.com','http://asdfasdf.com', 'http://www.example.com/asdfasdf/foo.git'].each do|u|
+      p.repository_url = u
+      assert p.valid?
+    end
+  end
+
   test 'is taggable' do
     p = projects(:one)
 
