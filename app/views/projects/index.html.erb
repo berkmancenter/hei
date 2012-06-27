@@ -1,24 +1,26 @@
-<div class="row">
-  <div class="span12">
-    <div class="page-header">
-      <h1>Hei <small>A registry of all things wondrous in the Harvard developer community.</small></h1>
+<div class="pagination_target">
+  <div class="row">
+    <div class="span12">
+      <div class="page-header">
+        <h1>Hei <small>A registry of all things wondrous in the Harvard developer community.</small></h1>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="span12">
+  <div class="row">
+    <div class="span12">
       <h1>Filter by. . .</h1>
       <%= Facet.primary.collect{|f| f.name}.join(', ') %>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="span12">
-    <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
-    <ul class="thumbnails">
-      <%= render :partial => 'shared/line_items/project', :collection => @projects %>
-    </ul>
-    <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
+  <div class="row">
+    <div class="span12">
+      <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
+      <ul class="thumbnails">
+        <%= render :partial => 'shared/line_items/project', :collection => @projects %>
+      </ul>
+      <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
+    </div>
   </div>
 </div>
