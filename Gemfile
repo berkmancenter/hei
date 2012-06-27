@@ -21,6 +21,7 @@ gem 'acts_as_api'
 gem 'nokogiri'
 gem 'sanitize'
 gem 'exception_notification'
+gem 'acts_as_list'
 
 # Gems used only for assets and not required
 # in production environments by default.

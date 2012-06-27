@@ -11,7 +11,7 @@ namespace :hei do
       (rand(6) + 1).times do
         title << titles[rand(titles.length)]
       end
-      (rand(10) + 1).times do
+      (rand(20) + 1).times do
         description << descriptions[rand(descriptions.length)]
       end
       Project.create(:title => title.join(' '), :description => description.join(' ') )

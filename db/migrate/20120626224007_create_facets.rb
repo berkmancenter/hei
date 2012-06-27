@@ -1,9 +1,9 @@
 class CreateFacets < ActiveRecord::Migration
   def change
     create_table :facets do |t|
-      t.string :name
-      t.string :context
-      t.integer :position
+      t.string :name, :null => false, :limit => 255
+      t.string :context, :null => false, :limit => 128
+      t.integer :position, :default => 1
 
       t.timestamps
     end

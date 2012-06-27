@@ -23,16 +23,17 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
+          <!-- for the responsive collapse feature -->
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Hei</a>
+          <%= link_to('Hei', root_path, :class => "brand") %>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
+              <li><%= link_to "Projects", projects_path  %></li>
+              <li><%= link_to "Tags", facets_path  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>
             </ul>
           </div><!--/.nav-collapse -->

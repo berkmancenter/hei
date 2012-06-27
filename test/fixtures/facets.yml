@@ -1,11 +1,9 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  name: MyString
-  context: MyString
+language:
+  name: Turtles
+  context: turtles
   position: 1
 
-two:
-  name: MyString
-  context: MyString
-  position: 1
+license:
+  name: Buckets
+  context: buckets
+  position: 2

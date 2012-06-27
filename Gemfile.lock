@@ -35,6 +35,7 @@ GEM
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       rack (>= 1.1.0)
+    acts_as_list (0.1.5)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     breadcrumbs (0.1.6)
@@ -157,6 +158,7 @@ DEPENDENCIES
   acl9
   acts-as-taggable-on
   acts_as_api
+  acts_as_list
   breadcrumbs
   coffee-rails (~> 3.2.1)
   devise
