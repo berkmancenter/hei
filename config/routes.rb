@@ -1,4 +1,6 @@
 Hei::Application.routes.draw do
+  resources :facets
+
   resources :projects
 
   # The priority is based upon order of creation:
