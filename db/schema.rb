@@ -14,11 +14,12 @@
 ActiveRecord::Schema.define(:version => 20120626224007) do
 
   create_table "facets", :force => true do |t|
-    t.string   "name",                                     :null => false
-    t.string   "context",    :limit => 128,                :null => false
+    t.string   "name",                                         :null => false
+    t.string   "context",    :limit => 128,                    :null => false
     t.integer  "position",                  :default => 1
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.boolean  "primary",                   :default => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
   end
 
   create_table "projects", :force => true do |t|

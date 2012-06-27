@@ -5,3 +5,12 @@
 .project .thumbnail{
   height: 10em;
 }
+
+.project .thumbnail.tall{
+  height: 22em;
+}
+
+.project .more{
+  display: none;
+  font-size: larger;
+}

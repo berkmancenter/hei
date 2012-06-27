@@ -1,9 +1,11 @@
 language:
   name: Turtles
   context: turtles
+  primary: false
   position: 1
 
 license:
   name: Buckets
   context: buckets
+  primary: true
   position: 2

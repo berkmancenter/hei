@@ -42,4 +42,9 @@ class FacetTest < ActiveSupport::TestCase
 
   end
 
+  test 'Primary vs. Secondary' do
+    assert Facet.primary.length == 1
+    assert Facet.secondary.length == 1
+  end
+
 end
