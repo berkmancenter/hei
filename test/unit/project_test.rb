@@ -36,6 +36,7 @@ class ProjectTest < ActiveSupport::TestCase
     p = projects(:one)
 
     assert_respond_to(p,:tag_list)
+    assert_respond_to(p,:set_tag_list_on)
     assert_respond_to(p,:taggings)
 
     p.tag_list = 'foo, bar'
@@ -43,6 +44,11 @@ class ProjectTest < ActiveSupport::TestCase
 
     p.reload
     assert p.tag_list == ['bar','foo']
+  end
+
+  test 'Sunspot indexing' do
+    p = projects(:one)
+    assert_respond_to(p,:solr_index)
   end
 
 end
