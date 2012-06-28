@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @project = Project.includes(:taggings, :tags).find(params[:id])
   end
 
 end
