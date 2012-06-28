@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.order('created_at desc').paginate(:page => params[:page])
+    @primary_facets = Facet.primary
+    @projects = Project.includes(:taggings,:tags).order('created_at desc').paginate(:page => params[:page])
     render :layout => ! request.xhr?
   end
 

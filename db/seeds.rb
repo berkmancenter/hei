@@ -11,6 +11,7 @@
 Facet.create(
   [
     {:name => 'Programming Language', :context => 'language', :primary => true},
+    {:name => 'Framework', :context => 'framework', :primary => false},
     {:name => 'License', :context => 'license', :primary => false},
     {:name => 'Platform', :context => 'platform', :primary => true},
     {:name => 'Maturity', :context => 'maturity', :primary => false},
