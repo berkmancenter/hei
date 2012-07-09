@@ -9,4 +9,10 @@ class Facet < ActiveRecord::Base
 
   scope :primary, where(:primary => true).order('position')
   scope :secondary, where(:primary => false).order('position')
+
+  def self.facet_hash
+    hash = {}
+    self.all.collect{|f| hash[f.context] = f.attributes}
+    hash
+  end
 end

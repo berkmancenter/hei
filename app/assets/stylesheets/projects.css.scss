@@ -13,3 +13,11 @@
 .project .more{
   display: none;
 }
+
+.facet_header{
+  margin-top: 1em;
+}
+
+.facet_header:first-child{
+  margin-top: 0em;
+}
