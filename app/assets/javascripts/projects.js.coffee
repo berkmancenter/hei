@@ -21,6 +21,17 @@ $('.more_toggle').live
       $(project).removeClass('span8').addClass('span4')
       $(this).closest('.thumbnail').removeClass('tall')
 
+$(document).ready ()->
+  $('body').data('filter_container_height', $('#filtering').height())
+  $('#filtering #filter_container').hide()
+  $('#filtering').height($('body').data('filter_container_height'))
+
+$('#filtering h2').live
+  click: (e)->
+    e.preventDefault()
+    $('#filtering #filter_container').toggle()
+    $('#filtering').height($('body').data('filter_container_height'))
+
 $('.pagination a').live
   click: (e)->
     paginationTarget = $(this).closest('.pagination_target')

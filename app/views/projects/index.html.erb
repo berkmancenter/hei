@@ -8,9 +8,11 @@
   </div>
 
   <div class="row">
-    <div class="span12">
+    <div class="span12" id="filtering">
       <h2>Filter by. . .</h2>
-      <%= Facet.primary.collect{|f| f.name}.join(', ') %>
+      <div id="filter_container">
+        <%= Facet.primary.collect{|f| f.name}.join(', ') %>
+    </div>
     </div>
   </div>
 
