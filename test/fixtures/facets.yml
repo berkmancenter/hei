@@ -1,10 +1,10 @@
-language:
+turtles:
   name: Turtles
   context: turtles
   primary: false
   position: 1
 
-license:
+buckets:
   name: Buckets
   context: buckets
   primary: true

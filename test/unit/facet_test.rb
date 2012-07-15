@@ -47,4 +47,8 @@ class FacetTest < ActiveSupport::TestCase
     assert Facet.secondary.length == 1
   end
 
+  test 'Facet Hash' do
+    assert Facet.facet_hash == {'turtles' => facets(:turtles).attributes, 'buckets' => facets(:buckets).attributes},'Facet hash was incorrect'
+  end
+
 end
