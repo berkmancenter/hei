@@ -6,7 +6,22 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-
+gem 'twitter-bootstrap-rails'
+gem 'acts-as-taggable-on'
+gem 'devise'
+gem 'acl9'
+gem 'feed-abstract'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+gem 'sunspot'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'breadcrumbs'
+gem 'acts_as_api'
+gem 'nokogiri'
+gem 'sanitize'
+gem 'exception_notification'
+gem 'acts_as_list'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -11,3 +11,7 @@
  *= require_self
  *= require_tree .
  */
+
+p{
+  line-height: 1.4em;
+}

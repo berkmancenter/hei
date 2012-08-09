@@ -1,0 +1,11 @@
+turtles:
+  name: Turtles
+  context: turtles
+  primary: false
+  position: 1
+
+buckets:
+  name: Buckets
+  context: buckets
+  primary: true
+  position: 2
