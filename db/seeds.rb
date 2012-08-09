@@ -5,3 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+
+
+Facet.create(
+  [
+    {:name => 'Programming Language', :context => 'language', :primary => true},
+    {:name => 'Framework', :context => 'framework', :primary => false},
+    {:name => 'License', :context => 'license', :primary => false},
+    {:name => 'Platform', :context => 'platform', :primary => true},
+    {:name => 'Maturity', :context => 'maturity', :primary => false},
+    {:name => 'Problem Space', :context => 'problem_space', :primary => false},
+    {:name => 'Developers', :context => 'developers', :primary => false}
+])
+

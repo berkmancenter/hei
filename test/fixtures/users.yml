@@ -1,0 +1,6 @@
+one:
+  email: foo@example.com
+  encrypted_password: asdfasdfasdfasdfasdf
+two:
+  email: bar@example.com
+  encrypted_password: asdfasdfasdfasdfasdf

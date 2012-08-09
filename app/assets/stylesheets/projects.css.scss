@@ -1,0 +1,23 @@
+// Place all the styles related to the Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.project .thumbnail{
+  height: 10em;
+}
+
+.project .thumbnail.tall{
+  height: 22em;
+}
+
+.project .more{
+  display: none;
+}
+
+.facet_header{
+  margin-top: 1em;
+}
+
+.facet_header:first-child{
+  margin-top: 0em;
+}

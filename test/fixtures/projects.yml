@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: Project One
+  description: MyText
+  repository_url: http://www.example.com
+  news_url: http://www.example.com
+  documentation_url: http://www.example.com
+
+two:
+  title: Project Two
+  description: MyText
+  repository_url: http://www.example.com/two
+  news_url: http://www.example.com/two
+  documentation_url: http://www.example.com/two

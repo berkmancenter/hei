@@ -1,0 +1,23 @@
+$styled_facets: 10;
+
+// There should be as many colors as there are styled facets.
+$facet_background_colors:   blue,   green,  black,  red,    yellow,   gray,   light-gray,   brown,    dark-red,   orange;
+$facet_text_colors:         white,  white,  white,  white,  black,    black,  black,        white,    white,      black;
+
+.facet {
+  padding: 3px;
+  font-size: .9em;
+  border: 1px solid;
+  font-weight: bold;
+  width: 15em;
+  display: inline-block;
+}
+
+@while $styled_facets > 0 {
+.facet-#{$styled_facets} { 
+  background-color: nth($facet_background_colors, $styled_facets); 
+  color: nth($facet_text_colors, $styled_facets); 
+}
+  $styled_facets: $styled_facets - 1;
+}
+
