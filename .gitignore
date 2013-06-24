@@ -10,3 +10,4 @@ solr/data/*
 .rvmrc
 doc/app
 solr/pids/*
+.DStore
