@@ -1,5 +1,4 @@
 namespace :hei do
-
   desc 'fake data'
   task :fake_data => :environment do
     titles = ['bunny','fluffy','angry','kitten','odd','precise','penguin','whale','ears','turtle','bukket']

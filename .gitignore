@@ -11,3 +11,4 @@ solr/data/*
 doc/app
 solr/pids/*
 Gemfile.lock
+.DStore
