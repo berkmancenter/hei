@@ -10,4 +10,5 @@ solr/data/*
 .rvmrc
 doc/app
 solr/pids/*
+Gemfile.lock
 .DStore

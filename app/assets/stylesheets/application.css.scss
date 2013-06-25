@@ -12,6 +12,13 @@
  *= require_tree .
  */
 
+@import "bootstrap";
+
+body { 
+	padding-top: 60px;
+	padding-left: 20px;
+}
+
 p{
   line-height: 1.4em;
 }
