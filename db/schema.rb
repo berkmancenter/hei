@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130628212648) do
+ActiveRecord::Schema.define(:version => 20130701174425) do
 
   create_table "facets", :force => true do |t|
     t.string   "name",                                         :null => false
@@ -38,6 +38,11 @@ ActiveRecord::Schema.define(:version => 20130628212648) do
     t.string   "documentation_url", :limit => 1024
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+    t.string   "app_url"
+    t.string   "micropost_url"
+    t.string   "organization"
+    t.date     "launch_date"
+    t.date     "conception_date"
   end
 
   create_table "taggings", :force => true do |t|

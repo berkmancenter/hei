@@ -14,6 +14,10 @@ FactoryGirl.define do
       repository_url 'https://github.com/berkmancenter/devise_harvard_auth_proxy'
       news_url 'https://cyber.law.harvard.edu/projectmanagement/projects/hei/activity'
       documentation_url 'https://cyber.law.harvard.edu/projectmanagement/projects/hei/wiki'
+      app_url ''
+      micropost_url ''
+      launch_date '2013-09-09'
+      conception_date '2012-07-01'
     end
   end
 end
