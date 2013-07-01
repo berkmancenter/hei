@@ -9,7 +9,6 @@ describe 'Project model' do
 
     it ( 'should respond to correct attributes' ) {
       p = Project.new( FactoryGirl.attributes_for( :project_valid ) );
-      p.should be_valid;
       p.should respond_to( :title );
       p.should respond_to( :description );
       p.should respond_to( :repository_url );

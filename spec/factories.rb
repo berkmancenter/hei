@@ -1,4 +1,12 @@
 FactoryGirl.define do
+  factory :organization do
+    factory :berkman do
+      name 'Berkman Center for Internet and Society'
+      location '23 Everett St, Cambridge, MA 02138'
+      phone '617-495-7547'
+    end
+  end
+
   factory :project do
     factory :project_valid do
       title 'Hei'
