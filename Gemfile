@@ -22,6 +22,7 @@ gem 'nokogiri'
 gem 'sanitize'
 gem 'exception_notification'
 gem 'acts_as_list'
+gem 'formtastic'
 
 group :development, :test do
   gem 'rspec-rails'
