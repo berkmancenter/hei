@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130628212648) do
+ActiveRecord::Schema.define(:version => 20130701152613) do
+
+  create_table "contacts", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "contacts", ["email"], :name => "index_contacts_on_email"
+  add_index "contacts", ["first_name"], :name => "index_contacts_on_first_name"
+  add_index "contacts", ["last_name"], :name => "index_contacts_on_last_name"
+  add_index "contacts", ["phone"], :name => "index_contacts_on_phone"
+
+  create_table "contacts_organizations", :id => false, :force => true do |t|
+    t.integer "contact_id"
+    t.integer "organization_id"
+  end
 
   create_table "facets", :force => true do |t|
     t.string   "name",                                         :null => false
@@ -30,12 +49,22 @@ ActiveRecord::Schema.define(:version => 20130628212648) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "organizations", ["location"], :name => "index_organizations_on_location"
+  add_index "organizations", ["name"], :name => "index_organizations_on_name"
+  add_index "organizations", ["phone"], :name => "index_organizations_on_phone"
+
   create_table "projects", :force => true do |t|
     t.string   "title",                             :null => false
     t.string   "description",       :limit => 5120
     t.string   "repository_url",    :limit => 1024
+    t.string   "app_url",           :limit => 1024
+    t.string   "micropost_url",     :limit => 1024
     t.string   "news_url",          :limit => 1024
     t.string   "documentation_url", :limit => 1024
+    t.date     "launch_date"
+    t.date     "conception_date"
+    t.integer  "contact_id"
+    t.integer  "organization_id"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
   end
