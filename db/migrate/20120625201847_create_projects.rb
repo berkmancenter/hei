@@ -8,9 +8,10 @@ class CreateProjects < ActiveRecord::Migration
       t.string :micropost_url, :limit => 1.kilobyte
       t.string :news_url, :limit => 1.kilobyte
       t.string :documentation_url, :limit => 1.kilobyte
-      t.string :organization, :limit => 1.kilobyte
       t.date :launch_date
       t.date :conception_date
+      t.references :contact
+      t.references :organization
       t.timestamps
     end
   end

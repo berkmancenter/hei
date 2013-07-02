@@ -1,0 +1,5 @@
+<%= semantic_form_for(@contact) do |f| %>
+  <%= f.inputs%>
+  <%= f.input :organizations, :as => :check_boxes, :label => 'Organizations for this contact:' %>
+  <%= f.actions %>
+<% end %>
