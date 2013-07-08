@@ -1,4 +1,7 @@
 Hei::Application.routes.draw do
+  resources :contacts
+
+
   resources :organizations
 
 

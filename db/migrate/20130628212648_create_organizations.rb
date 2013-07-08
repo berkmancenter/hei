@@ -4,8 +4,11 @@ class CreateOrganizations < ActiveRecord::Migration
       t.string :name
       t.string :location
       t.string :phone
-
       t.timestamps
+    end  
+    
+    [:name, :location, :phone].each do|col|
+      add_index :organizations, col
     end
   end
 end

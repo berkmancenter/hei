@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  attr_accessible :description, :title, :repository_url, :news_url, :documentation_url, :app_url, :micropost_url, :organization, :launch_date, :conception_date
+  attr_accessible :description, :title, :repository_url, :news_url, :documentation_url, :app_url, :micropost_url, :organization, :launch_date, :conception_date, :contact_id, :organization_id
   validates_presence_of :title
   validates_length_of :title, :maximum => 255
   validates_length_of :description, :maximum => 5.kilobytes
