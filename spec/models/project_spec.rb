@@ -16,11 +16,11 @@ describe 'Project model' do
       p.should respond_to( :documentation_url );
       p.should respond_to( :news_url );
       p.should respond_to( :micropost_url );
-      p.should respond_to( :organization );
       p.should respond_to( :contact );
       p.should respond_to( :launch_date );
       p.should respond_to( :conception_date );
       p.should respond_to( :progress );
+      p.should respond_to( :organization );
     }
   end
 

@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  attr_accessible :description, :title, :repository_url, :news_url, :documentation_url, :app_url, :micropost_url, :launch_date, :conception_date, :contact_id, :organization_id
+  attr_accessible :description, :title, :repository_url, :news_url, :documentation_url, :app_url, :micropost_url, :progress, :launch_date, :conception_date, :contact_id, :organization_id
 
   belongs_to :organization
 
