@@ -6,8 +6,16 @@ namespace :db do
       berkman = FactoryGirl.create( :berkman );
       berkman.save!
 
-      project_valid = FactoryGirl.create( :project_valid );
-      project_valid.save!
+      anita = FactoryGirl.create( :anita );
+      anita.organizations << berkman;
+
+      ryan = FactoryGirl.create( :ryan );
+      ryan.organizations << berkman;
+
+      hei = FactoryGirl.create( :hei );
+      hei.organization = berkman;
+      hei.contact = anita;
+      hei.save!
     end
   end
 end
