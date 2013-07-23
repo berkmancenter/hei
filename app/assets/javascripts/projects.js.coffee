@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$('.more_toggle').live
+$('.more_toggle').on
   click: (e)-> 
     e.preventDefault()
     project = $(this).closest('.project')
@@ -26,13 +26,13 @@ $(document).ready ()->
   $('#filtering #filter_container').hide()
   $('#filtering').height($('body').data('filter_container_height'))
 
-$('#filtering h2').live
+$('#filtering h2').on
   click: (e)->
     e.preventDefault()
     $('#filtering #filter_container').toggle()
     $('#filtering').height($('body').data('filter_container_height'))
 
-$('.pagination a').live
+$('.pagination a').on
   click: (e)->
     paginationTarget = $(this).closest('.pagination_target')
     e.preventDefault();
