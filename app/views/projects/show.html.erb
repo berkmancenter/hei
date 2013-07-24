@@ -5,7 +5,7 @@
   </div>
   <div class="span3 facet_list">
     <% seen_facet = {} %>
-    <% @project.taggings.order('taggings.context, tags.name').each do|tg| %>
+    <% @project.taggings.order('taggings.context').each do|tg| %>
       <% unless seen_facet[tg.context] %>
         <h3 class="facet_header"><%= @facet_hash[tg.context]['name'] %></h3>
         <% seen_facet[tg.context] = 1 %>
