@@ -1,10 +1,19 @@
 require 'factory_girl_rails'
 
 namespace :db do
-  namespace :test do
-    task :prepare => :environment do
-      project_valid = FactoryGirl.create( :project_valid );
-      project_valid.save!
-    end
+  task :seed => :environment do
+    berkman = FactoryGirl.create( :berkman );
+    berkman.save!
+
+    anita = FactoryGirl.create( :anita );
+    anita.organizations << berkman;
+
+    ryan = FactoryGirl.create( :ryan );
+    ryan.organizations << berkman;
+
+    hei = FactoryGirl.create( :hei );
+    hei.organization = berkman;
+    hei.contact = anita;
+    hei.save!
   end
 end
