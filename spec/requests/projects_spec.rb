@@ -19,5 +19,9 @@ describe ( 'projects requests' ) {
     it {
       should( have_title( "Hei, #{project.title}!" ) );
     }
+
+    it "should show all the project's tags" do
+      should have_css '.facet_header', { count: project.tags.count }
+    end
   }
 }

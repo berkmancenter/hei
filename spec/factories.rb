@@ -19,6 +19,12 @@ FactoryGirl.define do
       last_name 'Westphal'
       email 'rwestphal@cyber.law.harvard.edu'
     end
+
+    factory :jen do
+      first_name 'Jen'
+      last_name 'Jubinville'
+      email 'jjubinville@cyber.law.harvard.edu'
+    end
   end
 
   factory :project do
@@ -33,7 +39,38 @@ FactoryGirl.define do
       progress 10
       launch_date '2013-09-09'
       conception_date '2012-07-01'
+      tag_list [['web', 'html5', 'productivity']]
       #contact anita
+      #organization berkman
+    end
+
+    factory :im do
+      title 'Internet Monitor'
+      description 'Monitor and score Internet access, control, and community in the countries of the world'
+      repository_url nil
+      app_url nil
+      news_url 'http://blogs.law.harvard.edu/internetmonitor/'
+      documentation_url 'https://cyber.law.harvard.edu/projectmanagement/projects/internet-monitor/wiki'
+      progress 55
+      launch_date '2013-11-01'
+      conception_date '2012-01-01'
+      tag_list [['web', 'html5', 'research', 'world', 'datavis']]
+      #contact ryan
+      #organization berkman
+    end
+
+    factory :eda do
+      title 'Emily Dickinson Archive'
+      description "Gather all high resolution scans and transcriptions of of Emily Dickinson's writing into one place"
+      repository_url nil
+      app_url 'http://eda.dev.berkmancenter.org/'
+      news_url 'https://cyber.law.harvard.edu/projectmanagement/projects/eda/activity'
+      documentation_url 'https://cyber.law.harvard.edu/projectmanagement/projects/eda/wiki'
+      progress 65
+      launch_date '2013-11-01'
+      conception_date '2012-01-01'
+      tag_list [['web', 'html5', 'research', 'literature', 'poetry', 'imaging']]
+      #contact jen
       #organization berkman
     end
   end

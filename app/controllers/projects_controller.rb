@@ -7,14 +7,9 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    facet_hash
-    @project = Project.includes(:taggings, :tags).find(params[:id])
+    @project = Project.find(params[:id])
   end
 
-  def facet_hash
-    @facet_hash = Facet.facet_hash
-  end
-  
   def new
     @project = Project.new
 
