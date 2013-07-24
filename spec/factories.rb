@@ -24,8 +24,8 @@ FactoryGirl.define do
   factory :project do
     factory :hei do
       title 'Hei'
-      description 'Hei, Everyone: Integrate!'
-      repository_url 'https://github.com/berkmancenter/devise_harvard_auth_proxy'
+      description 'Hei, everyone: integrate!'
+      repository_url 'https://github.com/berkmancenter/hei'
       app_url ''
       micropost_url ''
       news_url 'https://cyber.law.harvard.edu/projectmanagement/projects/hei/activity'
