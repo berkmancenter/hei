@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  attr_accessible :description, :title, :repository_url, :news_url, :documentation_url, :app_url, :micropost_url, :progress, :launch_date, :conception_date, :contact_id, :organization_id
+  attr_accessible :title, :description, :repository_url, :news_url, :documentation_url, :app_url, :micropost_url, :progress, :launch_date, :conception_date, :contact_id, :organization_id, :tag_list
 
   belongs_to :organization
 
@@ -11,15 +11,14 @@ class Project < ActiveRecord::Base
   validates_length_of :repository_url, :news_url, :documentation_url, :app_url, :micropost_url, :maximum => 1.kilobyte
   validates_format_of :repository_url, :news_url, :documentation_url, :app_url, :micropost_url, :with => /^https?:\/\/[^\.]+\..+$/i, :allow_blank => true, :allow_nil => true
 
-  acts_as_taggable
+  acts_as_taggable_on :tags
 
-  searchable(:include => [:taggings]) do
-    text :title, :description, :repository_url, :news_url, :documentation_url
-    string :tag_facets_for_indexing, :multiple => true
+  searchable :include => [:taggings], :auto_index => true, :auto_remove => true  do
+    text :title, :stored => true
+    text :description, :stored => true
+    string :repository_url, :stored => true
+    string :app_url, :stored => true
+    string :micropost_url, :stored => true
+    string :tag_list, :multiple => true, :stored => true
   end
-
-  def tag_facets_for_indexing
-    self.taggings.collect{|tg| "#{tg.context}--#{tg.tag_id}"}
-  end
-
 end

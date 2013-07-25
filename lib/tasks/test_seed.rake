@@ -11,9 +11,22 @@ namespace :db do
     ryan = FactoryGirl.create( :ryan );
     ryan.organizations << berkman;
 
+    jen = FactoryGirl.create( :jen );
+    jen.organizations << berkman;
+
     hei = FactoryGirl.create( :hei );
     hei.organization = berkman;
     hei.contact = anita;
     hei.save!
+
+    im = FactoryGirl.create( :im );
+    im.organization = berkman;
+    im.contact = ryan;
+    im.save!
+
+    eda = FactoryGirl.create( :eda );
+    eda.organization = berkman;
+    eda.contact = jen;
+    eda.save!
   end
 end
