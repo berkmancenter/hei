@@ -5,14 +5,16 @@
     <h1><%= @project.title %></h1>
     <p class="description"><%= @project.description %></p>
   </div>
+
+  <% if not @project.tags.nil? %>
   <div class="span3 facet_list">
-    <% seen_facet = {} %>
-    <% @project.taggings.order('taggings.context').each do|tg| %>
-      <% unless seen_facet[tg.context] %>
-        <h3 class="facet_header"><%= @facet_hash[tg.context]['name'] %></h3>
-        <% seen_facet[tg.context] = 1 %>
+    <h2>Tags</h2>
+
+    <ul>
+      <% @project.tags.each do |t| %>
+        <li class="facet_header"><%= t.name %></li>
       <% end %>
-      <span class='badge'><%= tg.tag.name %></span>
-    <% end %>
+    </ul>
   </div>
+  <% end %>
 </div>
