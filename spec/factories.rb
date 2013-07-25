@@ -30,7 +30,7 @@ FactoryGirl.define do
   factory :project do
     factory :hei do
       title 'Hei'
-      description 'Hei, everyone: integrate!'
+      description 'Hei everyone! Integrate!'
       repository_url 'https://github.com/berkmancenter/hei'
       app_url ''
       micropost_url ''

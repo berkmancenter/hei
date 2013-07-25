@@ -7,7 +7,7 @@ describe ( 'projects requests' ) {
     before { visit( projects_path ) }
 
     it {
-      should( have_title( 'Hei, projects!' ) );
+      should( have_title( 'Hei projects!' ) );
     }
   }
 
@@ -17,7 +17,7 @@ describe ( 'projects requests' ) {
     before { visit( project_path( project ) ) }
 
     it {
-      should( have_title( "Hei, #{project.title}!" ) );
+      should( have_title( "Hei #{project.title}!" ) );
     }
 
     it "should show all the project's tags" do
