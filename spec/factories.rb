@@ -49,6 +49,7 @@ FactoryGirl.define do
       description 'Monitor and score Internet access, control, and community in the countries of the world'
       repository_url nil
       app_url nil
+      micropost_url 'https://twitter.com/thenetmonitor'
       news_url 'http://blogs.law.harvard.edu/internetmonitor/'
       documentation_url 'https://cyber.law.harvard.edu/projectmanagement/projects/internet-monitor/wiki'
       progress 55
@@ -64,6 +65,7 @@ FactoryGirl.define do
       description "Gather all high resolution scans and transcriptions of of Emily Dickinson's writing into one place"
       repository_url nil
       app_url 'http://eda.dev.berkmancenter.org/'
+      micropost_url ''
       news_url 'https://cyber.law.harvard.edu/projectmanagement/projects/eda/activity'
       documentation_url 'https://cyber.law.harvard.edu/projectmanagement/projects/eda/wiki'
       progress 65
@@ -71,6 +73,13 @@ FactoryGirl.define do
       conception_date '2012-01-01'
       tag_list [['web', 'html5', 'research', 'literature', 'poetry', 'imaging']]
       #contact jen
+      #organization berkman
+    end
+
+    factory :nil_contact do
+      title 'nil_contact'
+      tag_list [['test']]
+      #contact nil
       #organization berkman
     end
   end

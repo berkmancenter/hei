@@ -13,7 +13,7 @@
 
     <%= stylesheet_link_tag "application", :media => "all" %>
   </head>
-  <body>
+  <body class="<%= "#{ params[ :controller ] } #{ params[ :action ] }" %>">
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
@@ -27,10 +27,9 @@
           <%= link_to(image_tag( 'hei_logo.png' ) + ' Hei', root_path, :class => "brand") %>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Projects", projects_path  %></li>
-              <li><%= link_to "Tags", facets_path  %></li>
-			  <li><%= link_to "Organizations", organizations_path  %></li>
-			  <li><%= link_to "Contacts", contacts_path  %></li>
+              <li><%= link_to "Projects", projects_path %></li>
+              <li><%= link_to "Organizations", organizations_path %></li>
+              <li><%= link_to "Contacts", contacts_path %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
