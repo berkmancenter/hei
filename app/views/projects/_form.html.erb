@@ -1,0 +1,7 @@
+<%= semantic_form_for( @project ) do |f| %>
+  <%= f.inputs %>
+  <%= f.actions do %>
+    <%= f.action :cancel, { button_html: { class: 'btn' } } %>
+    <%= f.action :submit, { button_html: { class: 'btn btn-primary' } } %>
+  <% end %>
+<% end %>

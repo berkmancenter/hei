@@ -7,7 +7,7 @@ describe 'static pages requests' do
     before { visit about_url }
 
     it { 
-      should have_title ( 'Hei, about!' );
+      should have_title ( 'Hei about!' );
     }
   end
 end
