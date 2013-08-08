@@ -1,5 +1,10 @@
 <%= semantic_form_for( @project ) do |f| %>
   <%= f.inputs %>
+
+  <%= f.inputs name: 'Tags' do %>
+    <%= f.input :tag_list %>
+  <% end %>
+
   <%= f.actions do %>
     <%= f.action :cancel, { button_html: { class: 'btn' } } %>
     <%= f.action :submit, { button_html: { class: 'btn btn-primary' } } %>
