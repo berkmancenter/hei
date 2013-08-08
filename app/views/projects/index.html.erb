@@ -10,15 +10,8 @@
   </div>
 
   <div class="row">
-    <%= link_to 'Add a New Project', new_project_path, class: 'btn btn-primary' %>
-  </div>
-
-  <div class="row">
-    <div class="span12" id="filtering">
-      <h2>Filter by. . .</h2>
-      <div id="filter_container">
-        <%= Facet.primary.collect{|f| f.name}.join(', ') %>
-    </div>
+    <div class="span12">
+      <%= link_to 'Add a New Project', new_project_path, class: 'btn btn-primary' %>
     </div>
   </div>
 
@@ -26,8 +19,8 @@
 <% end %>
   <div class="span12">
     <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
-    <ul class="thumbnails">
-      <%= render :partial => 'shared/line_items/project', :collection => @projects %>
+    <ul class="project-cards thumbnails">
+      <%= render partial: 'shared/project', collection: @projects %>
     </ul>
     <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
   </div>

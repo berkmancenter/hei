@@ -13,6 +13,27 @@ describe 'projects requests' do
     it {
       should have_selector "a[href*='#{new_project_path}']"
     }
+
+    it ( 'should have some project cards' ) {
+      should have_css '.project-cards li.project', count: Project.count
+    }
+
+    context 'with updated project' do
+      let ( :hei ) { Project.find_by_title 'Hei' }
+
+      before do
+        # save so its updated_at is heigher than others
+        # to make it first in the list
+        hei.description = 'updatd'
+        hei.save
+
+        visit projects_path
+      end
+
+      it ( 'should have most recently updated first' ) {
+        should have_selector "li[data-project-id=\"#{hei.id}\"]:first-child"
+      }
+    end
   end
 
   describe 'get /projects/new' do
@@ -102,4 +123,5 @@ describe 'projects requests' do
       should have_selector 'input[type="text"][name="project[tag_list]"]'
     }
   end
+
 end
