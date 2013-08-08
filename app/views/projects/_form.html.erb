@@ -1,8 +1,8 @@
 <%= semantic_form_for( @project ) do |f| %>
   <%= f.inputs %>
 
-  <%= f.inputs name: 'Tags' do %>
-    <%= f.input :tag_list %>
+  <%= f.inputs do %>
+    <%= f.input :tag_list, label: 'Tags, comma separated' %>
   <% end %>
 
   <%= f.actions do %>
