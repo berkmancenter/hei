@@ -1,13 +1,19 @@
 Hei::Application.routes.draw do
   resources :contacts
 
-
   resources :organizations
-
 
   resources :facets
 
   resources :projects
+  
+  devise_for :users
+  
+  devise_scope :user do
+    match "/hauthproxy/valid" => "devise/hauthproxy#valid"
+    match '/hauthproxy/invalid' => 'devise/hauthproxy#invalid'
+    match '/hauthproxy/logout' => 'devise/hauthproxy#sign_out', :as => :destroy_user_session
+  end
 
   match 'about' => 'static_pages#about'
 
