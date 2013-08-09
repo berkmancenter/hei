@@ -3,21 +3,21 @@ class ProjectsController < ApplicationController
   def index
     @primary_facets = Facet.primary
 
-    if params[ :q ].nil? || params[ :q ].empty?
-      @projects = Project.includes(:taggings,:tags).order('updated_at desc').paginate(:page => params[:page])
-    else
-      @search = Project.search do
-        fulltext params[ :q ] do
-          highlight :description
-        end
+    @projects = Project.includes( :taggings, :tags ).order( 'updated_at desc' ).paginate( page: params[ :page ] )
 
-        facet :tag_list
+    render layout: !request.xhr?
+  end
+
+  def search
+    @search = Project.search do
+      fulltext params[ :q ] do
+        highlight :description
       end
 
-      @projects = @search.hits
+      facet :tag_list
     end
 
-    render :layout => ! request.xhr?
+    @hits = @search.hits
   end
 
   def show

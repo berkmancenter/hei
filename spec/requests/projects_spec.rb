@@ -38,7 +38,7 @@ describe 'projects requests' do
     end
 
     it ( 'should have a search form' ) {
-      should have_selector "form[method='get'][action*='#{projects_path}']"
+      should have_selector "form[method='get'][action*='#{search_path}']"
     }
 
     describe 'search for: Hei' do

@@ -1,13 +1,13 @@
 Hei::Application.routes.draw do
   resources :contacts
 
-
   resources :organizations
-
 
   resources :facets
 
   resources :projects
+
+  match 'search' => 'projects#search'
 
   match 'about' => 'static_pages#about'
 

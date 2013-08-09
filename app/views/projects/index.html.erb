@@ -15,11 +15,7 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="span12">
-      <%= render partial: 'shared/search' %>
-    </div>
-  </div>
+  <%= render partial: 'shared/forms/search' %>
 
   <div class="row pagination_target">
 <% end %>
@@ -27,7 +23,7 @@
     <div class="span12">
       <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
       <ul class="project-cards thumbnails">
-        <%= render partial: 'shared/project', collection: @projects %>
+        <%= render @projects %>
       </ul>
       <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
     </div>
