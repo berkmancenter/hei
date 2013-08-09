@@ -4,6 +4,7 @@ log/*.log
 log/*.lck
 tmp/
 *.swp
+*.swo
 config/database.yml
 *~
 solr/data/*

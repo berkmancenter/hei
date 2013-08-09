@@ -2,35 +2,35 @@ require 'factory_girl_rails'
 
 namespace :hei do
   task :seed => :environment do
-    berkman = FactoryGirl.create( :berkman );
-    berkman.save!
+    berkman = FactoryGirl.create :berkman
+    berkman.save
 
-    anita = FactoryGirl.create( :anita );
-    anita.organizations << berkman;
+    anita = FactoryGirl.create :anita
+    anita.organizations << berkman
 
-    ryan = FactoryGirl.create( :ryan );
-    ryan.organizations << berkman;
+    ryan = FactoryGirl.create :ryan
+    ryan.organizations << berkman
 
-    jen = FactoryGirl.create( :jen );
-    jen.organizations << berkman;
+    jen = FactoryGirl.create :jen
+    jen.organizations << berkman
 
-    hei = FactoryGirl.create( :hei );
-    hei.organization = berkman;
-    hei.contact = anita;
-    hei.save!
+    hei = FactoryGirl.create :hei
+    hei.organization = berkman
+    hei.contact = anita
+    hei.save
 
-    im = FactoryGirl.create( :im );
-    im.organization = berkman;
-    im.contact = ryan;
-    im.save!
+    im = FactoryGirl.create :im
+    im.organization = berkman
+    im.contact = ryan
+    im.save
 
-    eda = FactoryGirl.create( :eda );
-    eda.organization = berkman;
-    eda.contact = jen;
-    eda.save!
+    eda = FactoryGirl.create :eda
+    eda.organization = berkman
+    eda.contact = jen
+    eda.save
 
-    nil_contact = FactoryGirl.create( :nil_contact );
-    nil_contact.organization = berkman;
-    nil_contact.save!
+    nil_contact = FactoryGirl.create :nil_contact
+    nil_contact.organization = berkman
+    nil_contact.save
   end
 end
