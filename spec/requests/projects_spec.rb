@@ -4,7 +4,9 @@ describe 'projects requests' do
   subject { page }
 
   describe 'get /projects' do
-    before { visit projects_path }
+    before do
+      visit projects_path
+    end
 
     it {
       should have_title 'Hei projects!'
@@ -13,6 +15,44 @@ describe 'projects requests' do
     it {
       should have_selector "a[href*='#{new_project_path}']"
     }
+
+    it ( 'should have some project cards' ) {
+      should have_css '.project-cards li.project', count: Project.count
+    }
+
+    context 'with updated project' do
+      let ( :project ) { Project.find_by_title 'Hei' }
+
+      before do
+        # save so its updated_at is heigher than others
+        # to make it first in the list
+        project.description = 'updatd'
+        project.save
+
+        visit projects_path
+      end
+
+      it ( 'should have most recently updated first' ) {
+        should have_selector "li[data-project-id=\"#{project.id}\"]:first-child"
+      }
+    end
+
+    it ( 'should have a search form' ) {
+      should have_selector "form[method='get'][action*='#{search_path}']"
+    }
+
+    describe 'search for: Hei' do
+      before do
+        fill_in 'q', with: 'Hei'
+      end
+
+      it ( 'should only show Hei project card' ) {
+        click_button 'Search'
+        should have_css '.project-cards li.project', count: 1
+      }
+
+    end
+
   end
 
   describe 'get /projects/new' do
@@ -46,9 +86,11 @@ describe 'projects requests' do
   end
 
   describe 'get /projects/:id' do
-    let ( :project ) { Project.first }
+    let ( :project ) { Project.find_by_title 'Hei' }
 
-    before { visit project_path( project ) }
+    before do
+      visit project_path( project )
+    end
 
     it {
       should have_title "Hei #{project.title}!"
@@ -102,4 +144,5 @@ describe 'projects requests' do
       should have_selector 'input[type="text"][name="project[tag_list]"]'
     }
   end
+
 end

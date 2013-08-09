@@ -15,6 +15,8 @@ Hei::Application.routes.draw do
     match '/hauthproxy/logout' => 'devise/hauthproxy#sign_out', :as => :destroy_user_session
   end
 
+  match 'search' => 'projects#search'
+
   match 'about' => 'static_pages#about'
 
   # The priority is based upon order of creation:

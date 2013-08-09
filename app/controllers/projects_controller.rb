@@ -2,8 +2,22 @@ class ProjectsController < ApplicationController
 
   def index
     @primary_facets = Facet.primary
-    @projects = Project.includes(:taggings,:tags).order('created_at desc').paginate(:page => params[:page])
-    render :layout => ! request.xhr?
+
+    @projects = Project.includes( :taggings, :tags ).order( 'updated_at desc' ).paginate( page: params[ :page ] )
+
+    render layout: !request.xhr?
+  end
+
+  def search
+    @search = Project.search do
+      fulltext params[ :q ] do
+        highlight :description
+      end
+
+      facet :tag_list
+    end
+
+    @hits = @search.hits
   end
 
   def show
