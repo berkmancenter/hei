@@ -8,6 +8,44 @@
 
 <%= render partial: 'shared/forms/search' %>
 
+<div class="search-facets span12">
+  <h2>Filter by tags</h2>
+  <%
+    facet_links_off = ''
+    facet_links_on = ''
+
+    if @search.present?
+      # check for existing tags in query string
+      existing_tag_facets = [ ]
+      if params[ :tag ].present?
+        existing_tag_facets = params[ :tag ]
+      end
+
+      @search.facet( :tag_list ).rows.each_with_index do |facet, index|
+        # check if facet is selected
+        if ( params[ :tag ].kind_of?( Array ) and params[ :tag ].include? facet.value )
+          tag_facets = existing_tag_facets - [ facet.value ]
+          facet_links_on << "<li>#{link_to facet.value, { keywords: params[ :keywords ], tag: tag_facets }} (-)</li>"
+        else
+          tag_facets = existing_tag_facets + [ facet.value ]
+          facet_links_off << "<li>#{link_to facet.value, { keywords: params[ :keywords ], tag: tag_facets }} (+)</li>"
+        end
+      end
+
+    end
+  %>
+
+  <ul class="search-facets-on">
+    <%= raw facet_links_on %>
+  </ul>
+
+  <ul class="search-facets-off">
+    <%= raw facet_links_off %>
+  </ul>
+
+
+</div>
+
 <div class="row pagination_target">
   <div class="span12">
     <ul class="project-cards thumbnails">

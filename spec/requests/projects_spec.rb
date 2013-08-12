@@ -94,9 +94,16 @@ describe 'projects requests' do
         visit( search_path + "?q=#{project.title}" )
       end
 
-      it  {
+      it {
         should have_selector "li[data-project-id=\"#{project.id}\"]:first-child"
       }
+
+      it 'should have facet lists' do
+        should have_selector '.search-facets'
+        should have_selector 'ul.search-facets-on'
+        should have_selector 'ul.search-facets-off'
+        should have_css 'ul.search-facets-off li', count: 3 # Hei has three tags
+      end
     end
 
     context 'with result having no description' do
