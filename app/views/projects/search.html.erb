@@ -11,7 +11,9 @@
 <div class="row pagination_target">
   <div class="span12">
     <ul class="project-cards thumbnails">
-      <%= render partial: 'shared/hit', collection: @hits %>
+      <% @hits.each do |hit| %>
+        <%= render partial: 'projects/project', object: Project.find( hit.primary_key ) %>
+      <% end %>
     </ul>
   </div>
 </div>

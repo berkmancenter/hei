@@ -1,9 +1,0 @@
-<li class="span4 project" data-project-id="<%= hit.primary_key %>">
-  <div class="thumbnail">
-    <div class="caption">
-      <h3><%= hit.stored( :title )[ 0 ] %></h3>
-      <p><%= hit.stored( :description )[ 0 ] if !hit.stored( :description ).nil? %></p>
-      <%= link_to('Project Page', project_path( { id: hit.primary_key } ), :class => 'btn btn-primary') %>
-    </div>
-  </div>
-</li>
