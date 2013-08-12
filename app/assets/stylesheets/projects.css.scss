@@ -43,3 +43,39 @@
 .facet_header:first-child{
   margin-top: 0em;
 }
+
+.search-facets {
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  padding: .2em 0;
+}
+
+a {
+  color: #222;
+  text-decoration: none;
+}
+
+.ballot {
+  border: solid 1px;
+  border-radius: .25em;
+  display: inline-block;
+  height: 1em;
+  line-height: 1em;
+  padding: 0;
+  text-align: center;
+  vertical-align: bottom;
+  width: 1em;
+}
+
+.ballot.checked span:before {
+  content: "✓";
+}
+
+}

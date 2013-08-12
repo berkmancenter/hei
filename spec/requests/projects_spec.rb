@@ -99,17 +99,15 @@ describe 'projects requests' do
       }
 
       it 'should have facet lists' do
-        should have_selector '.search-facets'
-        should have_selector 'ul.search-facets-on'
-        should have_selector 'ul.search-facets-off'
-        should have_css 'ul.search-facets-off li', count: 3 # Hei has three tags
+        should have_selector 'ul.search-facets'
+        should have_css 'ul.search-facets li', count: 3 # Hei has three tags, therefore three facets to choose
+        should have_css 'ul.search-facets li .ballot.checked', count: 0 # none of them are checked
       end
 
       context 'with a click of a tag' do
         it 'should move the tag from off to on' do
           click_link 'html5'
-          should have_css 'ul.search-facets-off li', count: 2
-          should have_css 'ul.search-facets-on li', count: 1
+          should have_css 'ul.search-facets li .ballot.checked', count: 1
         end
       end
     end

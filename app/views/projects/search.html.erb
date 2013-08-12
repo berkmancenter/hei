@@ -8,9 +8,16 @@
 
 <%= render partial: 'shared/forms/search' %>
 
+
+<div class="row pagination_target">
+  <div class="span4" style="float: left; margin: 0;">
+    <h2>Filter by tags</h2>
+
+    <ul class="search-facets">
+
+
   <%
-    facet_links_off = ''
-    facet_links_on = ''
+    facet_links = ''
 
     if @search.present?
       # check for existing tags in query string
@@ -23,32 +30,33 @@
         # check if facet is selected
         if ( params[ :tag ].kind_of?( Array ) and params[ :tag ].include? facet.value )
           tag_facets = existing_tag_facets - [ facet.value ]
-          facet_links_on << "<li>#{link_to facet.value, { q: params[ :q ], tag: tag_facets }} (-)</li>"
+          facet_links << "<li>#{link_to raw( '<span class="ballot checked"><span></span></span> ' + facet.value ), { q: params[ :q ], tag: tag_facets }}</li>"
         else
           tag_facets = existing_tag_facets + [ facet.value ]
-          facet_links_off << "<li>#{link_to facet.value, { q: params[ :q ], tag: tag_facets }} (+)</li>"
+          facet_links << "<li>#{link_to raw( '<span class="ballot"><span></span></span> ' + facet.value ), { q: params[ :q ], tag: tag_facets }}</li>"
         end
       end
 
     end
   %>
 
-<div class="row pagination_target">
-  <div class="search-facets span4" style="float: left; margin: 0;">
-    <h2>Filter by tags</h2>
 
-    <ul class="search-facets-on">
-      <%= raw facet_links_on %>
-    </ul>
+      <%= raw facet_links %>
 
-    <ul class="search-facets-off">
-      <%= raw facet_links_off %>
+
+
+
+
+
+
+
+
     </ul>
   </div>
 
-    <ul class="project-cards thumbnails">
-      <% @hits.each do |hit| %>
-        <%= render partial: 'projects/project', object: Project.find( hit.primary_key ) %>
-      <% end %>
-    </ul>
+  <ul class="project-cards thumbnails">
+    <% @hits.each do |hit| %>
+      <%= render partial: 'projects/project', object: Project.find( hit.primary_key ) %>
+    <% end %>
+  </ul>
 </div>
