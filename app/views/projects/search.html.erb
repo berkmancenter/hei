@@ -25,10 +25,10 @@
         # check if facet is selected
         if ( params[ :tag ].kind_of?( Array ) and params[ :tag ].include? facet.value )
           tag_facets = existing_tag_facets - [ facet.value ]
-          facet_links_on << "<li>#{link_to facet.value, { keywords: params[ :keywords ], tag: tag_facets }} (-)</li>"
+          facet_links_on << "<li>#{link_to facet.value, { q: params[ :q ], tag: tag_facets }} (-)</li>"
         else
           tag_facets = existing_tag_facets + [ facet.value ]
-          facet_links_off << "<li>#{link_to facet.value, { keywords: params[ :keywords ], tag: tag_facets }} (+)</li>"
+          facet_links_off << "<li>#{link_to facet.value, { q: params[ :q ], tag: tag_facets }} (+)</li>"
         end
       end
 

@@ -104,6 +104,14 @@ describe 'projects requests' do
         should have_selector 'ul.search-facets-off'
         should have_css 'ul.search-facets-off li', count: 3 # Hei has three tags
       end
+
+      context 'with a click of a tag' do
+        it 'should move the tag from off to on' do
+          click_link 'html5'
+          should have_css 'ul.search-facets-off li', count: 2
+          should have_css 'ul.search-facets-on li', count: 1
+        end
+      end
     end
 
     context 'with result having no description' do
