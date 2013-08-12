@@ -32,5 +32,10 @@ namespace :hei do
     nil_contact = FactoryGirl.create :nil_contact
     nil_contact.organization = berkman
     nil_contact.save
+
+    nil_description = FactoryGirl.create :nil_description
+    nil_description.contact = ryan
+    nil_description.organization = berkman
+    nil_description.save
   end
 end

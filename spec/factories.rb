@@ -78,8 +78,16 @@ FactoryGirl.define do
 
     factory :nil_contact do
       title 'nil_contact'
+      description 'no contact'
       tag_list [['test']]
       #contact nil
+      #organization berkman
+    end
+
+    factory :nil_description do
+      title 'nil_description'
+      tag_list [['test']]
+      #contact ryan
       #organization berkman
     end
   end

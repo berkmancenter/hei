@@ -2,16 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.project .thumbnail{
-  height: 10em;
-}
+.project-card {
+  a.thumbnail {
+    min-height: 10em;
 
-.project .thumbnail.tall{
-  height: 22em;
-}
+    &:hover {
+      text-decoration: none;
+    }
+  }
 
-.project .more{
-  display: none;
+  .caption {
+    h3 {
+      font-size: 1.2em;
+    }
+
+    div {
+      font-size: 1em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .tags {
+    font-size: .8em;
+    list-style: none;
+    margin: 0;
+  }
+
+  .tags li {
+    display: inline-block;
+    margin: 0 .5em;
+  }
 }
 
 .facet_header{

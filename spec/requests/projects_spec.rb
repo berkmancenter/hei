@@ -17,7 +17,7 @@ describe 'projects requests' do
     }
 
     it ( 'should have some project cards' ) {
-      should have_css '.project-cards li.project', count: Project.count
+      should have_css 'li.project-card', count: Project.count
     }
 
     context 'with updated project' do
@@ -26,7 +26,7 @@ describe 'projects requests' do
       before do
         # save so its updated_at is heigher than others
         # to make it first in the list
-        project.description = 'updatd'
+        project.description = 'updated'
         project.save
 
         visit projects_path
@@ -37,22 +37,79 @@ describe 'projects requests' do
       }
     end
 
+    context 'with missing description' do
+      let ( :project ) { Project.find_by_title 'Hei' }
+
+      before do
+        project.description = nil
+        project.save #force it to first page
+
+        visit projects_path
+      end
+
+      it ( 'should still render' ) {
+        should have_selector "li[data-project-id=\"#{project.id}\"]:first-child"
+      }
+    end
+
+    context 'with missing description' do
+      let ( :project ) { Project.find_by_title 'Hei' }
+
+      before do
+        project.description = nil
+        project.save #force it to first page
+
+        visit projects_path
+      end
+
+      it ( 'should still render' ) {
+        should have_selector "li[data-project-id=\"#{project.id}\"]:first-child"
+      }
+    end
+
     it ( 'should have a search form' ) {
       should have_selector "form[method='get'][action*='#{search_path}']"
     }
 
-    describe 'search for: Hei' do
+    describe 'basic search' do
+      let ( :project ) { Project.find_by_title 'Hei' }
+
       before do
-        fill_in 'q', with: 'Hei'
+        fill_in 'q', with: project.title
       end
 
       it ( 'should only show Hei project card' ) {
         click_button 'Search'
-        should have_css '.project-cards li.project', count: 1
+        should have_css 'li.project-card', count: 1
+        should have_selector "li[data-project-id=\"#{project.id}\"]:first-child"
       }
+    end
+  end
 
+  describe 'get /search' do
+    context 'with title search' do
+      let ( :project ) { Project.find_by_title 'Hei' }
+
+      before do
+        visit( search_path + "?q=#{project.title}" )
+      end
+
+      it  {
+        should have_selector "li[data-project-id=\"#{project.id}\"]:first-child"
+      }
     end
 
+    context 'with result having no description' do
+      let ( :project ) { Project.find_by_title 'nil_description' }
+
+      before do
+        visit( search_path + "?q=#{project.title}" )
+      end
+
+      it  {
+        should have_selector "li[data-project-id=\"#{project.id}\"]:first-child"
+      }
+    end
   end
 
   describe 'get /projects/new' do
@@ -86,33 +143,49 @@ describe 'projects requests' do
   end
 
   describe 'get /projects/:id' do
-    let ( :project ) { Project.find_by_title 'Hei' }
+    context 'normal project' do
+      let ( :project ) { Project.find_by_title 'Hei' }
 
-    before do
-      visit project_path( project )
+      before do
+        visit project_path( project )
+      end
+
+      it {
+        should have_title "Hei #{project.title}!"
+      }
+
+      it ( "should show all the project's tags" ) {
+        should have_css '.facet_header', count: project.tags.count
+      }
+
+      it ( 'should have an edit link' ) {
+        should have_selector "a[href*='#{edit_project_path( project )}']"
+      }
     end
 
-    it {
-      should have_title "Hei #{project.title}!"
-    }
+    context 'project w/o contact' do
+      let ( :project ) { Project.find_by_title 'nil_contact' }
 
-    it ( "should show all the project's tags" ) {
-      should have_css '.facet_header', count: project.tags.count
-    }
+      before do
+        visit project_path( project )
+      end
 
-    it ( 'should have an edit link' ) {
-      should have_selector "a[href*='#{edit_project_path( project )}']"
-    }
-  end
+      it {
+        should have_title "Hei #{project.title}!"
+      }
+    end
 
-  describe 'get project w/o contact' do
-    let ( :project ) { Project.find_by_title 'nil_contact' }
+    context 'project w/o description' do
+      let ( :project ) { Project.find_by_title 'nil_description' }
 
-    before { visit project_path( project ) }
+      before do
+        visit project_path( project )
+      end
 
-    it {
-      should have_title "Hei #{project.title}!"
-    }
+      it {
+        should have_title "Hei #{project.title}!"
+      }
+    end
   end
 
   describe 'get /projects/:id/edit' do
