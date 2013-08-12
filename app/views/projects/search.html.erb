@@ -8,8 +8,6 @@
 
 <%= render partial: 'shared/forms/search' %>
 
-<div class="search-facets span12">
-  <h2>Filter by tags</h2>
   <%
     facet_links_off = ''
     facet_links_on = ''
@@ -35,23 +33,22 @@
     end
   %>
 
-  <ul class="search-facets-on">
-    <%= raw facet_links_on %>
-  </ul>
-
-  <ul class="search-facets-off">
-    <%= raw facet_links_off %>
-  </ul>
-
-
-</div>
-
 <div class="row pagination_target">
-  <div class="span12">
+  <div class="search-facets span4" style="float: left; margin: 0;">
+    <h2>Filter by tags</h2>
+
+    <ul class="search-facets-on">
+      <%= raw facet_links_on %>
+    </ul>
+
+    <ul class="search-facets-off">
+      <%= raw facet_links_off %>
+    </ul>
+  </div>
+
     <ul class="project-cards thumbnails">
       <% @hits.each do |hit| %>
         <%= render partial: 'projects/project', object: Project.find( hit.primary_key ) %>
       <% end %>
     </ul>
-  </div>
 </div>
