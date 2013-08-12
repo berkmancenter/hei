@@ -17,7 +17,7 @@ describe 'projects requests' do
     }
 
     it ( 'should have some project cards' ) {
-      should have_css '.project-cards li.project', count: Project.count
+      should have_css 'li.project-card', count: Project.count
     }
 
     context 'with updated project' do
@@ -52,6 +52,21 @@ describe 'projects requests' do
       }
     end
 
+    context 'with missing description' do
+      let ( :project ) { Project.find_by_title 'Hei' }
+
+      before do
+        project.description = nil
+        project.save #force it to first page
+
+        visit projects_path
+      end
+
+      it ( 'should still render' ) {
+        should have_selector "li[data-project-id=\"#{project.id}\"]:first-child"
+      }
+    end
+
     it ( 'should have a search form' ) {
       should have_selector "form[method='get'][action*='#{search_path}']"
     }
@@ -65,7 +80,7 @@ describe 'projects requests' do
 
       it ( 'should only show Hei project card' ) {
         click_button 'Search'
-        should have_css '.project-cards li.project', count: 1
+        should have_css 'li.project-card', count: 1
         should have_selector "li[data-project-id=\"#{project.id}\"]:first-child"
       }
     end
