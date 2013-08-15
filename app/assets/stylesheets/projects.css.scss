@@ -2,8 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body.projects .page-header {
+  background: #fff;
+  border-radius: 1em;
+  padding: .5em !important;
+}
+
+form.search input {
+  margin: 0;
+  vertical-align: middle;
+}
+
 .project-card {
   background: #fff;
+
   a.thumbnail {
     min-height: 10em;
 
@@ -52,17 +64,21 @@
 }
 
 .search-facets {
+  margin: 0;
+
+  h2 {
+    font-size: 1.2em;
+  }
+
   ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin-left: .5em;
   }
 
   li {
     font-size: .9em;
     line-height: 100%;
-    list-style: none;
-    padding: .2em 0;
+    padding: .2em;
   }
 
   a {
