@@ -3,10 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .project-card {
+  background: #fff;
   a.thumbnail {
     min-height: 10em;
 
-    &:hover {
+    &:hover, &:focus {
       text-decoration: none;
     }
   }
@@ -58,7 +59,7 @@
   }
 
   li {
-    font-size: .8em;
+    font-size: .9em;
     line-height: 100%;
     list-style: none;
     padding: .2em 0;
@@ -69,6 +70,7 @@
   }
 
   .ballot {
+    background: #fff;
     border: solid 1px #444;
     border-radius: .2em;
     @include ballot-box-shadow;
