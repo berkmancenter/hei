@@ -20,6 +20,18 @@ describe 'projects requests' do
       should have_css 'li.project-card', count: Project.count
     }
 
+    context 'click project card' do
+      let ( :project ) { Project.find_by_title 'Hei' }
+
+      before do
+        click_link project.title
+      end
+
+      it 'should show project view' do
+        should have_title project.title
+      end
+    end
+
     context 'with updated project' do
       let ( :project ) { Project.find_by_title 'Hei' }
 
@@ -99,15 +111,15 @@ describe 'projects requests' do
       }
 
       it 'should have facet lists' do
-        should have_selector 'ul.search-facets'
-        should have_css 'ul.search-facets li', count: 3 # Hei has three tags, therefore three facets to choose
-        should have_css 'ul.search-facets li .ballot.checked', count: 0 # none of them are checked
+        should have_selector '.search-facets ul'
+        should have_css '.search-facets li', count: 3 # Hei has three tags, therefore three facets to choose
+        should have_css '.search-facets li .ballot.checked', count: 0 # none of them are checked
       end
 
       context 'with a click of a tag' do
         it 'should move the tag from off to on' do
           click_link 'html5'
-          should have_css 'ul.search-facets li .ballot.checked', count: 1
+          should have_css '.search-facets li .ballot.checked', count: 1
         end
       end
     end
