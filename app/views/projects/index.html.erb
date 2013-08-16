@@ -1,32 +1,33 @@
 <% provide :title, 'projects' %>
 
 <% unless request.xhr? %>
-  <div class="row">
-    <div class="span12">
-      <div class="page-header">
-        <h1>Hei <small>A registry of all things wondrous in the Harvard developer community.</small></h1>
-      </div>
+
+<div class="row">
+  <div class="span12">
+    <div class="page-header">
+      <h1>Hei <small>A registry of all things wondrous in the Harvard developer community.</small></h1>
     </div>
   </div>
+</div>
 
-  <div class="row">
-    <div class="span12">
-      <%= link_to 'Add a New Project', new_project_path, class: 'btn btn-primary' %>
-    </div>
+<div class="row">
+  <div class="span8">
+<%= render partial: 'shared/forms/search' %>
   </div>
 
-  <%= render partial: 'shared/forms/search' %>
+  <div class="span4">
+    <%= link_to 'Add a New Project', new_project_path, class: 'btn btn-primary' %>
+  </div>
+</div>
 
   <div class="row pagination_target">
 <% end %>
 
-    <div class="span12">
       <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
       <ul class="project-cards thumbnails">
         <%= render @projects %>
       </ul>
       <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
-    </div>
 
 <% unless request.xhr? %>
   </div>

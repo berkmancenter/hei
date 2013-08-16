@@ -1,19 +1,52 @@
 <% provide :title, 'projects' %>
 
-<div class="row">
-  <div class="span12">
-    <%= link_to 'Add a New Project', new_project_path, class: 'btn btn-primary' %>
-  </div>
-</div>
-
+  <div class="row">
+    <div class="span8">
 <%= render partial: 'shared/forms/search' %>
+    </div>
+
+    <div class="span4">
+      <%= link_to 'Add a New Project', new_project_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
 
 <div class="row pagination_target">
-  <div class="span12">
-    <ul class="project-cards thumbnails">
-      <% @hits.each do |hit| %>
-        <%= render partial: 'projects/project', object: Project.find( hit.primary_key ) %>
-      <% end %>
+  <div class="search-facets span4 thumbnail">
+    <%
+      facet_links = ''
+
+      if @search.present?
+        # check for existing tags in query string
+        existing_tag_facets = [ ]
+        if params[ :tag ].present?
+          existing_tag_facets = params[ :tag ]
+        end
+
+        @search.facet( :tag_list ).rows.each_with_index do |facet, index|
+          # check if facet is selected
+          if ( params[ :tag ].kind_of?( Array ) and params[ :tag ].include? facet.value )
+            tag_facets = existing_tag_facets - [ facet.value ]
+            facet_links << "<li>#{link_to raw( '<span class="ballot checked"><span></span></span> ' + facet.value ), { q: params[ :q ], tag: tag_facets }}</li>"
+          else
+            tag_facets = existing_tag_facets + [ facet.value ]
+            facet_links << "<li>#{link_to raw( '<span class="ballot"><span></span></span> ' + facet.value ), { q: params[ :q ], tag: tag_facets }}</li>"
+          end
+        end
+      end
+    %>
+
+    <h2>Filter by tags</h2>
+
+    <ul>
+
+<%= raw facet_links %>
+
     </ul>
   </div>
+
+  <ul class="project-cards thumbnails">
+    <% @hits.each do |hit| %>
+      <%= render partial: 'projects/project', object: Project.find( hit.primary_key ) %>
+    <% end %>
+  </ul>
 </div>
