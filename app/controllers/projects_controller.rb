@@ -10,11 +10,18 @@ class ProjectsController < ApplicationController
 
   def search
     @search = Project.search do
-      fulltext params[ :q ] do
-        highlight :description
-      end
+      fulltext params[ :q ]
 
       facet :tag_list
+
+      # tags, AND'd
+      if params[ :tag ].present?
+        all_of do
+          params[ :tag ].each do |tag|
+            with( :tag_list, tag )
+          end
+        end
+      end
     end
 
     @hits = @search.hits
