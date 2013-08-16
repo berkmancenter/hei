@@ -13,6 +13,9 @@
  */
 
 @import "bootstrap";
+@import "colors";
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 body { 
   background: url('cream_pixels.png') repeat;
@@ -26,4 +29,13 @@ p{
 
 .formtastic ol {
   list-style-type: none;
+}
+
+.btn-primary {
+  background-color: $royal;
+  background-image: linear-gradient($royal, $winter);
+
+  &:hover {
+    background-color: $winter;
+  }
 }

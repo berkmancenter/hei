@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'colors';
+
 body.projects .page-header {
   background: #fff;
   border-radius: 1em;
@@ -11,10 +13,17 @@ body.projects .page-header {
 form.search input {
   margin: 0;
   vertical-align: middle;
+
 }
+
+form.search input[type="text"] {
+  height: 2em;
+}
+
 
 .project-card {
   background: #fff;
+  position: relative;
 
   a.thumbnail {
     min-height: 10em;
@@ -24,20 +33,58 @@ form.search input {
     }
   }
 
+  time {
+    color: $winter;
+    font-size: .8em;
+    position: absolute;
+    right: .5em;
+    top: .2em;
+  }
+
   .caption {
     h3 {
       font-size: 1.2em;
+      line-height: 1.3em;
+      margin: 0;
+      padding: 0;
     }
 
     div {
-      font-size: 1em;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      color: $slate;
+      font-size: .9em;
+    }
+  }
+
+  .description {
+    color: $slate;
+    font-size: .8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  progress {
+    background-color: $royal;
+    border: none;
+    color: $hay;
+    height: .5em;
+    width: 100%;
+
+    &::-moz-progress-bar {
+      background-color: $hay;
+    }
+
+    &::-webkit-progress-bar {
+      background-color: $royal;
+    }
+
+    &::-webkit-progress-value {
+      background-color: $hay;
     }
   }
 
   .tags {
+    color: $royal;
     font-size: .8em;
     list-style: none;
     margin: 0;
@@ -64,6 +111,7 @@ form.search input {
 }
 
 .search-facets {
+  background: #fff;
   margin: 0;
 
   h2 {
@@ -82,25 +130,30 @@ form.search input {
   }
 
   a {
+    color: $royal;
     text-decoration: none;
+
+    &:hover {
+      color: $winter;
+    }
   }
 
   .ballot {
     background: #fff;
-    border: solid 1px #444;
-    border-radius: .2em;
+    border: solid 1px $slate;
+    border-radius: .3em;
     @include ballot-box-shadow;
     display: inline-block;
-    height: 1em;
-    line-height: 1em;
+    height: 1.2em;
+    line-height: 1.2em;
     padding: 0;
     text-align: center;
     vertical-align: bottom;
-    width: 1em;
+    width: 1.2em;
   }
 
   .ballot.checked {
-    color: #222;
+    color: $slate;
   }
 
   .ballot.checked span:before {
