@@ -96,6 +96,17 @@ describe 'projects requests' do
         should have_selector "li[data-project-id=\"#{project.id}\"]:first-child"
       }
     end
+
+    describe 'search with facet as q' do
+      before do
+        fill_in 'q', with: 'test' # there is at least one project with the tag: test
+      end
+
+      it ( 'should show at least one project card' ) {
+        click_button 'Search'
+        should have_selector 'li.project-card'
+      }
+    end
   end
 
   describe 'get /search' do
@@ -226,6 +237,7 @@ describe 'projects requests' do
       should have_selector "form[method='post'][action*='#{project_path( project )}'] input[type='submit']"
     }
 
+    # move this to the view spec
     it ( 'should have some form inputs' ) {
       should have_selector 'select[name="project[organization_id]"]'
       should have_selector 'select[name="project[contact_id]"]'

@@ -12,12 +12,15 @@ class ProjectsController < ApplicationController
     @search = Project.search do
       fulltext params[ :q ]
 
+
+      qtags = params[ :tag ]
+
       facet :tag_list
 
       # tags, AND'd
-      if params[ :tag ].present?
+      if qtags.present?
         all_of do
-          params[ :tag ].each do |tag|
+          qtags.each do |tag|
             with( :tag_list, tag )
           end
         end
