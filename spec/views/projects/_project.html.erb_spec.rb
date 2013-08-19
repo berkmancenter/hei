@@ -12,6 +12,10 @@ describe 'project partial' do
     should have_selector 'li.project-card'
   end
 
+  it 'should have project id' do
+    should have_selector "li.project-card[data-project-id='#{project.id}']"
+  end
+
   it 'should be a link to the project' do
     # the whole card is the link
     should have_selector "li.project-card>a[href*='#{project_path( project )}']"

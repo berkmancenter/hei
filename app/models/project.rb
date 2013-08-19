@@ -16,6 +16,7 @@ class Project < ActiveRecord::Base
   searchable :include => [:taggings], :auto_index => true, :auto_remove => true  do
     text :title, :stored => true
     text :description, :stored => true
+    text :tag_list
     string :repository_url, :stored => true
     string :app_url, :stored => true
     string :micropost_url, :stored => true
