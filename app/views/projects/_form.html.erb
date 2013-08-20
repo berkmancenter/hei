@@ -1,13 +1,14 @@
 <%= semantic_form_for( @project ) do |f| %>
   <%= f.inputs do %>
     <%= f.input :title, label: t( 'project_form_title' ) %>
+    <%= f.input :organization, label: t( 'project_form_organization' ) %>
+    <%= f.input :description, label: t( 'project_form_description' ) %>
 
     <% if Hei::Application.config.hei[ 'projects_as' ] == 'people' %>
       <%= f.input :email, label: t( 'project_form_email' ) %>
     <% end %>
 
-    <%= f.input :organization, label: t( 'project_form_organization' ) %>
-    <%= f.input :description, label: t( 'project_form_description' ) %>
+    <%= f.input :micropost_url, label: t( 'project_form_micropost_url' ) %>
     <%= f.input :app_url, label: t( 'project_form_app_url' ) %>
   <% end %>
 

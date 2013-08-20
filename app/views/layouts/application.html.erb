@@ -14,7 +14,7 @@
 
 <%= stylesheet_link_tag "application", :media => "all" %>
   </head>
-  <body class="<%= "#{ params[ :controller ] } #{ params[ :action ] }" %>">
+  <body class="<%= "#{ params[ :controller ] } #{ params[ :action ] }" %> projects-as-<%= Hei::Application.config.hei[ 'projects_as' ] %>">
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">

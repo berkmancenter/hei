@@ -11,6 +11,7 @@ FactoryGirl.define do
     factory :anita do
       first_name 'Anita'
       last_name 'Patel'
+      email 'apatel@cyber.law.harvard.edu'
     end
 
     factory :ryan do

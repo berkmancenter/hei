@@ -165,7 +165,7 @@ describe 'projects requests' do
 
     describe 'submit with title' do
       before {
-        fill_in 'Title', with: 'Submit with title'
+        fill_in I18n.t( 'project_form_title' ), with: 'Submit with title'
       }
 
       it ( 'should create a project' ) {
@@ -233,23 +233,6 @@ describe 'projects requests' do
 
     it ( 'should have an update form & submit button' ) {
       should have_selector "form[method='post'][action*='#{project_path( project )}'] input[type='submit']"
-    }
-
-    # move this to the view spec
-    it ( 'should have some form inputs' ) {
-      should have_selector 'select[name="project[organization_id]"]'
-      should have_selector 'select[name="project[contact_id]"]'
-      should have_selector 'input[type="text"][name="project[title]"]'
-      should have_selector 'input[type="text"][name="project[description]"]'
-      should have_selector 'input[type="url"][name="project[repository_url]"]'
-      should have_selector 'input[type="url"][name="project[app_url]"]'
-      should have_selector 'input[type="url"][name="project[micropost_url]"]'
-      should have_selector 'input[type="url"][name="project[news_url]"]'
-      should have_selector 'input[type="url"][name="project[documentation_url]"]'
-
-      # dates?
-      
-      should have_selector 'input[type="text"][name="project[tag_list]"]'
     }
   end
 

@@ -21,7 +21,7 @@ form.search input {
   position: relative;
 
   a.thumbnail {
-    min-height: 10em;
+    min-height: 11em;
 
     &:hover, &:focus {
       text-decoration: none;
@@ -159,3 +159,11 @@ form.search input {
     content: "✓";
   }
 }
+
+.projects-as-people {
+  .tags {
+    margin-top: 1em;
+  }
+}
+
+
