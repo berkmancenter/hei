@@ -40,7 +40,8 @@ FactoryGirl.define do
       launch_date '2013-09-09'
       conception_date '2012-07-01'
       tag_list [['web', 'html5', 'productivity']]
-      #contact anita
+      email 'rwestphal@cyber.law.harvard.edu'
+      #contact ryan
       #organization berkman
     end
 
