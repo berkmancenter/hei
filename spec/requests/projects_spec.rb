@@ -14,10 +14,6 @@ describe 'projects requests' do
       should have_title "Hei #{I18n.t 'projects'}!"
     }
 
-    it {
-      should have_selector "a[href*='#{new_project_path}']"
-    }
-
     it ( 'should have some project cards' ) {
       should have_css 'li.project-card', count: Project.count
     }

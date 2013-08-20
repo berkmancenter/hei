@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'projects index' do
+describe 'projects/index' do
   let ( :config ) { Hei::Application.config.hei }
 
   subject { rendered }

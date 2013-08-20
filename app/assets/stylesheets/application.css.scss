@@ -23,7 +23,7 @@ body {
 	padding-left: 20px;
 }
 
-p{
+p {
   line-height: 1.4em;
 }
 
@@ -39,3 +39,9 @@ p{
     background-color: $winter;
   }
 }
+
+form input[type="text"], form input[type="url"], form input[type="tel"] {
+  height: 2em;
+}
+
+
