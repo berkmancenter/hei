@@ -21,6 +21,7 @@ describe 'Project model' do
       p.should respond_to( :conception_date );
       p.should respond_to( :progress );
       p.should respond_to( :organization );
+      p.should respond_to( :email ); # only used when projects_as == 'people'
     }
   end
 

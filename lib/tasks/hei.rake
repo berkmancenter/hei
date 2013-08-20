@@ -16,7 +16,7 @@ namespace :hei do
 
     hei = FactoryGirl.create :hei
     hei.organization = berkman
-    hei.contact = anita
+    hei.contact = ryan
     hei.save
 
     im = FactoryGirl.create :im

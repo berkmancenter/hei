@@ -1,0 +1,12 @@
+defaults: &DEFAULTS
+    projects_as: 'projects'
+
+development:
+    <<: *DEFAULTS
+
+test:
+    <<: *DEFAULTS
+
+production:
+    <<: *DEFAULTS
+
