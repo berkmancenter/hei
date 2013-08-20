@@ -28,9 +28,12 @@
           <%= link_to(image_tag( 'hei_logo.png' ) + ' Hei', root_path, :class => "brand") %>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Projects", projects_path %></li>
-              <li><%= link_to "Organizations", organizations_path %></li>
-              <li><%= link_to "Contacts", contacts_path %></li>
+              <li><%= link_to t( 'nav_projects' ), projects_path %></li>
+              <li><%= link_to t( 'nav_organizations' ), organizations_path %></li>
+
+              <% if Hei::Application.config.hei[ 'projects_as' ] != 'people' %>
+                <li><%= link_to t( 'nav_contacts' ), contacts_path %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

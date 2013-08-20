@@ -13,3 +13,4 @@ doc/app
 solr/pids/*
 Gemfile.lock
 .DStore
+config/hei.yml

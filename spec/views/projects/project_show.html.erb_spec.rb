@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'project show' do
+describe 'projects show' do
   subject { rendered }
 
   context 'record with most things' do

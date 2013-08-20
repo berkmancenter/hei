@@ -4,9 +4,9 @@
 # Also used to manipulate UI when projects_as == 'people'
 
 en:
-  projects: 'people'
-  nav_projects: 'People'
+  projects: 'projects'
+  nav_projects: 'Projects'
   nav_organizations: 'Organizations'
   nav_contacts: 'Contacts'
-  byline: 'A registry of all the wondrous people in the Harvard community.'
-  add_project: 'Add a New Person'
+  byline: 'A registry of all things wondrous in the Harvard developer community.'
+  add_project: 'Add a New Project'

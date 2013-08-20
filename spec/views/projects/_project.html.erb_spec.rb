@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe 'project partial' do
+  let ( :config ) { Hei::Application.config.hei }
+
   subject { rendered }
 
   context 'record with most things' do
