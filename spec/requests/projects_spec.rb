@@ -189,7 +189,7 @@ describe 'projects requests' do
       }
 
       it ( "should show all the project's tags" ) {
-        should have_css '.facet_header', count: project.tags.count
+        should have_css '.facet-list li', count: project.tags.count
       }
 
       it ( 'should have an edit link' ) {

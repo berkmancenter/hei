@@ -91,12 +91,14 @@ form.search input {
   }
 }
 
-.facet_header{
-  margin-top: 1em;
-}
+.facet-list {
+  h2 {
+    font-size: 1.2em;
+  }
 
-.facet_header:first-child{
-  margin-top: 0em;
+  ul {
+    list-style: none;
+  }
 }
 
 .projects.search h1 {
