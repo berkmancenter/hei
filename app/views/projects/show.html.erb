@@ -11,7 +11,7 @@
 
       <ul>
         <% @project.tags.each do |t| %>
-          <li><%= t.name %></li>
+          <li><%= link_to t.name, search_path + "?tag[]=#{t.name}" %></li>
         <% end %>
       </ul>
     </div>

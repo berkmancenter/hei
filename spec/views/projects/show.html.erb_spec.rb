@@ -40,6 +40,14 @@ describe 'projects/show' do
         should have_css "a[href='#{p.app_url}']"
       end
     }
+
+    it {
+      should have_selector '.facet-list ul'
+      should have_css '.facet-list li', count: p.tags.count
+
+      tag = p.tags.first
+      should have_selector ".facet-list li a[href*='#{search_path}?tag[]=#{tag.name}']"
+    }
   end
 
 #  context 'record missing app_url' do

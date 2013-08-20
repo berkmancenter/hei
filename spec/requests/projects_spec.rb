@@ -188,8 +188,8 @@ describe 'projects requests' do
         should have_title "Hei #{project.title}!"
       }
 
-      it ( "should show all the project's tags" ) {
-        should have_css '.facet-list li', count: project.tags.count
+      it {
+        should have_selector '.facet-list ul'
       }
 
       it ( 'should have an edit link' ) {
