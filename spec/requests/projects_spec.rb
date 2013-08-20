@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe 'projects requests' do
+  let ( :config ) { Hei::Application.config.hei }
+
   subject { page }
 
   describe 'get /projects' do
@@ -9,11 +11,7 @@ describe 'projects requests' do
     end
 
     it {
-      should have_title 'Hei projects!'
-    }
-
-    it {
-      should have_selector "a[href*='#{new_project_path}']"
+      should have_title "Hei #{I18n.t 'projects'}!"
     }
 
     it ( 'should have some project cards' ) {

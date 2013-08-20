@@ -16,11 +16,6 @@ form.search input {
 
 }
 
-form.search input[type="text"] {
-  height: 2em;
-}
-
-
 .project-card {
   background: #fff;
   position: relative;
@@ -102,6 +97,10 @@ form.search input[type="text"] {
 
 .facet_header:first-child{
   margin-top: 0em;
+}
+
+.projects.search h1 {
+  display: none;
 }
 
 @mixin ballot-box-shadow {
