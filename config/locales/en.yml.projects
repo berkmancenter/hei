@@ -24,3 +24,7 @@ en:
   organization_form_location: 'Location'
   organization_form_phone: 'Phone'
   organization_form_contacts: 'Contacts in this Organization:'
+  organizations_form_submit: 'Save'
+  organizations_form_cancel: 'Cancel'
+  organizations_edit: 'Edit'
+  organizations_back: 'Back'

@@ -28,5 +28,10 @@ describe ( 'organizations/new' ) {
       should have_selector 'input[name="organization[contact_ids][]"][type="hidden"]'
     end
   }
+
+  it ( 'should have action buttons' ) {
+    should have_selector 'a', text: I18n.t( 'organizations_form_cancel' )
+    should have_selector "input[type='submit'][value='#{I18n.t( 'organizations_form_submit' )}']"
+  }
 }
 
