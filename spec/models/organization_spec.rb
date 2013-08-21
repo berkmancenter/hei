@@ -11,6 +11,7 @@ describe 'Organization model' do
       o = Organization.new( FactoryGirl.attributes_for( :berkman ) );
       o.should respond_to( :name );
       o.should respond_to( :location );
+      o.should respond_to( :url );
       o.should respond_to( :phone );
     }
   end
