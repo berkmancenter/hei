@@ -2,7 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'colors';
+
 body.organizations {
   
 }
 
+ul.organization-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li.organization-card {
+  background: #fff;
+  font-size: 1em;
+
+  a.thumbnail {
+    color: $slate;
+
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+
+    &:visited {
+      color: $slate;
+    }
+  }
+
+  h1 {
+    font-size: 1.1em;
+  }
+}
