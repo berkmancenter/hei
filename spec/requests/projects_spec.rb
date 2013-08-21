@@ -63,6 +63,7 @@ describe 'projects requests' do
     end
 
     context 'with missing description' do
+      # move this to view spec
       let ( :project ) { Project.find_by_title 'Hei' }
 
       before do
@@ -165,13 +166,28 @@ describe 'projects requests' do
 
     describe 'submit with title' do
       before {
-        fill_in I18n.t( 'project_form_title' ), with: 'Submit with title'
+        fill_in 'project[title]', with: 'Submit with title'
       }
 
       it ( 'should create a project' ) {
         expect {
           click_button I18n.t( 'projects_form_submit' )
         }.to change( Project, :count ).by( 1 )
+      }
+    end
+
+    describe 'submit with non-twitter micropost_url' do
+      before {
+        fill_in 'project[title]', with: 'Twitter username'
+        fill_in 'project[micropost_url]', with: 'http://cyber.law.harvard.edu'
+      }
+
+      it ( 'should create a project' ) {
+        if config[ 'projects_as' ] == 'people'
+          expect {
+            click_button I18n.t( 'projects_form_submit' )
+          }.to_not change( Project, :count )
+        end
       }
     end
   end

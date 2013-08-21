@@ -9,7 +9,14 @@ class Project < ActiveRecord::Base
   validates_length_of :title, :maximum => 255
   validates_length_of :description, :maximum => 5.kilobytes
   validates_length_of :repository_url, :news_url, :documentation_url, :app_url, :micropost_url, :maximum => 1.kilobyte
-  validates_format_of :repository_url, :news_url, :documentation_url, :app_url, :micropost_url, :with => /^https?:\/\/[^\.]+\..+$/i, :allow_blank => true, :allow_nil => true
+  validates_format_of :repository_url, :news_url, :documentation_url, :app_url, :with => /^https?:\/\/[^\.]+\..+$/i, :allow_blank => true, :allow_nil => true
+
+  if Hei::Application.config.hei[ 'projects_as' ] == 'people'
+    validates_format_of :micropost_url, :with => /^https:\/\/twitter.com\/.+$/i, :allow_blank => true, :allow_nil => true, :message => 'Please enter a URL to a Twitter profile'
+  else
+    validates_format_of :micropost_url, :with => /^https?:\/\/[^\.]+\..+$/i, :allow_blank => true, :allow_nil => true
+  end
+
   validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email", :allow_blank => true, :allow_nil => true
 
   acts_as_taggable_on :tags
@@ -23,4 +30,8 @@ class Project < ActiveRecord::Base
     string :micropost_url, :stored => true
     string :tag_list, :multiple => true, :stored => true
   end
+
+  before_validation( on: :create ) {
+    self.micropost_url = nil if attribute_present?( 'micropost_url' ) && self.micropost_url == 'https://twitter.com/'
+  }
 end
