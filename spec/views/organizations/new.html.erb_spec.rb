@@ -17,6 +17,9 @@ describe ( 'organizations/new' ) {
     should have_selector 'label', text: I18n.t( 'organization_form_location' )
     should have_selector 'input[name="organization[location]"]'
 
+    should have_selector 'label', text: I18n.t( 'organization_form_url' )
+    should have_selector 'input[name="organization[url]"]'
+
     should have_selector 'label', text: I18n.t( 'organization_form_phone' )
     should have_selector 'input[name="organization[phone]"][type="tel"]'
 

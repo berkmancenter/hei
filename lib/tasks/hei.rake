@@ -5,6 +5,12 @@ namespace :hei do
     berkman = FactoryGirl.create :berkman
     berkman.save
 
+    librarylab = FactoryGirl.create :librarylab
+    librarylab.save
+
+    o_nil_optionals = FactoryGirl.create :o_nil_optionals
+    o_nil_optionals.save
+
     anita = FactoryGirl.create :anita
     anita.organizations << berkman
 

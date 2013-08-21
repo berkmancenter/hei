@@ -1,6 +1,7 @@
 <%= semantic_form_for(@organization) do |f| %>
   <%= f.inputs do %>
     <%= f.input :name, label: t( 'organization_form_name' ) %>
+    <%= f.input :url, label: t( 'organization_form_url' ) %>
     <%= f.input :location, label: t( 'organization_form_location' ) %>
     <%= f.input :phone, label: t( 'organization_form_phone' ) %>
   <% end %>
