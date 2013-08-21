@@ -1,16 +1,18 @@
 <% provide :title, 'projects' %>
 
-  <h1>Hei Search</h1>
+<h1>Hei Search</h1>
 
-  <div class="row">
-    <div class="span8">
-<%= render partial: 'shared/forms/search' %>
-    </div>
+<div class="row">
+  <div class="span8">
+    <%= render partial: 'shared/forms/search' %>
+  </div>
 
+  <% if Hei::Application.config.hei[ 'projects_as' ] != 'people' %>
     <div class="span4">
       <%= link_to t( 'add_project' ), new_project_path, class: 'btn btn-primary' %>
     </div>
-  </div>
+  <% end %>
+</div>
 
 <div class="row pagination_target">
   <div class="search-facets span4 thumbnail">
