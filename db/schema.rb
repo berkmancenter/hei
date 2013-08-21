@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130820173935) do
+ActiveRecord::Schema.define(:version => 20130821182754) do
 
   create_table "contacts", :force => true do |t|
     t.string   "first_name"
@@ -45,8 +45,9 @@ ActiveRecord::Schema.define(:version => 20130820173935) do
     t.string   "name"
     t.string   "location"
     t.string   "phone"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.string   "url",        :limit => 1024
   end
 
   add_index "organizations", ["location"], :name => "index_organizations_on_location"

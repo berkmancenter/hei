@@ -2,8 +2,18 @@ FactoryGirl.define do
   factory :organization do
     factory :berkman do
       name 'Berkman Center for Internet and Society'
+      url 'http://cyber.law.harvard.edu'
       location '23 Everett St, Cambridge, MA 02138'
       phone '617-495-7547'
+    end
+
+    factory :librarylab do
+      name 'Harvard Library Innovation Lab'
+      url 'http://librarylab.law.harvard.edu/about.html'
+    end
+
+    factory :o_nil_optionals do
+      name 'o_nil_optionals'
     end
   end
 

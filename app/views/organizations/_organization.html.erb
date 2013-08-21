@@ -3,11 +3,19 @@
     <h1><%= organization.name %></h1>
   </div>
 
-  <div>
-    <%= organization.location %>
-  </div>
+  <% if organization.url.present? %>
+    <% if params[ :action ] == 'index' %>
+      <div class="url"><%= organization.url %></div>
+    <% else %>
+      <%= link_to organization.url, organization.url, class: 'url' %>
+    <% end %>
+  <% end %>
 
-  <div>
-    <%= organization.phone %>
-  </div>
+  <% if organization.location.present? %>
+    <div class="location"><%= organization.location %></div>
+  <% end %>
+
+  <% if organization.phone.present? %>
+    <div class="phone"><%= organization.phone %></div>
+  <% end %>
 </section>
