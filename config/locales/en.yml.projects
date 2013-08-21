@@ -10,6 +10,8 @@ en:
   nav_contacts: 'Contacts'
   byline: 'A registry of all things wondrous in the Harvard developer community.'
   add_project: 'Add a New Project'
+  projects_form_submit: 'Save'
+  projects_form_cancel: 'Cancel'
   project_form_title: 'Title'
   project_form_organization: 'Organization'
   project_form_description: 'Description'

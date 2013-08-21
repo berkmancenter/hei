@@ -159,7 +159,7 @@ describe 'projects requests' do
 
     describe 'submit invalid' do
       it ( 'should not create a project' ) {
-        expect { click_button 'Create Project' }.not_to change( Project, :count )
+        expect { click_button I18n.t( 'projects_form_submit' ) }.not_to change( Project, :count )
       }
     end
 
@@ -170,7 +170,7 @@ describe 'projects requests' do
 
       it ( 'should create a project' ) {
         expect {
-          click_button 'Create Project'
+          click_button I18n.t( 'projects_form_submit' )
         }.to change( Project, :count ).by( 1 )
       }
     end
@@ -188,13 +188,25 @@ describe 'projects requests' do
         should have_title "Hei #{project.title}!"
       }
 
-      it {
+      it ( 'should have tag links' ) {
         should have_selector '.facet-list ul'
+        should have_selector '.facet-list ul li a'
+      }
+
+      context ( 'click tag link' ) {
+        before {
+          click_link 'html5'
+        }
+
+        it ( 'should have moved to search' ) {
+          should have_selector '.search-facets a', text: 'html5'
+        }
       }
 
       it ( 'should have an edit link' ) {
         should have_selector "a[href*='#{edit_project_path( project )}']"
       }
+
     end
 
     context 'project w/o contact' do
@@ -231,8 +243,8 @@ describe 'projects requests' do
       should have_title "Hei #{project.title}!"
     }
 
-    it ( 'should have an update form & submit button' ) {
-      should have_selector "form[method='post'][action*='#{project_path( project )}'] input[type='submit']"
+    it ( 'should have an update form' ) {
+      should have_selector "form[method='post'][action*='#{project_path( project )}']"
     }
   end
 

@@ -10,6 +10,8 @@ en:
   nav_contacts: 'Contacts'
   byline: 'A registry of all the wondrous people in the Harvard community.'
   add_project: 'Add a New Person'
+  projects_form_submit: 'Save'
+  projects_form_cancel: 'Cancel'
   project_form_title: 'Name'
   project_form_organization: 'Affiliation'
   project_form_description: 'About your work'

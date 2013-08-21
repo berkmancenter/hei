@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe 'projects/new' do
+describe 'projects/edit' do
   let ( :config ) { Hei::Application.config.hei }
 
   subject { rendered }
 
   before do
-    assign( :project, Project.new )
+    assign( :project, Project.find_by_title( 'Ryan Westphal' ) )
     render
   end
 

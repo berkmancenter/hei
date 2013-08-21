@@ -17,7 +17,7 @@
   <% end %>
 
   <%= f.actions do %>
-    <%= f.action :cancel, { button_html: { class: 'btn' } } %>
-    <%= f.action :submit, { button_html: { class: 'btn btn-primary' } } %>
+    <%= f.action :cancel, { button_html: { class: 'btn' }, label: t( 'projects_form_cancel' ) } %>
+    <%= f.action :submit, { button_html: { class: 'btn btn-primary', value: t( 'projects_form_submit' ) } } %>
   <% end %>
 <% end %>
