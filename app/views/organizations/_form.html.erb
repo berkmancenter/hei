@@ -1,5 +1,13 @@
 <%= semantic_form_for(@organization) do |f| %>
-  <%= f.inputs%>
-  <%= f.input :contacts, :as => :check_boxes, :label => 'Contacts in this organization:' %>
+  <%= f.inputs do %>
+    <%= f.input :name, label: t( 'organization_form_name' ) %>
+    <%= f.input :location, label: t( 'organization_form_location' ) %>
+    <%= f.input :phone, label: t( 'organization_form_phone' ) %>
+  <% end %>
+
+  <% if Hei::Application.config.hei[ 'projects_as' ] != 'people' %>
+    <%= f.input :contacts, :as => :check_boxes, :label => t( 'organization_form_contacts' ) %>
+  <% end %>
+
   <%= f.actions %>
 <% end %>

@@ -20,3 +20,7 @@ en:
   project_form_app_url: 'Blog/Project/Personal URL'
   project_form_tag_list: 'Interests, comma separated'
   organizations_affiliated_projects: 'Affiliated People'
+  organization_form_name: 'Name'
+  organization_form_location: 'Location'
+  organization_form_phone: 'Phone'
+  organization_form_contacts: 'Contacts in this Organization:'
