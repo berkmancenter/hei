@@ -91,5 +91,15 @@ FactoryGirl.define do
       #contact ryan
       #organization berkman
     end
+
+    factory :pappl_ryan do
+      title 'Ryan Westphal'
+      email 'rwestphal@cyber.law.harvard.edu'
+      description 'I am a web developer at Berkman, project lead for jQuery Geo, and wannabe indie game developer'
+      app_url 'http://trippingthebits.com'
+      micropost_url 'https://twitter.com/ryanttb'
+      #organization berkman
+      tag_list [['html', 'javascript', 'css', 'ruby', 'mapping', 'video games']]
+    end
   end
 end

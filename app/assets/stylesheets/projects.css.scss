@@ -21,7 +21,7 @@ form.search input {
   position: relative;
 
   a.thumbnail {
-    min-height: 10em;
+    min-height: 11em;
 
     &:hover, &:focus {
       text-decoration: none;
@@ -91,12 +91,14 @@ form.search input {
   }
 }
 
-.facet_header{
-  margin-top: 1em;
-}
+.facet-list {
+  h2 {
+    font-size: 1.2em;
+  }
 
-.facet_header:first-child{
-  margin-top: 0em;
+  ul {
+    list-style: none;
+  }
 }
 
 .projects.search h1 {
@@ -159,3 +161,11 @@ form.search input {
     content: "✓";
   }
 }
+
+.projects-as-people {
+  .tags {
+    margin-top: 1em;
+  }
+}
+
+

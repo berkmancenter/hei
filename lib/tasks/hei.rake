@@ -37,5 +37,9 @@ namespace :hei do
     nil_description.contact = ryan
     nil_description.organization = berkman
     nil_description.save
+
+    pappl_ryan = FactoryGirl.create :pappl_ryan
+    pappl_ryan.organization = berkman
+    pappl_ryan.save
   end
 end

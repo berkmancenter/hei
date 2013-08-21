@@ -1,0 +1,30 @@
+<div class="span8">
+  <div class="page-header">
+    <h1><%= @project.title %></h1>
+
+    <%= link_to( @project.organization.name, organization_path( @project.organization ), { class: 'organization' } ) unless @project.organization.nil? %>
+
+    <p><%= @project.description %></p>
+
+    <dl class="dl-horizontal">
+      <% if @project.email != nil %>
+        <dt>Email</dt>
+        <dd><a href="mailto:<%= @project.email %>"><%= @project.email %></a></dd>
+      <% end %>
+
+      <% if @project.micropost_url != nil %>
+        <dt>Twitter</dt>
+        <dd><a href="<%= @project.micropost_url %>"><%= @project.micropost_url %></a></dd>
+      <% end %>
+
+      <% if @project.app_url != nil %>
+        <dt>URL</dt>
+        <dd><a href="<%= @project.app_url %>"><%= @project.app_url %></a></dd>
+      <% end %>
+    </dl>
+
+    <%= link_to( 'Back', projects_path, { class: 'btn' } ) %>
+    <%= link_to( 'Edit', edit_project_path( @project ), { class: 'btn btn-primary' } ) %>
+  </div>
+</div>
+

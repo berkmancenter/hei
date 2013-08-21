@@ -159,18 +159,18 @@ describe 'projects requests' do
 
     describe 'submit invalid' do
       it ( 'should not create a project' ) {
-        expect { click_button 'Create Project' }.not_to change( Project, :count )
+        expect { click_button I18n.t( 'projects_form_submit' ) }.not_to change( Project, :count )
       }
     end
 
     describe 'submit with title' do
       before {
-        fill_in 'Title', with: 'Submit with title'
+        fill_in I18n.t( 'project_form_title' ), with: 'Submit with title'
       }
 
       it ( 'should create a project' ) {
         expect {
-          click_button 'Create Project'
+          click_button I18n.t( 'projects_form_submit' )
         }.to change( Project, :count ).by( 1 )
       }
     end
@@ -188,13 +188,25 @@ describe 'projects requests' do
         should have_title "Hei #{project.title}!"
       }
 
-      it ( "should show all the project's tags" ) {
-        should have_css '.facet_header', count: project.tags.count
+      it ( 'should have tag links' ) {
+        should have_selector '.facet-list ul'
+        should have_selector '.facet-list ul li a'
+      }
+
+      context ( 'click tag link' ) {
+        before {
+          click_link 'html5'
+        }
+
+        it ( 'should have moved to search' ) {
+          should have_selector '.search-facets a', text: 'html5'
+        }
       }
 
       it ( 'should have an edit link' ) {
         should have_selector "a[href*='#{edit_project_path( project )}']"
       }
+
     end
 
     context 'project w/o contact' do
@@ -231,25 +243,8 @@ describe 'projects requests' do
       should have_title "Hei #{project.title}!"
     }
 
-    it ( 'should have an update form & submit button' ) {
-      should have_selector "form[method='post'][action*='#{project_path( project )}'] input[type='submit']"
-    }
-
-    # move this to the view spec
-    it ( 'should have some form inputs' ) {
-      should have_selector 'select[name="project[organization_id]"]'
-      should have_selector 'select[name="project[contact_id]"]'
-      should have_selector 'input[type="text"][name="project[title]"]'
-      should have_selector 'input[type="text"][name="project[description]"]'
-      should have_selector 'input[type="url"][name="project[repository_url]"]'
-      should have_selector 'input[type="url"][name="project[app_url]"]'
-      should have_selector 'input[type="url"][name="project[micropost_url]"]'
-      should have_selector 'input[type="url"][name="project[news_url]"]'
-      should have_selector 'input[type="url"][name="project[documentation_url]"]'
-
-      # dates?
-      
-      should have_selector 'input[type="text"][name="project[tag_list]"]'
+    it ( 'should have an update form' ) {
+      should have_selector "form[method='post'][action*='#{project_path( project )}']"
     }
   end
 
