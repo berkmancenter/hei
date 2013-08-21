@@ -6,11 +6,13 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="span12">
-    <%= link_to t( 'organizations_new' ), new_organization_path, class: 'btn btn-primary' %>
+<% if Hei::Application.config.hei[ 'projects_as' ] != 'people' %>
+  <div class="row">
+    <div class="span12">
+      <%= link_to t( 'organizations_new' ), new_organization_path, class: 'btn btn-primary' %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <ul class="organization-cards thumbnails">
 

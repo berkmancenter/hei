@@ -13,7 +13,11 @@ describe 'organizations/index' do
   end
 
   it 'should have new organization link' do
-    should have_selector "a[href*='#{new_organization_path}']", text: I18n.t( 'organizations_new' )
+    if config[ 'projects_as' ] == 'people'
+      should_not have_selector "a[href*='#{new_organization_path}']", text: I18n.t( 'organizations_new' )
+    else
+      should have_selector "a[href*='#{new_organization_path}']", text: I18n.t( 'organizations_new' )
+    end
   end
 
   it 'should have an organization card' do
