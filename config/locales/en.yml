@@ -19,3 +19,4 @@ en:
   project_form_micropost_url: 'Twitter'
   project_form_app_url: 'Blog/Project/Personal URL'
   project_form_tag_list: 'Interests, comma separated'
+  organizations_affiliated_projects: 'Affiliated People'
