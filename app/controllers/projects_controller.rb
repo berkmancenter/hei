@@ -37,6 +37,10 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
 
+    if Hei::Application.config.hei[ 'projects_as' ] == 'people'
+      @project.micropost_url = 'https://twitter.com/'
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @project }
