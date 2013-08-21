@@ -1,27 +1,25 @@
-<h1>Listing organizations</h1>
+<div class="row">
+  <div class="span12">
+    <div class="page-header">
+      <h1>Organizations</h1>
+    </div>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Location</th>
-    <th>Phone</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% if Hei::Application.config.hei[ 'projects_as' ] != 'people' %>
+  <div class="row">
+    <div class="span12">
+      <%= link_to t( 'organizations_new' ), new_organization_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
+
+<ul class="organization-cards thumbnails">
 
 <% @organizations.each do |organization| %>
-  <tr>
-    <td><%= organization.name %></td>
-    <td><%= organization.location %></td>
-    <td><%= organization.phone %></td>
-    <td><%= link_to 'Show', organization %></td>
-    <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-    <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <%= render partial: 'organizations/organization_card', locals: { organization: organization } %>
 <% end %>
-</table>
 
-<br />
+</ul>
 
-<%= link_to 'New Organization', new_organization_path %>
+

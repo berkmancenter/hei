@@ -36,7 +36,12 @@ describe 'projects/search' do
   end
 
   it 'should have new project link' do
-    should have_selector "a[href*='#{new_project_path}']", text: I18n.t( 'add_project' )
+    if config[ 'projects_as' ] == 'people'
+      # removed per request
+      should_not have_selector "a[href*='#{new_project_path}']", text: I18n.t( 'add_project' )
+    else
+      should have_selector "a[href*='#{new_project_path}']", text: I18n.t( 'add_project' )
+    end
   end
 
   it 'should have a project card' do

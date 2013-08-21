@@ -15,9 +15,11 @@
 <%= render partial: 'shared/forms/search' %>
   </div>
 
-  <div class="span4">
-    <%= link_to t( 'add_project' ), new_project_path, class: 'btn btn-primary' %>
-  </div>
+  <% if Hei::Application.config.hei[ 'projects_as' ] != 'people' %>
+    <div class="span4">
+      <%= link_to t( 'add_project' ), new_project_path, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
 </div>
 
   <div class="row pagination_target">
