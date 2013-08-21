@@ -6,7 +6,11 @@ describe 'projects/new' do
   subject { rendered }
 
   before do
-    assign( :project, Project.new )
+    if config[ 'projects_as' ] == 'people'
+      assign( :project, Project.new( micropost_url: 'https://twitter.com/' ) )
+    else
+      assign( :project, Project.new )
+    end
     render
   end
 
@@ -30,6 +34,8 @@ describe 'projects/new' do
     should have_selector 'input[name="project[tag_list]"]'
 
     if config[ 'projects_as' ] == 'people'
+      should have_selector 'input[name="project[micropost_url]"][value="https://twitter.com/"]'
+
       should have_selector 'label', text: I18n.t( 'project_form_email' )
       should have_selector 'input[name="project[email]"]'
 
