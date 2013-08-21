@@ -1,6 +1,8 @@
 require 'spec_helper'
 
-describe 'projects show' do
+describe 'projects/show' do
+  let ( :config ) { Hei::Application.config.hei }
+
   subject { rendered }
 
   context 'record with most things' do
@@ -8,13 +10,44 @@ describe 'projects show' do
 
     before {
       assign( :project, p )
-      render template: 'projects/show'
+      render
     }
 
     it {
-      should have_selector 'h1', text: 'Hei'
+      should have_selector 'h1', text: p.title
+    }
+  end
+
+  context 'pappl with all the things' do
+    let ( :p ) { Project.find_by_title 'Ryan Westphal' }
+
+    before {
+      assign( :project, p )
+      render
     }
 
+    it {
+      should have_selector 'h1', text: p.title
+
+      should have_selector 'p', text: p.description
+
+      if config[ 'projects_as' ] == 'people'
+        should have_selector "a.organization[href*='#{organization_path p.organization}']", text: p.organization.name
+        should have_selector 'a', text: p.email
+        should have_css "a[href='mailto:#{p.email}']"
+        should have_css "a[href='#{p.micropost_url}']"
+        should have_selector 'a', text: p.app_url
+        should have_css "a[href='#{p.app_url}']"
+      end
+    }
+
+    it {
+      should have_selector '.facet-list ul'
+      should have_css '.facet-list li', count: p.tags.count
+
+      tag = p.tags.first
+      should have_selector ".facet-list li a[href*='#{search_path}?tag[]=#{tag.name}']"
+    }
   end
 
 #  context 'record missing app_url' do

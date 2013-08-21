@@ -1,6 +1,6 @@
 <li class="span4 project-card" data-project-id="<%= project.id %>">
   <a href="<%= project_path project %>" class="thumbnail" title="<%= project.description %>">
-    <% if !project.updated_at.nil? %>
+    <% if Hei::Application.config.hei[ 'projects_as' ] == 'projects' && !project.updated_at.nil? %>
       <time datetime="<%= project.updated_at.to_s( :db ).sub(' ', 'T' )[ 0..-4 ] %>"><%= project.updated_at.to_formatted_s( :short ) %></time>
     <% end %>
     <div class="caption">
@@ -8,7 +8,10 @@
       <div><%= project.organization.nil? ? raw( '&nbsp;' ) : "@#{project.organization.name}" %></div>
     </div>
     <div class='description'><%= project.description || raw( '&nbsp;' ) %></div>
-    <progress value="<%= project.progress %>" max="100" title="<%= project.progress %>% complete"><%= project.progress %>% complete</progress>
+    <% if Hei::Application.config.hei[ 'projects_as' ] == 'projects' %>
+      <progress value="<%= project.progress %>" max="100" title="<%= project.progress %>% complete"><%= project.progress %>% complete</progress>
+    <% end %>
+
     <ul class="tags">
       <% project.tags.each do |t| %>
         <li><%= t.name %></li>

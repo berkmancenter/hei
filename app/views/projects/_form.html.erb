@@ -1,12 +1,23 @@
 <%= semantic_form_for( @project ) do |f| %>
-  <%= f.inputs %>
+  <%= f.inputs do %>
+    <%= f.input :title, label: t( 'project_form_title' ) %>
+    <%= f.input :organization, label: t( 'project_form_organization' ) %>
+    <%= f.input :description, label: t( 'project_form_description' ) %>
+
+    <% if Hei::Application.config.hei[ 'projects_as' ] == 'people' %>
+      <%= f.input :email, label: t( 'project_form_email' ) %>
+    <% end %>
+
+    <%= f.input :micropost_url, label: t( 'project_form_micropost_url' ) %>
+    <%= f.input :app_url, label: t( 'project_form_app_url' ) %>
+  <% end %>
 
   <%= f.inputs do %>
-    <%= f.input :tag_list, label: 'Tags, comma separated' %>
+    <%= f.input :tag_list, label: t( 'project_form_tag_list' ) %>
   <% end %>
 
   <%= f.actions do %>
-    <%= f.action :cancel, { button_html: { class: 'btn' } } %>
-    <%= f.action :submit, { button_html: { class: 'btn btn-primary' } } %>
+    <%= f.action :cancel, { button_html: { class: 'btn' }, label: t( 'projects_form_cancel' ) } %>
+    <%= f.action :submit, { button_html: { class: 'btn btn-primary', value: t( 'projects_form_submit' ) } } %>
   <% end %>
 <% end %>

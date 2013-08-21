@@ -30,8 +30,12 @@ describe 'project partial' do
     end
 
     it 'should show updated_at' do
-      should have_selector 'time', text: p.updated_at.to_formatted_s( :short )
-      should have_css "time[datetime='#{p.updated_at.to_s( :db ).sub( ' ', 'T' )[ 0..-4 ]}']"
+      if config[ 'projects_as' ] == 'people'
+        should_not have_selector 'time'
+      else
+        should have_selector 'time', text: p.updated_at.to_formatted_s( :short )
+        should have_css "time[datetime='#{p.updated_at.to_s( :db ).sub( ' ', 'T' )[ 0..-4 ]}']"
+      end
     end
 
     it 'should show organization' do
@@ -39,8 +43,12 @@ describe 'project partial' do
     end
 
     it 'should show progress' do
-      should have_selector 'progress'
-      should have_css "progress[value='#{p.progress}']"
+      if config[ 'projects_as' ] == 'people'
+        should_not have_selector 'progress'
+      else
+        should have_selector 'progress'
+        should have_css "progress[value='#{p.progress}']"
+      end
     end
 
     it 'should show tags' do

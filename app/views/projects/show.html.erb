@@ -1,50 +1,19 @@
 <% provide :title, @project.title %>
 
 <section class="view row">
-  <div class="span9">
-    <h1><%= @project.title %></h1>
-    <p class="description"><%= @project.description %></p>
-
-    <%= link_to( "Launch #{@project.title}!", @project.app_url, { target: '_blank' } ) unless @project.app_url.nil? %>
-
-    <h2>Contact</h2>
-
-    <% if not @project.contact.nil? %>
-      <span><%= @project.contact.first_name %> <%= @project.contact.last_name %></span>
-    <% end %>
-
-    <h2>News</h2>
-
-    <h3><%= link_to( 'Project activity', @project.news_url ) unless @project.news_url.nil? %></h3>
-
-    <% if not @project.micropost_url.nil? %>
-      <h3><%= link_to( 'Microposts', @project.micropost_url ) %></h3>
-    <% end %>
-
-    <h2>Documentation</h2>
-    <h3><%= link_to( 'Online docs', @project.documentation_url ) unless @project.documentation_url.nil? %></h3>
-
-    <h2>Development</h2>
-    <progress value="<%= @project.progress %>" max="100" title="<%= @project.progress %>% complete"><%= @project.progress %>% complete</progress>
-    
-    <h3><%= link_to( 'Online repository', @project.repository_url ) unless @project.repository_url.nil? %></h3>
-
-
-
-  </div>
+  <%= render partial: "projects/project_as_#{Hei::Application.config.hei[ 'projects_as' ]}" %>
 
   <% if not @project.tags.nil? %>
-  <div class="span3 facet_list">
-    <h2>Tags</h2>
+    <div class="span1">&nbsp;</div>
 
-    <ul>
-      <% @project.tags.each do |t| %>
-        <li class="facet_header"><%= t.name %></li>
-      <% end %>
-    </ul>
-  </div>
+    <div class="span3 facet-list page-header">
+      <h2>Tags</h2>
+
+      <ul>
+        <% @project.tags.each do |t| %>
+          <li><%= link_to t.name, search_path + "?tag[]=#{t.name}" %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
-
-  <%= link_to( 'Back', projects_path, { class: 'btn' } ) %>
-  <%= link_to( 'Edit', edit_project_path( @project ), { class: 'btn btn-primary' } ) %>
 </section>

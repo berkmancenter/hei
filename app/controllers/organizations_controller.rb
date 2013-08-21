@@ -14,6 +14,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1.json
   def show
     @organization = Organization.find(params[:id])
+    @projects = Project.where organization_id: @organization.id
 
     respond_to do |format|
       format.html # show.html.erb

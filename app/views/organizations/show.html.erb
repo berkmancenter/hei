@@ -1,20 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @organization.name %>
-</p>
+<div class="row">
+  <div class="span12">
+    <div class="page-header">
+      <%= render @organization %>
+    </div>
+  </div>
+</div>
 
-<p>
-  <b>Location:</b>
-  <%= @organization.location %>
-</p>
+<div class="row">
+  <div class="span12">
+<%= link_to t( 'organizations_back' ), organizations_path, { class: 'btn' } %>
+    <%= link_to t( 'organizations_edit' ), edit_organization_path(@organization), { class: 'btn btn-primary' } %>
+  </div>
+</div>
 
-<p>
-  <b>Phone:</b>
-  <%= @organization.phone %>
-</p>
+<div class="row">
+  <div class="span12">
+    <h2><%= t 'organizations_affiliated_projects' %></h2>
+  </div>
+</div>
+
+<div class="row">
+  <ul class="project-cards thumbnails">
+    <%= render @projects %>
+  </ul>
+</div>
 
 
-<%= link_to 'Edit', edit_organization_path(@organization) %> |
-<%= link_to 'Back', organizations_path %>
