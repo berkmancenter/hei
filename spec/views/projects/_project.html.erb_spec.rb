@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe 'project partial' do
+describe ( 'project partial' ) {
   let ( :config ) { Hei::Application.config.hei }
 
   subject { rendered }
 
-  context 'record with most things' do
+  context ( 'record with most things' ) {
     let ( :p ) { Project.find_by_title 'Hei' }
 
     before {
@@ -54,5 +54,21 @@ describe 'project partial' do
     it 'should show tags' do
       should have_css '.tags li', count: 3
     end
-  end
-end
+  }
+
+  context ( 'with person' ) {
+    let ( :p ) { Project.find_by_title 'Ryan Westphal' }
+
+    before {
+      render p
+    }
+
+    it 'should show role (person title)' do
+      if config[ 'projects_as' ] == 'people'
+        should have_selector 'div.role', text: p.role
+      else
+        should_not have_selector 'div.role'
+      end
+    end
+  }
+}

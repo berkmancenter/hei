@@ -1,7 +1,13 @@
 <%= semantic_form_for( @project ) do |f| %>
   <%= f.inputs do %>
     <%= f.input :title, label: t( 'project_form_title' ) %>
+
     <%= f.input :organization, label: t( 'project_form_organization' ) %>
+
+    <% if Hei::Application.config.hei[ 'projects_as' ] == 'people' %>
+      <%= f.input :role, label: t( 'project_form_role' ) %>
+    <% end %>
+
     <%= f.input :description, label: t( 'project_form_description' ) %>
 
     <% if Hei::Application.config.hei[ 'projects_as' ] == 'people' %>

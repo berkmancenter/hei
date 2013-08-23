@@ -95,6 +95,12 @@ form.search input {
   }
 }
 
+.projects.show {
+  p.description {
+    margin: 1em 0;
+  }
+}
+
 .projects.search h1 {
   display: none;
 }
