@@ -9,6 +9,7 @@ en:
   nav_organizations: 'Organizations'
   nav_contacts: 'Contacts'
   byline: 'A registry of all things wondrous in the Harvard developer community.'
+  subtext: '' # html ok
   add_project: 'Add a New Project'
   projects_form_submit: 'Save'
   projects_form_cancel: 'Cancel'

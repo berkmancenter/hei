@@ -183,18 +183,16 @@ describe 'projects requests' do
     end
 
     context ( 'submit w/o changing provided twitter url' ) {
-      let ( :projects_count ) { Project.count }
-
       before {
         fill_in 'project[title]', with: 'No Twitter'
-        projects_count
-        click_button I18n.t( 'projects_form_submit' )
       }
 
       it ( 'should create a project with empty micropost_url' ) {
         if config[ 'projects_as' ] == 'people'
-          Project.count.should eq( projects_count + 1 )
-          Project.last.micropost_url.should eq( nil )
+          projects_count = Project.count
+          click_button I18n.t( 'projects_form_submit' )
+          expect( Project.count ).to eq( projects_count + 1 )
+          expect( Project.last.micropost_url ).to eq( nil )
         end
       }
     }
