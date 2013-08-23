@@ -27,7 +27,10 @@ describe 'projects/index' do
 
   it 'should have the main header and byline' do
     should have_selector 'h1', text: "Hei #{I18n.t 'byline'}"
-    should have_selector 'div.subtext', text: "#{I18n.t 'subtext'}"
+
+    if config[ 'projects_as' ] == 'people'
+      should have_selector 'div.subtext'
+    end
   end
 
   it 'should have new project link' do
