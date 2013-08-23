@@ -1,7 +1,9 @@
 require 'spec_helper'
 
-describe 'Project model' do
-  describe 'with valid data' do
+describe ( 'Project model' ) {
+  let ( :config ) { Hei::Application.config.hei }
+
+  context ( 'with valid data' ) {
     it ( 'should be valid' ) {
       p = Project.new( FactoryGirl.attributes_for( :hei ) );
       p.should be_valid;
@@ -21,8 +23,11 @@ describe 'Project model' do
       p.should respond_to( :conception_date );
       p.should respond_to( :progress );
       p.should respond_to( :organization );
-      p.should respond_to( :email ); # only used when projects_as == 'people'
-    }
-  end
 
-end
+      if config[ 'projects_as' ] == 'people'
+        p.should respond_to( :email );
+        p.should respond_to( :role );
+      end
+    }
+  }
+}

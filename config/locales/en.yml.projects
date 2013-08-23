@@ -15,6 +15,7 @@ en:
   projects_form_cancel: 'Cancel'
   project_form_title: 'Title'
   project_form_organization: 'Organization'
+  project_form_role: ''
   project_form_description: 'Description'
   project_form_email: 'Email'
   project_form_micropost_url: 'Micropost URL'
