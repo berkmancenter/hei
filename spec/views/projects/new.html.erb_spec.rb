@@ -34,6 +34,9 @@ describe 'projects/new' do
     should have_selector 'input[name="project[tag_list]"]'
 
     if config[ 'projects_as' ] == 'people'
+      should have_selector 'label', text: I18n.t( 'project_form_role' )
+      should have_selector 'input[name="project[role]"]'
+
       should have_selector 'label', text: I18n.t( 'project_form_email' )
       should have_selector 'input[name="project[email]"]'
 
@@ -52,6 +55,9 @@ describe 'projects/new' do
       # dates?
 
     else
+      should_not have_selector 'label', text: I18n.t( 'project_form_role' )
+      should_not have_selector 'input[name="project[role]"]'
+
       should_not have_selector 'label', text: I18n.t( 'project_form_email' )
       should_not have_selector 'input[name="project[email]"]'
 

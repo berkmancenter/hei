@@ -15,6 +15,7 @@ en:
   projects_form_cancel: 'Cancel'
   project_form_title: 'Name'
   project_form_organization: 'Affiliation'
+  project_form_role: 'Role/Title'
   project_form_description: 'About your work'
   project_form_email: 'Email'
   project_form_micropost_url: 'Twitter'

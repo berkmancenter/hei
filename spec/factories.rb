@@ -104,6 +104,7 @@ FactoryGirl.define do
 
     factory :pappl_ryan do
       title 'Ryan Westphal'
+      role 'Web Developer'
       email 'rwestphal@cyber.law.harvard.edu'
       description 'I am a web developer at Berkman, project lead for jQuery Geo, and wannabe indie game developer'
       app_url 'http://trippingthebits.com'

@@ -31,13 +31,19 @@ describe 'projects/show' do
 
       should have_selector 'p', text: p.description
 
+      should have_selector "a.organization[href*='#{organization_path p.organization}']", text: p.organization.name
+
       if config[ 'projects_as' ] == 'people'
-        should have_selector "a.organization[href*='#{organization_path p.organization}']", text: p.organization.name
+        should have_selector 'div.role', text: p.role
+
         should have_selector 'a', text: p.email
         should have_css "a[href='mailto:#{p.email}']"
+
         should have_css "a[href='#{p.micropost_url}']"
         should have_selector 'a', text: p.app_url
         should have_css "a[href='#{p.app_url}']"
+      else
+        should_not have_selector 'div.role'
       end
     }
 
