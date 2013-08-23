@@ -17,8 +17,19 @@ describe ( 'tasks/import' ) {
     should have_selector "form[action*='#{tasks_import_path}'][method='post'][enctype='multipart/form-data']"
 
     should have_selector 'label', text: I18n.t( 'tasks_import_file_label' )
-    should have_selector 'input[type="file"]'
+    should have_selector 'input[type="file"][name="projects_csv"]'
 
     should have_selector 'input[type="submit"][value="Import"]'
+  }
+
+  context ( 'with posting valid csv file' ) {
+    before {
+      @file = fixture_file_upload( 'spec/fixtures/files/people.csv' );
+    }
+
+    it ( 'should import projects from a csv' ) {
+      post :import, projects_csv: @file
+      response.should be_success
+    }
   }
 }
