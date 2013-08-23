@@ -9,6 +9,7 @@ en:
   nav_organizations: 'Organizations'
   nav_contacts: 'Contacts'
   byline: 'A registry of all things wondrous in the Harvard developer community.'
+  subtext: '' # html ok
   add_project: 'Add a New Project'
   projects_form_submit: 'Save'
   projects_form_cancel: 'Cancel'
@@ -19,6 +20,9 @@ en:
   project_form_micropost_url: 'Micropost URL'
   project_form_app_url: 'Application URL'
   project_form_tag_list: 'Tags, comma separated'
+  projects_show_email: ''
+  projects_show_micropost_url: ''
+  projects_show_app_url: ''
   organizations_affiliated_projects: 'Affiliated Projects'
   organization_form_name: 'Name'
   organization_form_location: 'Location'

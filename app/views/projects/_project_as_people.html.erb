@@ -7,18 +7,18 @@
     <p><%= @project.description %></p>
 
     <dl class="dl-horizontal">
-      <% if @project.email != nil %>
-        <dt>Email</dt>
+      <% if @project.email.present? %>
+        <dt><%= t 'projects_show_email' %></dt>
         <dd><a href="mailto:<%= @project.email %>"><%= @project.email %></a></dd>
       <% end %>
 
-      <% if @project.micropost_url != nil %>
-        <dt>Twitter</dt>
+      <% if @project.micropost_url.present? %>
+        <dt><%= t 'projects_show_micropost_url' %></dt>
         <dd><a href="<%= @project.micropost_url %>"><%= @project.micropost_url %></a></dd>
       <% end %>
 
-      <% if @project.app_url != nil %>
-        <dt>URL</dt>
+      <% if @project.app_url.present? %>
+        <dt><%= t 'projects_show_app_url' %></dt>
         <dd><a href="<%= @project.app_url %>"><%= @project.app_url %></a></dd>
       <% end %>
     </dl>
