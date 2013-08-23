@@ -17,6 +17,9 @@ Hei::Application.routes.draw do
 
   match 'search' => 'projects#search'
 
+  get "tasks/upload"
+  get "tasks/import"
+
   match 'about' => 'static_pages#about'
 
   # The priority is based upon order of creation:
