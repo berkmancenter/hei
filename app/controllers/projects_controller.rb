@@ -49,6 +49,10 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+
+    if Hei::Application.config.hei[ 'projects_as' ] == 'people' && !@project.micropost_url.present?
+      @project.micropost_url = 'https://twitter.com/'
+    end
   end
 
   def create
