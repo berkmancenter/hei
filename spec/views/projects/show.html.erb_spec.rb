@@ -50,6 +50,24 @@ describe 'projects/show' do
     }
   end
 
+  context ( 'pappl with missing micropost_url but having app_url' ) {
+    let ( :p ) { Project.find_by_title 'Emily Dickinson Archive' }
+
+    before {
+      assign( :project, p )
+      render
+    }
+
+    it {
+      should_not have_selector 'dt', text: I18n.t( 'projects_show_micropost_url' )
+
+      should have_selector 'dt', text: I18n.t( 'projects_show_app_url' )
+      should have_selector 'dd', text: p.app_url
+    }
+
+
+  }
+
 #  context 'record missing app_url' do
 #    it 'should not show a launch link' do
 #      should_not have_selector 

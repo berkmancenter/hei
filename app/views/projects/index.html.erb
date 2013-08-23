@@ -10,6 +10,16 @@
   </div>
 </div>
 
+<% if t( 'subtext' ).present? %>
+  <div class="row">
+    <div class="span12">
+      <div class="page-header subtext">
+        <%= raw t( 'subtext' )%>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <div class="row">
   <div class="span8">
 <%= render partial: 'shared/forms/search' %>

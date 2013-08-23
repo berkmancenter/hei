@@ -158,6 +158,12 @@ describe 'projects requests' do
       should have_selector "form[method='post'][action*='#{projects_path}'] input[type='submit']"
     }
 
+    it ( 'should supply twitter prefix' ) {
+      if config[ 'projects_as' ] == 'people'
+        should have_selector 'input[name="project[micropost_url]"][value="https://twitter.com/"]'
+      end
+    }
+
     describe 'submit invalid' do
       it ( 'should not create a project' ) {
         expect { click_button I18n.t( 'projects_form_submit' ) }.not_to change( Project, :count )
@@ -175,6 +181,21 @@ describe 'projects requests' do
         }.to change( Project, :count ).by( 1 )
       }
     end
+
+    context ( 'submit w/o changing provided twitter url' ) {
+      before {
+        fill_in 'project[title]', with: 'No Twitter'
+      }
+
+      it ( 'should create a project with empty micropost_url' ) {
+        if config[ 'projects_as' ] == 'people'
+          projects_count = Project.count
+          click_button I18n.t( 'projects_form_submit' )
+          expect( Project.count ).to eq( projects_count + 1 )
+          expect( Project.last.micropost_url ).to eq( nil )
+        end
+      }
+    }
 
     describe 'submit with non-twitter micropost_url' do
       before {
@@ -251,16 +272,30 @@ describe 'projects requests' do
   end
 
   describe 'get /projects/:id/edit' do
-    let ( :project ) { Project.first }
+    context ( 'basic edit' ) {
+      let ( :project ) { Project.first }
 
-    before { visit edit_project_path( project ) }
+      before { visit edit_project_path( project ) }
 
-    it {
-      should have_title "Hei #{project.title}!"
+      it {
+        should have_title "Hei #{project.title}!"
+      }
+
+      it ( 'should have an update form' ) {
+        should have_selector "form[method='post'][action*='#{project_path( project )}']"
+      }
     }
 
-    it ( 'should have an update form' ) {
-      should have_selector "form[method='post'][action*='#{project_path( project )}']"
+    context ( 'with missing micropost_url' ) {
+      let ( :project ) { Project.find_by_title( 'nil_description' ) }
+
+      before { visit edit_project_path( project ) }
+
+      it ( 'should supply twitter prefix' ) {
+        if config[ 'projects_as' ] == 'people'
+          should have_selector 'input[name="project[micropost_url]"][value="https://twitter.com/"]'
+        end
+      }
     }
   end
 
