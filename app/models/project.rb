@@ -31,7 +31,7 @@ class Project < ActiveRecord::Base
     string :tag_list, :multiple => true, :stored => true
   end
 
-  before_validation( on: :create ) {
+  before_validation {
     self.micropost_url = nil if attribute_present?( 'micropost_url' ) && self.micropost_url == 'https://twitter.com/'
   }
 end

@@ -257,6 +257,18 @@ describe 'projects requests' do
           should have_selector 'input[name="project[micropost_url]"][value="https://twitter.com/"]'
         end
       }
+
+      context ( 'with saving w/o changing micropost_url' ) {
+        before {
+          fill_in 'project[description]', with: 'update'
+        }
+
+        it ( 'should allow saving edits' ) {
+          if config[ 'projects_as' ] == 'people'
+            expect { click_button I18n.t( 'projects_form_submit' ) }.to change{ Project.find( project.id ).updated_at }
+          end
+        }
+      }
     }
   end
 
