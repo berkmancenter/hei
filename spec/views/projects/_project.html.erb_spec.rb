@@ -52,7 +52,11 @@ describe ( 'project partial' ) {
     end
 
     it 'should show tags' do
-      should have_css '.tags li', count: 3
+      if config[ 'projects_as' ] == 'people'
+        should_not have_css '.tags li'
+      else
+        should have_css '.tags li', count: 3
+      end
     end
   }
 
