@@ -47,9 +47,6 @@ form.search input {
   .description {
     color: $slate;
     font-size: .8em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 
   progress {
@@ -160,6 +157,12 @@ form.search input {
   .ballot.checked span:before {
     content: "✓";
   }
+}
+
+.projects-as-projects .project-card .description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .projects-as-people {

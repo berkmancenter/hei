@@ -1,0 +1,17 @@
+<% provide :title, 'Import Projects' %>
+
+<div class="row">
+  <div class="span12">
+    <div class="page-header">
+      <h1>Import Projects</h1>
+
+      <%= form_tag tasks_import_path, method: :post, multipart: true do %>
+        <%= label_tag 'projects_csv', t( 'tasks_import_file_label' ) %>
+        <%= file_field_tag 'projects_csv' %>
+        <%= submit_tag 'Import', class: 'btn btn-primary' %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+

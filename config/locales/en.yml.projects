@@ -35,3 +35,4 @@ en:
   organizations_edit: 'Edit'
   organizations_back: 'Back'
   organizations_new: 'Add a New Organization'
+  tasks_import_file_label: 'Choose a CSV file to import'
