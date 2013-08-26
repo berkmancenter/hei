@@ -32,18 +32,18 @@
   <% end %>
 </div>
 
-  <div class="span4 facet-list page-header" style="margin-left: -20px;">
-    <h2>Tags</h2>
-
-    <ul>
-      <% @tags.each do |t| %>
-        <li><%= link_to t.name, search_path + "?tag[]=#{t.name}" %></li>
-      <% end %>
-    </ul>
-  </div>
-
   <div class="row pagination_target">
 <% end %>
+
+    <div class="span4 facet-list page-header">
+      <h2>Tags</h2>
+
+      <ul>
+        <% @tags.each do |t| %>
+          <li><%= link_to t.name, search_path + "?tag[]=#{t.name}" %></li>
+        <% end %>
+      </ul>
+    </div>
 
       <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
       <ul class="project-cards thumbnails">
