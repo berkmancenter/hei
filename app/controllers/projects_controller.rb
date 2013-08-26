@@ -3,7 +3,9 @@ class ProjectsController < ApplicationController
   def index
     @primary_facets = Facet.primary
 
-    @projects = Project.includes( :taggings, :tags ).order( 'updated_at desc' ).paginate( page: params[ :page ] )
+    @projects = Project.includes( :taggings, :tags ).order( 'updated_at desc' ).paginate( page: params[ :page ], per_page: 256 )
+
+    @tags = ActsAsTaggableOn::Tag.order( 'name' )
 
     render layout: !request.xhr?
   end

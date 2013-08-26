@@ -10,6 +10,7 @@ describe 'projects/index' do
 
   before do
     assign( :projects, ps )
+    assign( :tags, ActsAsTaggableOn::Tag.order( 'name' ) )
     render template: 'projects/index', layout: 'layouts/application'
   end
 
@@ -41,6 +42,16 @@ describe 'projects/index' do
       should have_selector "a[href*='#{new_project_path}']", text: I18n.t( 'add_project' )
     end
   end
+
+  it ( 'should have all tags' ) {
+    should have_selector '.facet-list'
+    should have_css '.facet-list li', count: ActsAsTaggableOn::Tag.count
+  }
+
+  it ( 'should have tag links' ) {
+    # definitely a tag with name = test
+    should have_selector ".facet-list li a[href*='#{search_path}?tag[]=test']"
+  }
 
   it 'should have a project card' do
     should have_selector 'li.project-card'
