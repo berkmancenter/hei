@@ -102,6 +102,14 @@ FactoryGirl.define do
       #organization berkman
     end
 
+    factory :long_description do
+      title 'long_description'
+      tag_list [['test','description']]
+      description 'Bacon ipsum dolor sit amet sausage occaecat shankle flank. Eiusmod ball tip nulla, esse duis bacon turducken salami. Corned beef irure labore, t-bone drumstick ea ham hock. T-bone brisket laborum proident, jowl ea tri-tip aute excepteur commodo salami. Fatback sausage flank pariatur drumstick tenderloin veniam velit culpa tri-tip enim. Magna ham commodo incididunt veniam. Velit meatball sunt exercitation filet mignon. Leberkas chicken sirloin aliqua ut pastrami in, aliquip andouille do. Anim pariatur tenderloin tail brisket. Pork ullamco andouille sausage commodo sirloin aute est cupidatat brisket doner anim drumstick meatball eiusmod. Aute commodo ribeye fugiat, sirloin occaecat eiusmod deserunt pancetta nulla rump. Aliquip exercitation fugiat fatback turkey shank dolore minim. Shoulder spare ribs bacon pork. Meatball veniam qui jerky fugiat cupidatat, consectetur laborum eiusmod proident ribeye aliqua ground round shoulder chuck. Ullamco enim filet mignon andouille ad voluptate fugiat shoulder ut velit strip steak et. Mollit sunt dolore, swine est sed pork.'
+      #contact ryan
+      #organization berkman
+    end
+
     factory :pappl_ryan do
       title 'Ryan Westphal'
       role 'Web Developer'
