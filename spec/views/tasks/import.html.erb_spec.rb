@@ -22,14 +22,15 @@ describe ( 'tasks/import' ) {
     should have_selector 'input[type="submit"][value="Import"]'
   }
 
-  context ( 'with posting valid csv file' ) {
-    before {
-      @file = fixture_file_upload( 'spec/fixtures/files/people.csv' );
-    }
-
-    it ( 'should import projects from a csv' ) {
-      post :import, projects_csv: @file
-      response.should be_success
-    }
-  }
+  # moved to spec/requests but left here to reference
+#  context ( 'with posting valid csv file' ) {
+#    before {
+#      @file = fixture_file_upload( '/files/people.csv' );
+#    }
+#
+#    it ( 'should import projects from a csv' ) {
+#      post :import, projects_csv: @file
+#      response.should be_success
+#    }
+#  }
 }
