@@ -27,12 +27,5 @@ describe ( 'tasks requests' ) {
       should have_selector '.alert.alert-error'
     }
   }
-
-  #it ( 'should have space for alerts' ) {
-    #should have_css '.alert-message.warning', visible: false
-    #should have_css '.alert-message.error', visible: false
-  #}
-
-
 }
 
