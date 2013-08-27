@@ -10,10 +10,23 @@ describe ( TasksController ) {
       }
 
       it ( 'should import projects from a csv' ) {
+        expect { post :import, projects_csv: @projects_csv }.to change( Project, :count )
+        #response.should be_success
+      }
+
+      it ( 'should return success alert' ) {
         post :import, projects_csv: @projects_csv
-        response.should be_success
+        flash[ :success ].should_not eq( nil )
       }
     }
+
+    context ( 'with no csv file' ) {
+      it ( 'should return error alert' ) {
+        post :import
+        flash[ :error ].should_not eq( nil )
+      }
+    }
+
   }
 }
 

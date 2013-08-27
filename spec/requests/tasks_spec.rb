@@ -5,15 +5,34 @@ describe ( 'tasks requests' ) {
 
   subject { page }
 
-  describe ( 'get /tasks/import' ) {
-    before do
+  context ( 'get /tasks/import' ) {
+    before {
       visit tasks_import_path
-    end
+    }
 
     it {
       should have_title 'Import Projects'
       should have_selector 'h1', text: 'Import Projects'
+      should_not have_selector '.alert-message'
     }
   }
+
+  context ( 'with import error flash' ) {
+    before {
+      visit tasks_import_path
+      click_button 'Import'
+    }
+
+    it {
+      should have_selector '.alert.alert-error'
+    }
+  }
+
+  #it ( 'should have space for alerts' ) {
+    #should have_css '.alert-message.warning', visible: false
+    #should have_css '.alert-message.error', visible: false
+  #}
+
+
 }
 

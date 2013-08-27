@@ -34,4 +34,8 @@ class Project < ActiveRecord::Base
   before_validation {
     self.micropost_url = nil if attribute_present?( 'micropost_url' ) && self.micropost_url == 'https://twitter.com/'
   }
+
+  def self.create_from_csv( projects_csv )
+    Project.create( { title: 'import_projects' } );
+  end
 end
