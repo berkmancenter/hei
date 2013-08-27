@@ -35,13 +35,13 @@ class Project < ActiveRecord::Base
     self.micropost_url = nil if attribute_present?( 'micropost_url' ) && self.micropost_url == 'https://twitter.com/'
   }
 
-  def self.new_from_csv_row( row )
+  def self.update_or_create_from_csv_row( row )
     # csv must have already been read from file
     # will create organization if one cannot be found
     org = Organization.find_or_create_by_name( row[ 4 ] )
 
-    Project.new( {
-      title: "#{row[1]} #{row[2]}",
+    p = Project.find_or_create_by_title( "#{row[1]} #{row[2]}" );
+    p.update_attributes( {
       organization_id: org.id,
       role: row[ 11 ],
       description: row[ 10 ],
