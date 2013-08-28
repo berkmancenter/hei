@@ -44,6 +44,19 @@ describe ( 'tasks requests' ) {
         expect { post tasks_import_path, projects_csv: @projects_csv }.to change( Project, :count ) 
       }
     }
+
+    describe ( 'search' ) {
+      before {
+        @projects_csv = fixture_file_upload( Rails.root.join('spec/fixtures/files/people.csv') );
+        post tasks_import_path, projects_csv: @projects_csv
+      }
+
+      it ( 'should appear in search results' ) {
+        visit( search_path + "?tag[]=import" )
+        expect( response ).to be_success
+      }
+
+    }
   }
 }
 
