@@ -82,6 +82,7 @@ describe ( TasksController ) {
         p.email.should eq( nil )
       }
     }
+
     context ( 'with no http in app_url' ) {
       before {
         @projects_csv = fixture_file_upload( '/files/people_no_http.csv' );
@@ -92,6 +93,25 @@ describe ( TasksController ) {
         p = Project.find_by_title( 'csv import_no_http' )
         p.organization.should_not eq( nil )
         p.app_url.should eq( 'http://hei.dev.berkmancenter.org' )
+      }
+    }
+
+    context ( 'with only title' ) {
+      before {
+        @projects_csv = fixture_file_upload( '/files/people_only_title.csv' );
+        post :import, projects_csv: @projects_csv
+      }
+
+      it ( 'should have mostly blanks' ) {
+        p = Project.find_by_title( 'csv import_only_title' )
+        p.should_not eq( nil )
+        p.organization.should eq( nil )
+        p.role.should eq( nil )
+        p.description.should eq( nil )
+        p.email.should eq( nil )
+        p.micropost_url.should eq( nil )
+        p.app_url.should eq( nil )
+        p.tags.count.should eq( 0 )
       }
     }
 

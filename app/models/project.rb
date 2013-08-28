@@ -48,7 +48,7 @@ class Project < ActiveRecord::Base
     end
 
     app_url = row[ 14 ]
-    if ! app_url.start_with?( 'http' )
+    if app_url.present? && !app_url.start_with?( 'http' )
       app_url = "http://#{app_url}"
     end
 
