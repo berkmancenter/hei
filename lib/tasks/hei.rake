@@ -47,5 +47,8 @@ namespace :hei do
     pappl_ryan = FactoryGirl.create :pappl_ryan
     pappl_ryan.organization = berkman
     pappl_ryan.save
+
+    Project.reindex
+    Sunspot.commit
   end
 end

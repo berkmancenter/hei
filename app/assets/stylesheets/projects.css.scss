@@ -47,6 +47,7 @@ form.search input {
   .description {
     color: $slate;
     font-size: .8em;
+    overflow: hidden;
   }
 
   progress {
@@ -160,7 +161,6 @@ form.search input {
 }
 
 .projects-as-projects .project-card .description {
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
