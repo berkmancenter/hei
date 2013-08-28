@@ -31,7 +31,37 @@ class Project < ActiveRecord::Base
     string :tag_list, :multiple => true, :stored => true
   end
 
-  before_validation( on: :create ) {
+  before_validation {
     self.micropost_url = nil if attribute_present?( 'micropost_url' ) && self.micropost_url == 'https://twitter.com/'
   }
+
+  def self.update_or_create_from_csv_row( row )
+    # csv must have already been read from file
+    # will create organization if one cannot be found
+    org = Organization.find_or_create_by_name( row[ 4 ] )
+
+    email = row[ 9 ]
+    if email == 'Yes'
+      email = row[ 3 ]
+    elsif email == 'No'
+      email = nil
+    end
+
+    app_url = row[ 14 ]
+    if app_url.present? && !app_url.start_with?( 'http' )
+      app_url = "http://#{app_url}"
+    end
+
+    p = Project.find_or_create_by_title( "#{row[1]} #{row[2]}" )
+
+    p.update_attributes( {
+      organization_id: org.id,
+      role: row[ 11 ],
+      description: row[ 10 ],
+      email: email,
+      micropost_url: "https://twitter.com/#{row[13]}",
+      app_url: app_url,
+      tag_list: row[ 8 ]
+    } )
+  end
 end

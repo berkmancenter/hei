@@ -6,27 +6,56 @@ describe ( 'tasks requests' ) {
   subject { page }
 
   describe ( 'get /tasks/import' ) {
-    before do
-      visit( tasks_import_path )
-    end
+    before {
+      visit tasks_import_path
+    }
 
     it {
       should have_title 'Import Projects'
       should have_selector 'h1', text: 'Import Projects'
+      should_not have_selector '.alert-message'
+    }
+
+    context ( 'with import error flash' ) {
+      before {
+        visit tasks_import_path
+        click_button 'Import'
+      }
+
+      it {
+        should have_selector '.alert.alert-error'
+      }
     }
   }
 
+
   describe ( 'post /tasks/import' ) {
-    context ( 'with posting valid csv file' ) {
+    context ( 'with valid csv' ) {
       before {
-        @file = fixture_file_upload( 'spec/fixtures/files/people.csv' );
+        @projects_csv = fixture_file_upload( Rails.root.join('spec/fixtures/files/people.csv') );
       }
 
-      it ( 'should import projects from a csv' ) {
-        post tasks_import_path, projects_csv: @file
-        should have_title 'Import Projects'
-        #response.should be_success
+      it {
+        post tasks_import_path, projects_csv: @projects_csv
+        expect( response ).to be_success
       }
+
+      it ( 'should create a project' ) {
+        expect { post tasks_import_path, projects_csv: @projects_csv }.to change( Project, :count ) 
+      }
+    }
+
+    describe ( 'search' ) {
+      before {
+        @projects_csv = fixture_file_upload( Rails.root.join('spec/fixtures/files/people.csv') );
+        post tasks_import_path, projects_csv: @projects_csv
+      }
+
+      it ( 'should appear in search results' ) {
+        visit( search_path + "?tag[]=import" )
+        expect( response ).to be_success
+      }
+
     }
   }
 }

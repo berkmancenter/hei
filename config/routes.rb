@@ -17,8 +17,8 @@ Hei::Application.routes.draw do
 
   match 'search' => 'projects#search'
 
-  get "tasks/upload"
   get "tasks/import"
+  post "tasks/import"
 
   match 'about' => 'static_pages#about'
 

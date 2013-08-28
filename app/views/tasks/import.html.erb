@@ -1,5 +1,17 @@
 <% provide :title, 'Import Projects' %>
 
+<% if flash[ :success ].present? %>
+  <div class="alert alert-success"><%= flash[ :success ] %></div>
+<% end %>
+
+<% if flash[ :warning ].present? %>
+  <div class="alert alert-warning"><%= flash[ :warning ] %></div>
+<% end %>
+
+<% if flash[ :error ].present? %>
+  <div class="alert alert-error"><%= flash[ :error ] %></div>
+<% end %>
+
 <div class="row">
   <div class="span12">
     <div class="page-header">
