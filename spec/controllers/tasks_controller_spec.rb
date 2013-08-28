@@ -70,6 +70,19 @@ describe ( TasksController ) {
       }
     }
 
+    context ( 'with empty in email other field' ) {
+      before {
+        @projects_csv = fixture_file_upload( '/files/people_empty_email.csv' );
+        post :import, projects_csv: @projects_csv
+      }
+
+      it ( 'should leave email nil' ) {
+        p = Project.find_by_title( 'csv import_empty_email' )
+        p.organization.should_not eq( nil )
+        p.email.should eq( nil )
+      }
+    }
+
     context ( 'with no csv file' ) {
       it ( 'should return error alert' ) {
         post :import
