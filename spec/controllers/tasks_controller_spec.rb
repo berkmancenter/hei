@@ -82,6 +82,18 @@ describe ( TasksController ) {
         p.email.should eq( nil )
       }
     }
+    context ( 'with no http in app_url' ) {
+      before {
+        @projects_csv = fixture_file_upload( '/files/people_no_http.csv' );
+        post :import, projects_csv: @projects_csv
+      }
+
+      it ( 'should have app_url' ) {
+        p = Project.find_by_title( 'csv import_no_http' )
+        p.organization.should_not eq( nil )
+        p.app_url.should eq( 'http://hei.dev.berkmancenter.org' )
+      }
+    }
 
     context ( 'with no csv file' ) {
       it ( 'should return error alert' ) {

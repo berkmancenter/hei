@@ -47,6 +47,11 @@ class Project < ActiveRecord::Base
       email = nil
     end
 
+    app_url = row[ 14 ]
+    if ! app_url.start_with?( 'http' )
+      app_url = "http://#{app_url}"
+    end
+
     p = Project.find_or_create_by_title( "#{row[1]} #{row[2]}" )
 
     p.update_attributes( {
@@ -55,7 +60,7 @@ class Project < ActiveRecord::Base
       description: row[ 10 ],
       email: email,
       micropost_url: "https://twitter.com/#{row[13]}",
-      app_url: row[ 14 ],
+      app_url: app_url,
       tag_list: row[ 8 ]
     } )
   end
