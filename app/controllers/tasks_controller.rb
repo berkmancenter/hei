@@ -6,7 +6,7 @@ class TasksController < ApplicationController
       projects_csv = params[ :projects_csv ].read
 
       CSV.parse( projects_csv, { headers: true } ) { | row |
-        p = Project.update_or_create_from_csv_row( row )
+        Project.update_or_create_from_csv_row( row ) unless row[ 12 ] == 'No'
       }
 
       Project.reindex

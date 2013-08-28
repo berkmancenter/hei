@@ -115,6 +115,18 @@ describe ( TasksController ) {
       }
     }
 
+    context ( 'with double import' ) {
+      before {
+        @projects_csv = fixture_file_upload( '/files/people_no_list.csv' );
+      }
+
+      it ( 'should not make two duplicate records' ) {
+        expect {
+          post :import, projects_csv: @projects_csv
+        }.to_not change( Project, :count )
+      }
+    }
+
     context ( 'with no csv file' ) {
       it ( 'should return error alert' ) {
         post :import
