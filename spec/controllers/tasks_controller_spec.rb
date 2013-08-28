@@ -52,7 +52,21 @@ describe ( TasksController ) {
 
       it ( 'should use primary email' ) {
         p = Project.find_by_title( 'csv import_yes_email' )
+        p.organization.should_not eq( nil )
         p.email.should eq( 'import.yes.email@cyber.law.harvard.edu' )
+      }
+    }
+
+    context ( 'with No in email other field' ) {
+      before {
+        @projects_csv = fixture_file_upload( '/files/people_no_email.csv' );
+        post :import, projects_csv: @projects_csv
+      }
+
+      it ( 'should leave email nil' ) {
+        p = Project.find_by_title( 'csv import_no_email' )
+        p.organization.should_not eq( nil )
+        p.email.should eq( nil )
       }
     }
 

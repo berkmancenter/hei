@@ -43,6 +43,8 @@ class Project < ActiveRecord::Base
     email = row[ 9 ]
     if email == 'Yes'
       email = row[ 3 ]
+    elsif email == 'No'
+      email = nil
     end
 
     p = Project.find_or_create_by_title( "#{row[1]} #{row[2]}" )
