@@ -40,12 +40,18 @@ class Project < ActiveRecord::Base
     # will create organization if one cannot be found
     org = Organization.find_or_create_by_name( row[ 4 ] )
 
-    p = Project.find_or_create_by_title( "#{row[1]} #{row[2]}" );
+    email = row[ 9 ]
+    if email == 'Yes'
+      email = row[ 3 ]
+    end
+
+    p = Project.find_or_create_by_title( "#{row[1]} #{row[2]}" )
+
     p.update_attributes( {
       organization_id: org.id,
       role: row[ 11 ],
       description: row[ 10 ],
-      email: row[ 9 ],
+      email: email,
       micropost_url: "https://twitter.com/#{row[13]}",
       app_url: row[ 14 ],
       tag_list: row[ 8 ]

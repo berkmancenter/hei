@@ -25,22 +25,12 @@ describe ( TasksController ) {
         p.organization.should_not eq( nil )
         p.role.should eq( 'Hei Importer' )
         p.description.should eq( 'I am an import from an RSVP CSV file.' )
-        p.email.should eq( 'import@cyber.law.harvard.edu' )
+        p.email.should eq( 'import.other@cyber.law.harvard.edu' )
         p.micropost_url.should eq( 'https://twitter.com/heimporter' )
         p.app_url.should eq( 'http://hei.dev.berkmancenter.org' )
         p.tags.count.should eq( 2 )
       }
     }
-
-#    context ( 'with search' ) {
-#      before {
-#        @projects_csv = fixture_file_upload( '/files/people.csv' );
-#        post :import, projects_csv: @projects_csv
-#      }
-#
-#      it ( 'new record should be searchable' ) {
-#      }
-#    }
 
     context ( 'with double import' ) {
       before {
@@ -52,7 +42,18 @@ describe ( TasksController ) {
           post :import, projects_csv: @projects_csv
         }.to_not change( Project, :count )
       }
+    }
 
+    context ( 'with Yes in email other field' ) {
+      before {
+        @projects_csv = fixture_file_upload( '/files/people_yes_email.csv' );
+        post :import, projects_csv: @projects_csv
+      }
+
+      it ( 'should use primary email' ) {
+        p = Project.find_by_title( 'csv import_yes_email' )
+        p.email.should eq( 'import.yes.email@cyber.law.harvard.edu' )
+      }
     }
 
     context ( 'with no csv file' ) {
