@@ -9,6 +9,8 @@ class TasksController < ApplicationController
         p = Project.update_or_create_from_csv_row( row )
       }
 
+      Project.reindex
+      Sunspot.commit
 
       flash.now[ :success ] = 'upload!'
     elsif request.post?
