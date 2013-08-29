@@ -56,6 +56,7 @@ class Project < ActiveRecord::Base
     p = Project.find( :first, :conditions => [ "lower(title) = ?", title.downcase ] ) || Project.create( :title => title)
 
     p.update_attributes( {
+      title: title,
       organization_id: org.id,
       role: row[ 11 ],
       description: row[ 10 ],

@@ -139,6 +139,21 @@ describe ( TasksController ) {
       }
     }
 
+    context ( 'also with different case title' ) {
+      before {
+        @projects_csv = fixture_file_upload( '/files/people_different_case.csv' );
+        post :import, projects_csv: @projects_csv
+      }
+
+      it ( 'should update original with new case' ) {
+        p_old = Project.find_by_title( 'Ryan Westphal' )
+        p_new = Project.find_by_title( 'ryan westphal' )
+
+        p_old.should eq( nil )
+        p_new.should_not eq( nil )
+      }
+    }
+
     context ( 'with no csv file' ) {
       it ( 'should return error alert' ) {
         post :import
