@@ -127,6 +127,18 @@ describe ( TasksController ) {
       }
     }
 
+    context ( 'with different case title' ) {
+      before {
+        @projects_csv = fixture_file_upload( '/files/people_different_case.csv' );
+      }
+
+      it ( 'should ignore case' ) {
+        expect {
+          post :import, projects_csv: @projects_csv
+        }.to_not change( Project, :count )
+      }
+    }
+
     context ( 'with no csv file' ) {
       it ( 'should return error alert' ) {
         post :import
