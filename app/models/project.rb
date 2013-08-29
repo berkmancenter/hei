@@ -52,9 +52,11 @@ class Project < ActiveRecord::Base
       app_url = "http://#{app_url}"
     end
 
-    p = Project.find_or_create_by_title( "#{row[1]} #{row[2]}" )
+    title = "#{row[1]} #{row[2]}"
+    p = Project.find( :first, :conditions => [ "lower(title) = ?", title.downcase ] ) || Project.create( :title => title)
 
     p.update_attributes( {
+      title: title,
       organization_id: org.id,
       role: row[ 11 ],
       description: row[ 10 ],
