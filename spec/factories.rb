@@ -110,6 +110,14 @@ FactoryGirl.define do
       #organization berkman
     end
 
+    factory :unused_tag do
+      title 'unused_tag'
+      description 'unused_tag'
+      tag_list [['unusedtag']]
+      #contact nil
+      #organization berkman
+    end
+
     factory :pappl_ryan do
       title 'Ryan Westphal'
       role 'Web Developer'
