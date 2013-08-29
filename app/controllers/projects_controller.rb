@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
     @projects = Project.includes( :taggings, :tags ).order( 'updated_at desc' ).paginate( page: params[ :page ], per_page: 256 )
 
-    @tags = ActsAsTaggableOn::Tag.order( 'name' )
+    @tags = ActsAsTaggableOn::Tag.joins( :taggings ).uniq.order( :name )
 
     render layout: !request.xhr?
   end
