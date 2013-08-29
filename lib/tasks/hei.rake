@@ -44,6 +44,10 @@ namespace :hei do
     nil_description.organization = berkman
     nil_description.save
 
+    unused_tag = FactoryGirl.create :unused_tag
+    unused_tag.organization = berkman
+    unused_tag.save
+
     pappl_ryan = FactoryGirl.create :pappl_ryan
     pappl_ryan.organization = berkman
     pappl_ryan.save

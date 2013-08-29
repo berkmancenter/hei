@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe 'projects requests' do
+describe ( 'projects requests' ) {
   let ( :config ) { Hei::Application.config.hei }
 
   subject { page }
 
-  describe 'get /projects' do
+  describe ( 'get /projects' ) {
     before do
       visit projects_path
     end
@@ -16,6 +16,11 @@ describe 'projects requests' do
 
     it ( 'should have some project cards' ) {
       should have_css 'li.project-card', count: Project.count
+    }
+
+    it ( 'should list all tags' ) {
+      should have_selector '.facet-list ul'
+      should have_selector '.facet-list ul li a'
     }
 
     context 'click project card' do
@@ -106,7 +111,28 @@ describe 'projects requests' do
         should have_selector 'li.project-card'
       }
     end
-  end
+
+    context ( 'with a tag soon to not be in use' ) {
+      it {
+        should have_selector '.facet-list li a', text: 'unusedtag'
+      }
+    }
+
+    context ( 'with a tag no longer in use' ) {
+      let ( :project ) { Project.find_by_title( 'unused_tag' ) }
+
+      before {
+        visit edit_project_path( project )
+        fill_in 'project[tag_list]', with: ''
+        click_button I18n.t( 'projects_form_submit' )
+        visit projects_path
+      }
+
+      it {
+        should_not have_selector '.facet-list li a', text: 'unusedtag'
+      }
+    }
+  }
 
   describe 'get /projects/new' do
     before { visit new_project_path }
@@ -232,7 +258,7 @@ describe 'projects requests' do
     end
   end
 
-  describe 'get /projects/:id/edit' do
+  describe ( 'get /projects/:id/edit' ) {
     context ( 'basic edit' ) {
       let ( :project ) { Project.first }
 
@@ -270,6 +296,5 @@ describe 'projects requests' do
         }
       }
     }
-  end
-
-end
+  }
+}
