@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 gem 'rails', '3.2.13'
 
@@ -13,9 +14,9 @@ gem 'acl9'
 gem 'feed-abstract'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
-gem 'sunspot'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+gem 'sunspot', '2.0.0'
+gem 'sunspot_rails', '2.0.0'
+gem 'sunspot_solr', '2.0.0'
 gem 'breadcrumbs'
 gem 'acts_as_api'
 gem 'nokogiri'

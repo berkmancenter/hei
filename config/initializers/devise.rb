@@ -220,6 +220,8 @@ Devise.setup do |config|
     manager.default_strategies(:scope => :user).unshift :harvard_auth_proxy_authenticatable
   end
  
+  config.secret_key = '52e99a1037e6e960a65669f35b98d3efced9d1fdec14f033e61af96a63c26dc67ecbb61964c7aa440fbd63c132e6fed131dc78f18b9090ccda62a58a653bea64'
+  
   config.authen_application = 'HLS_BCIS_LRRS_DEV'
   config.pin_url = 'http://localhost:3001/pin/authenticate?__authen_application='
   config.debug = true
