@@ -1,0 +1,38 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+# Also used to manipulate UI when projects_as == 'people'
+
+en:
+  projects: 'people'
+  nav_projects: 'People'
+  nav_organizations: 'Organizations'
+  nav_contacts: 'Contacts'
+  byline: 'A registry of all the wondrous people attending the Berkman Center Fall 2013 Open House.'
+  subtext: 'Read more about the Fall 2013 Open House at: <a href="http://brk.mn/OpenHouse2013">http://brk.mn/OpenHouse2013</a>' # html ok
+  add_project: 'Add a New Person'
+  projects_form_submit: 'Save'
+  projects_form_cancel: 'Cancel'
+  project_form_title: 'Name'
+  project_form_organization: 'Affiliation'
+  project_form_role: 'Role/Title'
+  project_form_description: 'About your work'
+  project_form_email: 'Email'
+  project_form_micropost_url: 'Twitter'
+  project_form_app_url: 'Blog/Project/Personal URL'
+  project_form_tag_list: 'Interests, comma separated'
+  projects_show_email: 'Email'
+  projects_show_micropost_url: 'Twitter'
+  projects_show_app_url: 'URL'
+  organizations_affiliated_projects: 'Affiliated People'
+  organization_form_name: 'Name'
+  organization_form_location: 'Location'
+  organization_form_url: 'Website'
+  organization_form_phone: 'Phone'
+  organization_form_contacts: 'Contacts in this Organization:'
+  organizations_form_submit: 'Save'
+  organizations_form_cancel: 'Cancel'
+  organizations_edit: 'Edit'
+  organizations_back: 'Back'
+  organizations_new: 'Add a New Organization'
+  tasks_import_file_label: 'Choose a Berkman Open House CSV file to import'
