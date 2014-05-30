@@ -2,6 +2,10 @@ require 'factory_girl_rails'
 
 namespace :hei do
   task :seed => :environment do
+    Project.delete_all
+    Contact.delete_all
+    Organization.delete_all
+
     berkman = FactoryGirl.create :berkman
     berkman.save
 
@@ -35,6 +39,10 @@ namespace :hei do
     eda.contact = jen
     eda.save
 
+    nil_app_url = FactoryGirl.create :nil_app_url
+    nil_app_url.organization = berkman
+    nil_app_url.save
+
     nil_contact = FactoryGirl.create :nil_contact
     nil_contact.organization = berkman
     nil_contact.save
@@ -47,10 +55,6 @@ namespace :hei do
     unused_tag = FactoryGirl.create :unused_tag
     unused_tag.organization = berkman
     unused_tag.save
-
-    pappl_ryan = FactoryGirl.create :pappl_ryan
-    pappl_ryan.organization = berkman
-    pappl_ryan.save
 
     Project.reindex
     Sunspot.commit

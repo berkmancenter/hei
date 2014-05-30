@@ -42,7 +42,7 @@ FactoryGirl.define do
       title 'Hei'
       description 'Hei everyone! Integrate!'
       repository_url 'https://github.com/berkmancenter/hei'
-      app_url ''
+      app_url 'http://hei.dev.berkmancenter.org'
       micropost_url ''
       news_url 'https://cyber.law.harvard.edu/projectmanagement/projects/hei/activity'
       documentation_url 'https://cyber.law.harvard.edu/projectmanagement/projects/hei/wiki'
@@ -59,12 +59,12 @@ FactoryGirl.define do
       title 'Internet Monitor'
       description 'Monitor and score Internet access, control, and community in the countries of the world'
       repository_url nil
-      app_url nil
+      app_url 'http://imon.dev.berkmancenter.org'
       micropost_url 'https://twitter.com/thenetmonitor'
-      news_url 'http://blogs.law.harvard.edu/internetmonitor/'
+      news_url 'http://imon.dev.berkmancenter.org/blog'
       documentation_url 'https://cyber.law.harvard.edu/projectmanagement/projects/internet-monitor/wiki'
-      progress 55
-      launch_date '2013-11-01'
+      progress 95
+      launch_date '2014-06-09'
       conception_date '2012-01-01'
       tag_list [['web', 'html5', 'research', 'world', 'datavis']]
       #contact ryan
@@ -84,6 +84,14 @@ FactoryGirl.define do
       conception_date '2012-01-01'
       tag_list [['web', 'html5', 'research', 'literature', 'poetry', 'imaging']]
       #contact jen
+      #organization berkman
+    end
+
+    factory :nil_app_url do
+      title 'nil_app_url'
+      description 'no app url'
+      tag_list [['test']]
+      #contact nil
       #organization berkman
     end
 
@@ -116,17 +124,6 @@ FactoryGirl.define do
       tag_list [['unusedtag']]
       #contact nil
       #organization berkman
-    end
-
-    factory :pappl_ryan do
-      title 'Ryan Westphal'
-      role 'Web Developer'
-      email 'rwestphal@cyber.law.harvard.edu'
-      description 'I am a web developer at Berkman, project lead for jQuery Geo, and wannabe indie game developer'
-      app_url 'http://trippingthebits.com'
-      micropost_url 'https://twitter.com/ryanttb'
-      #organization berkman
-      tag_list [['html', 'javascript', 'css', 'ruby', 'mapping', 'video games']]
     end
   end
 end
