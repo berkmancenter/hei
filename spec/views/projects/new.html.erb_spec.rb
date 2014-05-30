@@ -6,7 +6,7 @@ describe 'projects/new' do
   subject { rendered }
 
   before do
-    if config[ 'projects_as' ] == 'people'
+    if config[ 'force_twitter' ]
       assign( :project, Project.new( micropost_url: 'https://twitter.com/' ) )
     else
       assign( :project, Project.new )
@@ -33,46 +33,23 @@ describe 'projects/new' do
     should have_selector 'label', text: I18n.t( 'project_form_tag_list' )
     should have_selector 'input[name="project[tag_list]"]'
 
-    if config[ 'projects_as' ] == 'people'
-      should have_selector 'label', text: I18n.t( 'project_form_role' )
-      should have_selector 'input[name="project[role]"]'
+    should have_selector 'label', text: I18n.t( 'project_form_role' )
+    should have_selector 'input[name="project[role]"]'
 
-      should have_selector 'label', text: I18n.t( 'project_form_email' )
-      should have_selector 'input[name="project[email]"]'
+    should have_selector 'label', text: I18n.t( 'project_form_email' )
+    should have_selector 'input[name="project[email]"]'
 
-      should_not have_selector 'label', text: I18n.t( 'project_form_contact' )
-      should_not have_selector 'select[name="project[contact_id]"]'
+    should have_selector 'label', text: I18n.t( 'project_form_contact' )
+    should have_selector 'select[name="project[contact_id]"]'
 
-      should_not have_selector 'label', text: I18n.t( 'project_form_repositor_url' )
-      should_not have_selector 'select[name="project[repositor_url]"]'
+    should have_selector 'label', text: I18n.t( 'project_form_repositor_url' )
+    should have_selector 'select[name="project[repositor_url]"]'
 
-      should_not have_selector 'label', text: I18n.t( 'project_form_news_url' )
-      should_not have_selector 'select[name="project[news_url]"]'
+    should have_selector 'label', text: I18n.t( 'project_form_news_url' )
+    should have_selector 'select[name="project[news_url]"]'
 
-      should_not have_selector 'label', text: I18n.t( 'project_form_documentation_url' )
-      should_not have_selector 'select[name="project[documentation_url]"]'
-
-      # dates?
-
-    else
-      should_not have_selector 'label', text: I18n.t( 'project_form_role' )
-      should_not have_selector 'input[name="project[role]"]'
-
-      should_not have_selector 'label', text: I18n.t( 'project_form_email' )
-      should_not have_selector 'input[name="project[email]"]'
-
-      should have_selector 'label', text: I18n.t( 'project_form_contact' )
-      should have_selector 'select[name="project[contact_id]"]'
-
-      should have_selector 'label', text: I18n.t( 'project_form_repositor_url' )
-      should have_selector 'select[name="project[repositor_url]"]'
-
-      should have_selector 'label', text: I18n.t( 'project_form_news_url' )
-      should have_selector 'select[name="project[news_url]"]'
-
-      should have_selector 'label', text: I18n.t( 'project_form_documentation_url' )
-      should have_selector 'select[name="project[documentation_url]"]'
-    end
+    should have_selector 'label', text: I18n.t( 'project_form_documentation_url' )
+    should have_selector 'select[name="project[documentation_url]"]'
   end
 
   it ( 'should have action buttons' ) {

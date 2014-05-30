@@ -1,0 +1,17 @@
+<time datetime="<%= project_card.updated_at.to_s( :db ).sub(' ', 'T' )[ 0..-4 ] %>"><%= project_card.updated_at.to_formatted_s( :short ) %></time>
+
+<div class="caption">
+  <h3><%= project_card.title %></h3>
+
+  <div><%= project_card.organization.nil? ? raw( '&nbsp;' ) : "@ #{project_card.organization.name}" %></div>
+</div>
+
+<div class='description'><%= project_card.description || raw( '&nbsp;' ) %></div>
+
+<progress value="<%= project_card.progress %>" max="100" title="<%= project_card.progress %>% complete"><%= project_card.progress %>% complete</progress>
+
+<ul class="tags">
+  <% project_card.tags.each do |t| %>
+    <li><%= t.name %></li>
+  <% end %>
+</ul>

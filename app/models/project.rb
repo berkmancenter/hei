@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
   validates_length_of :repository_url, :news_url, :documentation_url, :app_url, :micropost_url, :maximum => 1.kilobyte
   validates_format_of :repository_url, :news_url, :documentation_url, :app_url, :with => /^https?:\/\/[^\.]+\..+$/i, :allow_blank => true, :allow_nil => true
 
-  if Hei::Application.config.hei[ 'projects_as' ] == 'people'
+  if Hei::Application.config.hei[ 'force_twitter' ]
     validates_format_of :micropost_url, :with => /^https:\/\/twitter.com\/.+$/i, :allow_blank => true, :allow_nil => true, :message => 'Please enter a URL to a Twitter profile'
   else
     validates_format_of :micropost_url, :with => /^https?:\/\/[^\.]+\..+$/i, :allow_blank => true, :allow_nil => true

@@ -30,12 +30,8 @@ describe ( 'project partial' ) {
     end
 
     it 'should show updated_at' do
-      if config[ 'projects_as' ] == 'people'
-        should_not have_selector 'time'
-      else
-        should have_selector 'time', text: p.updated_at.to_formatted_s( :short )
-        should have_css "time[datetime='#{p.updated_at.to_s( :db ).sub( ' ', 'T' )[ 0..-4 ]}']"
-      end
+      should have_selector 'time', text: p.updated_at.to_formatted_s( :short )
+      should have_css "time[datetime='#{p.updated_at.to_s( :db ).sub( ' ', 'T' )[ 0..-4 ]}']"
     end
 
     it 'should show organization' do
@@ -43,36 +39,12 @@ describe ( 'project partial' ) {
     end
 
     it 'should show progress' do
-      if config[ 'projects_as' ] == 'people'
-        should_not have_selector 'progress'
-      else
-        should have_selector 'progress'
-        should have_css "progress[value='#{p.progress}']"
-      end
+      should have_selector 'progress'
+      should have_css "progress[value='#{p.progress}']"
     end
 
     it 'should show tags' do
-      if config[ 'projects_as' ] == 'people'
-        should_not have_css '.tags li'
-      else
-        should have_css '.tags li', count: 3
-      end
-    end
-  }
-
-  context ( 'with person' ) {
-    let ( :p ) { Project.find_by_title 'Ryan Westphal' }
-
-    before {
-      render p
-    }
-
-    it 'should show role (person title)' do
-      if config[ 'projects_as' ] == 'people'
-        should have_selector 'div.role', text: p.role
-      else
-        should_not have_selector 'div.role'
-      end
+      should have_css '.tags li', count: 3
     end
   }
 }

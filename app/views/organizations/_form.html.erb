@@ -6,9 +6,7 @@
     <%= f.input :phone, label: t( 'organization_form_phone' ) %>
   <% end %>
 
-  <% if Hei::Application.config.hei[ 'projects_as' ] != 'people' %>
-    <%= f.input :contacts, :as => :check_boxes, :label => t( 'organization_form_contacts' ) %>
-  <% end %>
+  <%= f.input :contacts, :as => :check_boxes, :label => t( 'organization_form_contacts' ) %>
 
   <%= f.actions do %>
     <%= f.action :cancel, { button_html: { class: 'btn' }, label: t( 'organizations_form_cancel' ) } %>

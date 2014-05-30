@@ -1,7 +1,7 @@
 <% provide :title, @project.title %>
 
 <section class="view row">
-  <%= render partial: "projects/project_as_#{Hei::Application.config.hei[ 'projects_as' ]}" %>
+  <%= render @project %>
 
   <% if not @project.tags.nil? %>
     <div class="span1">&nbsp;</div>

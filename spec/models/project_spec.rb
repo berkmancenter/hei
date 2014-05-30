@@ -24,10 +24,8 @@ describe ( 'Project model' ) {
       p.should respond_to( :progress );
       p.should respond_to( :organization );
 
-      if config[ 'projects_as' ] == 'people'
-        p.should respond_to( :email );
-        p.should respond_to( :role );
-      end
+      p.should respond_to( :email );
+      p.should respond_to( :role );
     }
   }
 }

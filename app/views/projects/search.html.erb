@@ -7,11 +7,9 @@
     <%= render partial: 'shared/forms/search' %>
   </div>
 
-  <% if Hei::Application.config.hei[ 'projects_as' ] != 'people' %>
-    <div class="span4">
-      <%= link_to t( 'add_project' ), new_project_path, class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+  <div class="span4">
+    <%= link_to t( 'add_project' ), new_project_path, class: 'btn btn-primary' %>
+  </div>
 </div>
 
 <div class="row pagination_target">
@@ -50,7 +48,7 @@
 
   <ul class="project-cards thumbnails">
     <% @hits.each do |hit| %>
-      <%= render partial: 'projects/project', object: Project.find( hit.primary_key ) %>
+      <%= render partial: 'projects/project_card_link_item', object: Project.find( hit.primary_key ) %>
     <% end %>
   </ul>
 </div>

@@ -146,7 +146,7 @@ describe ( 'projects requests' ) {
     }
 
     it ( 'should supply twitter prefix' ) {
-      if config[ 'projects_as' ] == 'people'
+      if config[ 'force_twitter' ]
         should have_selector 'input[name="project[micropost_url]"][value="https://twitter.com/"]'
       end
     }
@@ -175,12 +175,10 @@ describe ( 'projects requests' ) {
       }
 
       it ( 'should create a project with empty micropost_url' ) {
-        if config[ 'projects_as' ] == 'people'
-          projects_count = Project.count
-          click_button I18n.t( 'projects_form_submit' )
-          expect( Project.count ).to eq( projects_count + 1 )
-          expect( Project.last.micropost_url ).to eq( nil )
-        end
+        projects_count = Project.count
+        click_button I18n.t( 'projects_form_submit' )
+        expect( Project.count ).to eq( projects_count + 1 )
+        expect( Project.last.micropost_url ).to eq( nil )
       }
     }
 
@@ -191,7 +189,7 @@ describe ( 'projects requests' ) {
       }
 
       it ( 'should create a project' ) {
-        if config[ 'projects_as' ] == 'people'
+        if config[ 'force_twitter' ]
           expect {
             click_button I18n.t( 'projects_form_submit' )
           }.to_not change( Project, :count )
@@ -279,7 +277,7 @@ describe ( 'projects requests' ) {
       before { visit edit_project_path( project ) }
 
       it ( 'should supply twitter prefix' ) {
-        if config[ 'projects_as' ] == 'people'
+        if config[ 'force_twitter' ]
           should have_selector 'input[name="project[micropost_url]"][value="https://twitter.com/"]'
         end
       }
@@ -290,9 +288,7 @@ describe ( 'projects requests' ) {
         }
 
         it ( 'should allow saving edits' ) {
-          if config[ 'projects_as' ] == 'people'
-            expect { click_button I18n.t( 'projects_form_submit' ) }.to change{ Project.find( project.id ).updated_at }
-          end
+          expect { click_button I18n.t( 'projects_form_submit' ) }.to change{ Project.find( project.id ).updated_at }
         }
       }
     }

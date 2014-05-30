@@ -25,11 +25,9 @@
 <%= render partial: 'shared/forms/search' %>
   </div>
 
-  <% if Hei::Application.config.hei[ 'projects_as' ] != 'people' %>
-    <div class="span4">
-      <%= link_to t( 'add_project' ), new_project_path, class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+  <div class="span4">
+    <%= link_to t( 'add_project' ), new_project_path, class: 'btn btn-primary' %>
+  </div>
 </div>
 
   <div class="row pagination_target">
@@ -47,7 +45,7 @@
 
       <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
       <ul class="project-cards thumbnails">
-        <%= render @projects %>
+        <%= render partial: 'projects/project_card_link_item', collection: @projects %>
       </ul>
       <%= will_paginate @projects,:renderer => BootstrapPagination::Rails, :class => 'pagination pagination-centered'  %>
 

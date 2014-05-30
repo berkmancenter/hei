@@ -14,6 +14,10 @@ describe 'contacts/show' do
     it {
       should have_css 'h1', text: "@ #{c.first_name} #{c.last_name}"
     }
+
+    it {
+      should have_selector 'div.role'
+    }
   }
 end
 
