@@ -1,5 +1,7 @@
 defaults: &DEFAULTS
     projects_as: 'projects'
+    allow_new_projects: true
+    allow_new_orgs: true
 
 development:
     <<: *DEFAULTS

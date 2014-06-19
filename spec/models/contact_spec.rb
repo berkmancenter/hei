@@ -13,6 +13,7 @@ describe Contact do
       c.should respond_to( :last_name );
       c.should respond_to( :email );
       c.should respond_to( :organizations );
+      c.should respond_to( :role );
     }
   end
 end

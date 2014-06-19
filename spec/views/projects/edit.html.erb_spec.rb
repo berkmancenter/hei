@@ -7,7 +7,10 @@ describe 'projects/edit' do
 
   context ( 'basic input test' ) {
     before do
-      assign( :project, Project.find_by_title( 'Ryan Westphal' ) )
+      # Previous title couldn't be found, switched to 'Hei'
+      # (Make sure the project 'Hei' exists before running
+      # the test
+      assign( :project, Project.find_by_title( 'Hei' ) )
       render
     end
 
@@ -36,14 +39,14 @@ describe 'projects/edit' do
       should have_selector 'label', text: I18n.t( 'project_form_contact' )
       should have_selector 'select[name="project[contact_id]"]'
 
-      should have_selector 'label', text: I18n.t( 'project_form_repositor_url' )
-      should have_selector 'select[name="project[repositor_url]"]'
+      should have_selector 'label', text: I18n.t( 'project_form_repository_url' )
+      should have_selector 'input[name="project[repository_url]"]'
 
       should have_selector 'label', text: I18n.t( 'project_form_news_url' )
-      should have_selector 'select[name="project[news_url]"]'
+      should have_selector 'input[name="project[news_url]"]'
 
       should have_selector 'label', text: I18n.t( 'project_form_documentation_url' )
-      should have_selector 'select[name="project[documentation_url]"]'
+      should have_selector 'input[name="project[documentation_url]"]'
     end
 
     it ( 'should have action buttons' ) {

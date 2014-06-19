@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  attr_accessible :title, :description, :repository_url, :news_url, :documentation_url, :app_url, :micropost_url, :progress, :launch_date, :conception_date, :contact_id, :organization_id, :tag_list, :email, :role
+  attr_accessible :title, :description, :repository_url, :news_url, :documentation_url, :app_url, :micropost_url, :progress, :launch_date, :conception_date, :contact_id, :organization_id, :tag_list, :email
 
   belongs_to :organization
 
@@ -32,7 +32,7 @@ class Project < ActiveRecord::Base
   end
 
   before_validation {
-    self.micropost_url = nil if attribute_present?( 'micropost_url' ) && self.micropost_url == 'https://twitter.com/'
+    self.micropost_url = nil if ((attribute_present?( 'micropost_url' ) && self.micropost_url == 'https://twitter.com/') || !attribute_present?( 'micropost_url' ))
   }
 
   def self.update_or_create_from_csv_row( row )
@@ -58,7 +58,7 @@ class Project < ActiveRecord::Base
     p.update_attributes( {
       title: title,
       organization_id: org.id,
-      role: row[ 11 ],
+#      role: row[ 11 ],
       description: row[ 10 ],
       email: email,
       micropost_url: "https://twitter.com/#{row[13]}",
@@ -66,4 +66,5 @@ class Project < ActiveRecord::Base
       tag_list: row[ 8 ]
     } )
   end
+
 end

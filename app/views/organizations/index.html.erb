@@ -8,7 +8,9 @@
 
 <div class="row">
   <div class="span12">
-    <%= link_to t( 'organizations_new' ), new_organization_path, class: 'btn btn-primary' %>
+      <% if Hei::Application.config.hei[ 'allow_new_orgs' ] %>
+        <%= link_to t( 'organizations_new' ), new_organization_path, class: 'btn btn-primary' %>
+      <% end %>
   </div>
 </div>
 

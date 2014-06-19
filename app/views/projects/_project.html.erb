@@ -1,45 +1,51 @@
 <div class="span8">
   <div class="page-header">
     <h1><%= project.title %></h1>
+    <p>Last update: <time datetime='<%= project.updated_at.to_s(:db).sub(' ','T')[0..-4] %>'><%= project.updated_at.to_formatted_s(:short) %></time></p>
 
-    <%= link_to( "@ #{project.organization.name}", organization_path( project.organization ), { class: 'organization' } ) unless project.organization.nil? %>
+    <%= link_to( "@ #{project.organization.name}", organization_path( project.organization ), { class: 'organization' } ) if project.organization.present? %>
 
     <%= link_to( "Launch #{project.title}", project.app_url, {
       target: '_blank',
       class: 'app-url btn btn-primary'
-    } ) unless project.app_url.nil? %>
+    } ) if project.app_url.present? %>
   </div>
 
   <p class="description"><%= project.description %></p>
 
+  <!-- __RFE__ 
   <dl class="dl-horizontal">
     <% if project.micropost_url.present? %>
       <dt><%= t 'projects_show_micropost_url' %></dt>
       <dd><a href="<%= project.micropost_url %>"><%= project.micropost_url %></a></dd>
     <% end %>
   </dl>
+  -->
 
-  <h2>Contact</h2>
-
-  <% if not project.contact.nil? %>
+  <% if project.contact.present? %>
+    <h2>Contact</h2>
     <span><%= project.contact.first_name %> <%= project.contact.last_name %></span>
   <% end %>
 
-  <h2>News</h2>
-
-  <h3><%= link_to( 'Project activity', project.news_url ) unless project.news_url.nil? %></h3>
-
-  <% if not project.micropost_url.nil? %>
-    <h3><%= link_to( 'Microposts', project.micropost_url ) %></h3>
+  <% if project.news_url.present? or project.micropost_url.present? %>
+    <h2>News</h2>
   <% end %>
 
-  <h2>Documentation</h2>
-  <h3><%= link_to( 'Online docs', project.documentation_url ) unless project.documentation_url.nil? %></h3>
+  <h3><%= link_to( 'Project activity', project.news_url ) if project.news_url.present? %></h3>
 
-  <h2>Development</h2>
-  <progress value="<%= project.progress %>" max="100" title="<%= project.progress %>% complete"><%= project.progress %>% complete</progress>
+  <h3><%= link_to( 'Microposts', project.micropost_url ) if project.micropost_url.present? %></h3>
+
+  <% if project.documentation_url.present? %>
+    <h2>Documentation</h2>
+    <h3><%= link_to( 'Online docs', project.documentation_url ) %></h3>
+  <% end %>
+
+  <% if project.progress.present? %>
+    <h2>Development</h2>
+    <progress value="<%= project.progress %>" max="100" title="<%= project.progress %>% complete"><%= project.progress %>% complete</progress>
+  <% end %>
   
-  <h3><%= link_to( 'Online repository', project.repository_url ) unless project.repository_url.nil? %></h3>
+  <h3><%= link_to( 'Online repository', project.repository_url ) if project.repository_url.present? %></h3>
 
   <%= link_to( 'Back', projects_path, { class: 'btn' } ) %>
   <%= link_to( 'Edit', edit_project_path( project ), { class: 'btn btn-primary' } ) %>

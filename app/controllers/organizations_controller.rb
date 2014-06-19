@@ -25,6 +25,9 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   # GET /organizations/new.json
   def new
+    unless Hei::Application.config.hei[ 'allow_new_orgs' ]
+      redirect_to organizations_path and return
+    end
     @organization = Organization.new
 
     respond_to do |format|
@@ -41,6 +44,9 @@ class OrganizationsController < ApplicationController
   # POST /organizations
   # POST /organizations.json
   def create
+    unless Hei::Application.config.hei[ 'allow_new_orgs' ]
+      redirect_to organizations_path and return
+    end
     @organization = Organization.new(params[:organization])
 
     respond_to do |format|

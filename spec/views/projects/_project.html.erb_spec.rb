@@ -7,7 +7,7 @@ describe ( 'project partial' ) {
 
   context ( 'record with most things' ) {
     let ( :p ) { Project.find_by_title 'Hei' }
-
+    
     before {
       render p
     }
@@ -26,7 +26,7 @@ describe ( 'project partial' ) {
     end
 
     it 'should have a header' do
-      should have_selector 'h3', text: p.title
+      should have_selector 'h1', text: p.title
     end
 
     it 'should show updated_at' do

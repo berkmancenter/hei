@@ -37,6 +37,9 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    unless Hei::Application.config.hei[ 'allow_new_projects' ]
+      redirect_to projects_path and return 
+    end
     @project = Project.new
 
     if Hei::Application.config.hei[ 'force_twitter' ]
@@ -58,6 +61,9 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    unless Hei::Application.config.hei[ 'allow_new_projects' ]
+      redirect_to projects_path and return 
+    end
     @project = Project.new(params[:project])
 
     respond_to do |format|
@@ -73,7 +79,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-
+    
     respond_to do |format|
       if @project.update_attributes(params[:project])
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }

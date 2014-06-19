@@ -33,8 +33,8 @@ describe 'projects/new' do
     should have_selector 'label', text: I18n.t( 'project_form_tag_list' )
     should have_selector 'input[name="project[tag_list]"]'
 
-    should have_selector 'label', text: I18n.t( 'project_form_role' )
-    should have_selector 'input[name="project[role]"]'
+#    should have_selector 'label', text: I18n.t( 'project_form_role' )
+#    should have_selector 'input[name="project[role]"]'
 
     should have_selector 'label', text: I18n.t( 'project_form_email' )
     should have_selector 'input[name="project[email]"]'
@@ -42,14 +42,14 @@ describe 'projects/new' do
     should have_selector 'label', text: I18n.t( 'project_form_contact' )
     should have_selector 'select[name="project[contact_id]"]'
 
-    should have_selector 'label', text: I18n.t( 'project_form_repositor_url' )
-    should have_selector 'select[name="project[repositor_url]"]'
+    should have_selector 'label', text: I18n.t( 'project_form_repository_url' )
+    should have_selector 'input[name="project[repository_url]"]'
 
     should have_selector 'label', text: I18n.t( 'project_form_news_url' )
-    should have_selector 'select[name="project[news_url]"]'
+    should have_selector 'input[name="project[news_url]"]'
 
     should have_selector 'label', text: I18n.t( 'project_form_documentation_url' )
-    should have_selector 'select[name="project[documentation_url]"]'
+    should have_selector 'input[name="project[documentation_url]"]'
   end
 
   it ( 'should have action buttons' ) {

@@ -25,7 +25,7 @@ describe ( 'Project model' ) {
       p.should respond_to( :organization );
 
       p.should respond_to( :email );
-      p.should respond_to( :role );
+#      p.should respond_to( :role );
     }
   }
 }

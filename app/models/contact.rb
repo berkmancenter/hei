@@ -1,5 +1,5 @@
 class Contact < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email, :phone, :organization_ids
+  attr_accessible :first_name, :last_name, :email, :phone, :organization_ids, :role
   
   has_and_belongs_to_many :organizations
   

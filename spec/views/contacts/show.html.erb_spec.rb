@@ -12,12 +12,16 @@ describe 'contacts/show' do
     }
 
     it {
-      should have_css 'h1', text: "@ #{c.first_name} #{c.last_name}"
+      should have_css 'h1', text: "#{c.first_name} #{c.last_name}"
     }
 
     it {
-      should have_selector 'div.role'
+      should have_css '.role'
     }
+
+#    it {
+#      should have_selector 'div.role'
+#    }
   }
 end
 
