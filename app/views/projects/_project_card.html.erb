@@ -8,7 +8,11 @@
 
 <div class='description'><%= project_card.description || raw( '&nbsp;' ) %></div>
 
-<progress value="<%= project_card.progress %>" max="100" title="<%= project_card.progress %>% complete"><%= project_card.progress %>% complete</progress>
+<% if project_card.progress.present? %>
+  <div class = 'progress progress-striped' title = '<%= project_card.progress %>%'>
+    <div class = 'bar' style = 'width: <%= project_card.progress %>%;'></div>
+  </div>
+<% end %>
 
 <ul class="tags">
   <% project_card.tags.each do |t| %>

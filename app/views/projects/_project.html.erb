@@ -33,7 +33,9 @@
 
   <% if project.progress.present? %>
     <h2>Development</h2>
-    <progress value="<%= project.progress %>" max="100" title="<%= project.progress %>% complete"><%= project.progress %>% complete</progress>
+    <div class = 'progress progress-striped' title = '<%= project.progress %>%'>
+      <div class = 'bar' style = 'width: <%= project.progress %>%;'></div>
+    </div>
   <% end %>
   
   <h3><%= link_to( 'Online repository', project.repository_url ) if project.repository_url.present? %></h3>

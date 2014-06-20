@@ -24,6 +24,7 @@ gem 'sanitize'
 gem 'exception_notification'
 gem 'acts_as_list'
 gem 'formtastic'
+gem 'formtastic-bootstrap'
 gem 'devise_harvard_auth_proxy', :git => 'git@github.com:berkmancenter/devise_harvard_auth_proxy.git', :branch => 'deviseupdate'
 
 group :development, :test do

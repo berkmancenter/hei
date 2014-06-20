@@ -1,0 +1,30 @@
+<%= semantic_form_for(@project, :html => {:class => 'asdasdasd'}) do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :title, label: t( 'project_form_title' ) %>
+
+    <%= f.input :organization, label: t( 'project_form_organization' ) %>
+
+    <%= f.input :description, label: t( 'project_form_description' ) %>
+    <%= f.input :contact, label: t( 'project_form_contact' ) %>
+
+    <%= f.input :email, label: t( 'project_form_email' ) %>
+
+    <%= f.input :micropost_url, label: t( 'project_form_micropost_url' ) %>
+
+    <%= f.input :news_url, label: t( 'project_form_news_url' ) %>
+    <%= f.input :app_url, label: t( 'project_form_app_url' ) %>
+
+    <%= f.input :repository_url, label: t( 'project_form_repository_url' ) %>
+
+    <%= f.input :documentation_url, label: t( 'project_form_documentation_url' ) %>
+  <% end %>
+
+  <%= f.inputs do %>
+    <%= f.input :tag_list, label: t( 'project_form_tag_list' ) %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :cancel, { button_html: { class: 'btn' }, label: t( 'projects_form_cancel' ) } %>
+    <%= f.action :submit, { button_html: { class: 'btn btn-primary', value: t( 'projects_form_submit' ) } } %>
+  <% end %>
+<% end %>
