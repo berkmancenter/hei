@@ -12,16 +12,7 @@
   </div>
 
   <p class="description"><%= project.description %></p>
-
-  <!-- __RFE__ 
-  <dl class="dl-horizontal">
-    <% if project.micropost_url.present? %>
-      <dt><%= t 'projects_show_micropost_url' %></dt>
-      <dd><a href="<%= project.micropost_url %>"><%= project.micropost_url %></a></dd>
-    <% end %>
-  </dl>
-  -->
-
+  
   <% if project.contact.present? %>
     <h2>Contact</h2>
     <span><%= project.contact.first_name %> <%= project.contact.last_name %></span>

@@ -106,7 +106,7 @@ describe ( TasksController ) {
 
     context ( 'with only title' ) {
       before {
-        @projects_csv = fixture_file_upload( '/files/contact_only_title.csv' );
+        @projects_csv = fixture_file_upload( '/files/contact_only_name.csv' );
         #post :import, projects_csv: @projects_csv
       }
 
