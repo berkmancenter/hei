@@ -27,8 +27,13 @@ describe ( 'project partial' ) {
     end
 
     it 'should show progress' do
-      should have_selector 'progress'
-      should have_css "progress[value='#{p.progress}']"
+      if p.progress.present?
+        should have_selector 'div.progress'
+        should have_selector 'div.bar'
+      else
+        should_not have_selector 'div.progress'
+        should_not have_selector 'div.bar'
+      end
     end
 
   }
