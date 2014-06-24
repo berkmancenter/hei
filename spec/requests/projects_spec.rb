@@ -229,6 +229,10 @@ describe ( 'projects requests' ) {
         should have_selector "a[href*='#{edit_project_path( project )}']"
       }
 
+      it ('should have a delete link') {
+        should have_selector "a[href*='#{project_path(project)}'][data-method*='delete']"
+      }
+
     end
 
     context 'project w/o contact' do
