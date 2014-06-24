@@ -42,6 +42,6 @@
 
   <%= link_to( 'Back', projects_path, { class: 'btn' } ) %>
   <%= link_to( 'Edit', edit_project_path( project ), { class: 'btn btn-primary' } ) %>
+  <%= link_to('Delete', project_path(project), {:confirm => 'Are you sure you want to delete this project?', :class => 'btn btn-primary', :method => 'delete'}) %>
 </div>
-
 
