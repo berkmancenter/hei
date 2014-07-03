@@ -11,9 +11,14 @@
 
       <ul>
         <% @project.tags.each do |t| %>
-          <li><%= link_to t.name, search_path + "?tag[]=#{t.name}" %></li>
+          <li><%= link_to'x',tag_path(t.name)+'?pid='+@project.id.to_s, :class=>'del_tag',:method=>'delete',:confirm=>"Remove tag '#{t.name}' from this project?" %> <%= link_to t.name, search_path + "?tag[]=#{t.name}" %></li>
         <% end %>
       </ul>
+      <%= form_tag(controller:'tags',action:'create') do %>
+        <%= text_field(:tag,'name') %>
+        <%= hidden_field_tag(:pid,@project.id) %>
+        <%= submit_tag('Add tags', :class=>'btn btn-primary') %>
+      <% end %>
     </div>
   <% end %>
 </section>

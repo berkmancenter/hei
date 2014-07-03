@@ -162,4 +162,13 @@ form.search input {
   }
 }
 
+.del_tag, .del_tag:visited {
+  font-weight: bold;
+  color: red;
+}
+
+.del_tag:hover {
+  text-decoration: none;
+  color: darkred;
+}
 

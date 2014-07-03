@@ -6,6 +6,8 @@ Hei::Application.routes.draw do
   resources :facets
 
   resources :projects
+
+  resources :tags
   
   devise_for :users
   
