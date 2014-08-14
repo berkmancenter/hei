@@ -84,6 +84,9 @@ Devise.setup do |config|
   # Setup a pepper to generate the encrypted password.
   # config.pepper = "3ced50ba779c6f51736573ad8e64d35295abb2ff6754e4e218a0f32df91cfe4e40cccfe4fb0f81b443b4094fd56fca8342e3bd2ef5a0a394662045350d0e8d4c"
 
+  # New & required with Devise 3
+  config.secret_key = '52e99a1037e6e960a65669f35b98d3efced9d1fdec14f033e61af96a63c26dc67ecbb61964c7aa440fbd63c132e6fed131dc78f18b9090ccda62a58a653bea64'
+  
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
   # confirming his account. For instance, if set to 2.days, the user will be
@@ -216,22 +219,69 @@ Devise.setup do |config|
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
   
-  config.warden do |manager|
-    manager.default_strategies(:scope => :user).unshift :harvard_auth_proxy_authenticatable
-  end
- 
-  config.secret_key = '52e99a1037e6e960a65669f35b98d3efced9d1fdec14f033e61af96a63c26dc67ecbb61964c7aa440fbd63c132e6fed131dc78f18b9090ccda62a58a653bea64'
-  
-  config.authen_application = 'HLS_BCIS_LRRS_DEV'
-  config.pin_url = 'http://localhost:3001/pin/authenticate?__authen_application='
-  config.debug = true
-  config.disable_token_authenticity_checks = true
-  config.post_logout_url = 'http://www.google.com/'
-  config.creation_attributes = Proc.new do |user,user_info,authentication_info|
-    user.email = user_info[:mail]
+  # ==> old Harvard PIN auth
+  #config.warden do |manager|
+    #manager.default_strategies(:scope => :user).unshift :harvard_auth_proxy_authenticatable
+  #end
+  #
+  #config.authen_application = 'HLS_BCIS_LRRS_DEV'
+  #config.pin_url = 'http://localhost:3001/pin/authenticate?__authen_application='
+  #config.debug = true
+  #config.disable_token_authenticity_checks = true
+  #config.post_logout_url = 'http://www.google.com/'
+  #
+  #config.creation_attributes = Proc.new do |user,user_info,authentication_info|
+    #user.email = user_info[:mail]
+
     #user.edupersonaffiliation = user_info[:edupersonaffiliation]
     #user.guid = authentication_info[:user_id]
-  end
+  #end
+
+  # ==> Harvard CAS auth
+  config.cas_base_url = "https://www.pin1.harvard.edu/cas"
+
+  # you can override these if you need to, but cas_base_url is usually enough
+  # config.cas_login_url = "https://cas.myorganization.com/login"
+  # config.cas_logout_url = "https://cas.myorganization.com/logout"
+  # config.cas_validate_url = "https://cas.myorganization.com/serviceValidate"
+
+  # The CAS specification allows for the passing of a follow URL to be displayed when
+  # a user logs out on the CAS server. RubyCAS-Server also supports redirecting to a
+  # URL via the destination param. Set either of these urls and specify either nil,
+  # 'destination' or 'follow' as the logout_url_param. If the urls are blank but
+  # logout_url_param is set, a default will be detected for the service.
+  # config.cas_destination_url = 'https://cas.myorganization.com'
+  # config.cas_follow_url = 'https://cas.myorganization.com'
+  # config.cas_logout_url_param = nil
+
+  # You can specify the name of the destination argument with the following option.
+  # e.g. the following option will change it from 'destination' to 'url'
+  # config.cas_destination_logout_param_name = 'url'
+
+  # By default, devise_cas_authenticatable will create users.  If you would rather
+  # require user records to already exist locally before they can authenticate via
+  # CAS, uncomment the following line.
+  # config.cas_create_user = false
+
+  # You can enable Single Sign Out, which by default is disabled.
+  # config.cas_enable_single_sign_out = true
+
+  # If you want to use the Devise Timeoutable module with single sign out, 
+  # uncommenting this will redirect timeouts to the logout url, so that the CAS can
+  # take care of signing out the other serviced applocations. Note that each
+  # application manages timeouts independently, so one application timing out will 
+  # kill the session on all applications serviced by the CAS.
+  # config.warden do |manager|
+  #   manager.failure_app = DeviseCasAuthenticatable::SingleSignOut::WardenFailureApp
+  # end
+
+
+
+
+
+
+
+
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine

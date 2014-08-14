@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :user do
+    factory :huid do
+      username '123456789'
+    end
+  end
+
   factory :organization do
     factory :berkman do
       name 'Berkman Center for Internet and Society'

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+ruby '2.0.0'
 
 gem 'rails', '3.2.13'
 
@@ -9,7 +9,11 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'acts-as-taggable-on'
+
 gem 'devise'
+gem 'rubycas-client'
+gem 'devise_cas_authenticatable'
+
 gem 'acl9'
 gem 'feed-abstract'
 gem 'will_paginate'
@@ -19,21 +23,17 @@ gem 'sunspot_rails', '2.0.0'
 gem 'sunspot_solr', '2.0.0'
 gem 'breadcrumbs'
 gem 'acts_as_api'
-gem 'nokogiri'
+gem 'nokogiri', '1.6.2.1'
 gem 'sanitize'
 gem 'exception_notification'
 gem 'acts_as_list'
 gem 'formtastic'
 gem 'formtastic-bootstrap'
-gem 'devise_harvard_auth_proxy', :git => 'https://github.com/berkmancenter/devise_harvard_auth_proxy.git', :branch => 'deviseupdate'
 
 group :development, :test do
-  gem 'rspec-rails', '2.14.2'
-end
-
-group :test do
-  gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'rspec-rails', '2.14.2'
+  gem 'capybara'
 end
 
 # Gems used only for assets and not required
