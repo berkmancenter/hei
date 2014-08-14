@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   def cas_extra_attributes=( extra_attributes )
     extra_attributes.each { |n, v|
-      puts "#{n}: #{v}"
+      logger.debug "#{n}: #{v}"
     }
   end
 end
