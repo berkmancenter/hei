@@ -38,32 +38,32 @@ class Project < ActiveRecord::Base
   def self.update_or_create_from_csv_row( row )
     # csv must have already been read from file
     # will create organization if one cannot be found
-    org = Organization.find_or_create_by_name( row[ 4 ] )
+    org = Organization.find_or_create_by_name( row[ 'Affiliation (Organization)' ] )
 
-    email = row[ 9 ]
+    email = row[ "Optional: Do you want the email address you used above made public?  If you'd like a different email address used, please include it here under 'Other'." ]
     if email == 'Yes'
-      email = row[ 3 ]
+      email = row[ 'Email Address' ]
     elsif email == 'No'
       email = nil
     end
 
-    app_url = row[ 14 ]
+    app_url = row[ 'Optional: Please list a homepage you would like included' ]
     if app_url.present? && !app_url.start_with?( 'http' )
       app_url = "http://#{app_url}"
     end
 
-    title = "#{row[1]} #{row[2]}"
+    title = "#{row[ 'First Name' ]} #{row[ 'Last Name' ]}"
     p = Project.find( :first, :conditions => [ "lower(title) = ?", title.downcase ] ) || Project.create( :title => title)
 
     p.update_attributes( {
       title: title,
       organization_id: org.id,
-      role: row[ 11 ],
-      description: row[ 10 ],
+      role: row[ 'Role/Title' ],
+      description: row[ 'Optional: Tell us more about your work' ],
       email: email,
-      micropost_url: "https://twitter.com/#{row[13]}",
+      micropost_url: "https://twitter.com/#{row[ 'Optional: Please list a twitter handle you would like included' ]}",
       app_url: app_url,
-      tag_list: row[ 8 ]
+      tag_list: row[ 'Optional: What topics are you interested in? What areas does your work touch upon?' ]
     } )
   end
 end

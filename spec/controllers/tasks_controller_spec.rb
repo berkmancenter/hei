@@ -115,12 +115,12 @@ describe ( TasksController ) {
       }
     }
 
-    context ( 'with double import' ) {
+    context ( 'with no list' ) {
       before {
         @projects_csv = fixture_file_upload( '/files/people_no_list.csv' );
       }
 
-      it ( 'should not make two duplicate records' ) {
+      it ( 'should not add someone who does not wish to be on the list' ) {
         expect {
           post :import, projects_csv: @projects_csv
         }.to_not change( Project, :count )
