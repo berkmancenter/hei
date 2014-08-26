@@ -38,32 +38,32 @@ class Project < ActiveRecord::Base
   def self.update_or_create_from_csv_row( row )
     # csv must have already been read from file
     # will create organization if one cannot be found
-    org = Organization.find_or_create_by_name( row[ 'Affiliation (Organization)' ] )
+    org = Organization.find_or_create_by_name( row[ I18n.t( 'tasks.import.headers.organization_name' ) ] )
 
-    email = row[ "Optional: Do you want the email address you used above made public?  If you'd like a different email address used, please include it here under 'Other'." ]
+    email = row[ I18n.t( 'tasks.import.headers.project_opt_in_email' ) ]
     if email == 'Yes'
-      email = row[ 'Email Address' ]
+      email = row[ I18n.t( 'tasks.import.headers.contact_email' ) ]
     elsif email == 'No'
       email = nil
     end
 
-    app_url = row[ 'Optional: Please list a homepage you would like included' ]
+    app_url = row[ I18n.t( 'tasks.import.headers.project_app_url' ) ]
     if app_url.present? && !app_url.start_with?( 'http' )
       app_url = "http://#{app_url}"
     end
 
-    title = "#{row[ 'First Name' ]} #{row[ 'Last Name' ]}"
+    title = "#{row[ I18n.t( 'tasks.import.headers.contact_first_name' ) ]} #{row[ I18n.t( 'tasks.import.headers.contact_last_name' ) ]}"
     p = Project.find( :first, :conditions => [ "lower(title) = ?", title.downcase ] ) || Project.create( :title => title)
 
     p.update_attributes( {
       title: title,
       organization_id: org.id,
-      role: row[ 'Role/Title' ],
-      description: row[ 'Optional: Tell us more about your work' ],
+      role: row[ I18n.t( 'tasks.import.headers.contact_role' ) ],
+      description: row[ I18n.t( 'tasks.import.headers.project_description' ) ],
       email: email,
-      micropost_url: "https://twitter.com/#{row[ 'Optional: Please list a twitter handle you would like included' ]}",
+      micropost_url: "https://twitter.com/#{row[ I18n.t( 'tasks.import.headers.project_micropost_url' ) ]}",
       app_url: app_url,
-      tag_list: row[ 'Optional: What topics are you interested in? What areas does your work touch upon?' ]
+      tag_list: row[ I18n.t( 'tasks.import.headers.project_tag_list' ) ]
     } )
   end
 end

@@ -35,4 +35,20 @@ en:
   organizations_edit: 'Edit'
   organizations_back: 'Back'
   organizations_new: 'Add a New Organization'
+
   tasks_import_file_label: 'Choose a Berkman Open House CSV file to import'
+
+  tasks:
+    import:
+      headers:
+        opt_in: 'We are curating a dynamic public list.  Would you like to be included?'
+        organization_name: 'Affiliation (Organization)'
+        project_opt_in_email: "Optional: Do you want the email address you used above made public?  If you'd like a different email address used, please include it here under 'Other'."
+        contact_email: 'Email Address'
+        project_app_url: 'Optional: Please list a homepage you would like included'
+        contact_first_name: 'First Name'
+        contact_last_name: 'Last Name'
+        contact_role: 'Role/Title'
+        project_description: 'Optional: Tell us more about your work'
+        project_micropost_url: 'Optional: Please list a twitter handle you would like included'
+        project_tag_list: 'Optional: What topics are you interested in? What areas does your work touch upon?'

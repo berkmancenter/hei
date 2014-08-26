@@ -6,7 +6,7 @@ class TasksController < ApplicationController
       projects_csv = params[ :projects_csv ].read
 
       CSV.parse( projects_csv, { headers: true } ) { | row |
-        Project.update_or_create_from_csv_row( row ) unless row[ 'We are curating a dynamic public list.  Would you like to be included?' ] == 'No'
+        Project.update_or_create_from_csv_row( row ) unless row[ I18n.t( 'tasks.import.headers.opt_in' ) ] == 'No'
       }
 
       Project.reindex
