@@ -41,8 +41,8 @@ en:
   tasks:
     import:
       headers:
-        opt_in: 'We are curating a dynamic public list.  Would you like to be included?'
-        organization_name: 'Affiliation (Organization)'
+        opt_in: 'We are curating a dynamic public list of open house participants and their interests in order to facilitate conversations and connections at the open house events and beyond.  Would you like to be included in this list?'
+        organization_name: 'What is your primary affiliation?'
         project_opt_in_email: "Optional: Do you want the email address you used above made public?  If you'd like a different email address used, please include it here under 'Other'."
         contact_email: 'Email Address'
         project_app_url: 'Optional: Please list a homepage you would like included'
