@@ -26,7 +26,7 @@ gem 'formtastic'
 #gem 'devise_harvard_auth_proxy', :git => 'git@github.com:berkmancenter/devise_harvard_auth_proxy.git', :branch => 'deviseupdate'
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '2.14.2'
 end
 
 group :test do
