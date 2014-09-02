@@ -51,3 +51,11 @@ form input[type="text"], form input[type="url"], form input[type="email"], form 
   border-radius: 1em;
   padding: .5em !important;
 }
+
+.pagination {
+  list-style-type: none;
+
+  li {
+    display: inline-block;
+  }
+}
